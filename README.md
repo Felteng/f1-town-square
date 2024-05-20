@@ -119,6 +119,7 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 ## Database Design
 
 ### Database Model
+The entiry relationship diagram for the initial database model was made using [Cacoo's](https://cacoo.com) diagram tool.
 
 ![Entity relationship diagram](readme-assets/initial-erd.png)
 
