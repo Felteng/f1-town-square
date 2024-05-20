@@ -129,7 +129,7 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 The principles of CRUD are at the essence of this project's features and any future features.
 
 **Create:**
-An authenticated user can create comments and messages in the live chat.
+An authenticated user can create comments and send messages in the live chat.
 
 **Read:**
 A user can browse and read articles posted by the site admin, as well as the conversation in the live chat.
