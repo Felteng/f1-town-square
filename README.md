@@ -120,6 +120,7 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 
 ### Database Model
 
+![Entity relationship diagram](readme-assets/initial-erd.png)
 
 ### Custom Model
 
