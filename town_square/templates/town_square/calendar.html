@@ -28,14 +28,15 @@
       <hr class="card-line">
       <div class="card-body">
         <h5 class="fw-bold">{{ event.location }}</h5>
-        <h6 class="event-name">{{ event.event_name }}</h5>
-          <div class="col-12">
-            <img class="event-image"
-              src="{% if 'placeholder' in event.event_image.url %}https://res.cloudinary.com/djmipr2p0/image/upload/v1716381961/y98b0vk4ypcewm2ytrvh.jpg{% else %}{{ event.event_image }}{% endif %}">
-          </div>
+        <h6 class="event-name">{{ event.event_name }}</h6>
+        <div class="col-12">
+          <img class="event-image"
+            src="{% if 'placeholder' in event.event_image.url %}https://res.cloudinary.com/djmipr2p0/image/upload/v1716381961/y98b0vk4ypcewm2ytrvh.jpg{% else %}{{ event.event_image }}{% endif %}"
+            alt="Event image">
+        </div>
       </div>
     </div>
-  </div 
-</div>
+  </div>
   {% endfor %}
-  {% endblock content %}
+</div>  
+{% endblock content %}
