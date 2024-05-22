@@ -1,5 +1,86 @@
-.nav-color {
-  background-color: rgb(0, 179, 211);
+/* General style foundation */
+body {
+  background-color: #121516;
+  color: #eeebe8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Bootstrap overriding */
+.card {
+  border-left: none;
+  border-top: none;
+  background-color: inherit;
+  color: inherit;
+  border-color: #8d856d;
+  border-radius: 0px;
+  border-width: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-header, .card-body {
+  padding: 8px;
+  border: none;
+}
+
+.navbar-brand, .nav-link {
+  color: #eeebe8;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color: inherit;
+  border: 2px solid #8d856d;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+}
+
+.navbar-nav {
+  --bs-nav-link-hover-color: inherit;
+}
+
+.nav-link {
+  margin-right: 8px;
+  border: 2px solid transparent;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+}
+
+.nav-link:hover {
+  border: 2px solid #8d856d;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+}
+
+/* Custom styling */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+}
+
+.page-logo {
+  border: 2px solid #8d856d;
+  border-top: none;
+  border-left: none;
+  border-radius: 50%;
+  padding-right: 9px;
+  padding-bottom: 9px;
+  padding-left: 9px;
 }
 
 .user-status {
@@ -9,8 +90,53 @@
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  
+  margin-top: auto;
   width: 100%;
   background-color: #004749;
+  color: #fff;
+}
+
+.nav-color {
+  background-color: rgb(197, 20, 20);
+  color: #eeebe8;
+}
+
+/* Calendar styling */
+.country-flag {
+  max-height: 4rem;
+  max-width: 100%;
+}
+
+.flag-container {
+  display: flex;
+}
+
+.card-line {
+  width: 97%;
+}
+
+.date-container {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.date-container h2 {
+  line-height: 20px;
+}
+
+.event-name {
+  font-size: 0.8rem;
+  min-height: 45px;
+}
+
+.event-image {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+
+  .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    border-width: 1px;
+  }
 }

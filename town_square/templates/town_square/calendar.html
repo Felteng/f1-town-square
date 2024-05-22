@@ -3,4 +3,39 @@
 {% block content %}
 <h1>Hello</h1>
 <p>Calendar</p>
-{% endblock content %}
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 m-0 mx-md-4">
+  {% for event in events %}
+  <div class="col">
+    <div class="card">
+      <div class="card-header d-flex">
+        <div class="date-container col-8">
+          <h2 class="">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}</h2>
+          <h2 class="">
+            <!-- Check if the dates of the event share the same month to avoid repeating the month -->
+            {% if event.start_date|date:"M" == event.end_date|date:"M" %}
+            {{ event.start_date | date:"M" }}
+            {% else %}
+            {{ event.start_date | date:"M" }}-{{ event.end_date | date:"M" }}
+            {% endif %}
+          </h2>
+        </div>
+        <div class="col-4 flag-container">
+          <img class="m-auto country-flag"
+            src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716216841/{{ event.location | lower }}.svg"
+            alt="{{ event.location }} flag">
+        </div>
+      </div>
+      <hr class="card-line">
+      <div class="card-body">
+        <h5 class="fw-bold">{{ event.location }}</h5>
+        <h6 class="event-name">{{ event.event_name }}</h5>
+          <div class="col-12">
+            <img class="event-image"
+              src="{% if 'placeholder' in event.event_image.url %}https://res.cloudinary.com/djmipr2p0/image/upload/v1716381961/y98b0vk4ypcewm2ytrvh.jpg{% else %}{{ event.event_image }}{% endif %}">
+          </div>
+      </div>
+    </div>
+  </div </div>
+  {% endfor %}
+  {% endblock content %}
