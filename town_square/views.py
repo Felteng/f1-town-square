@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import RaceEvent, Article
 
 # Create your views here.
 def home_page(request):
@@ -9,9 +10,14 @@ def home_page(request):
 
 
 def calendar(request):
+    queryset = RaceEvent.objects.all()
+    events = queryset.order_by("start_date")
     return render(
         request,
-        "town_square/calendar.html"
+        "town_square/calendar.html",
+        {
+            'events': events,
+        }
     )
 
 
