@@ -1,6 +1,5 @@
 {% url 'home' as home_url %}
 {% url 'calendar' as  calendar_url %}
-{% url 'articles' as articles_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'account_signup' as signup_url %}
@@ -43,10 +42,6 @@
             <li class="nav-item hvr-grow">
               <a class="nav-link {% if request.path == calendar_url %}active{% endif %}"
                 href="{% url 'calendar' %}">Calendar</a>
-            </li>
-            <li class="nav-item hvr-grow">
-              <a class="nav-link {% if request.path == articles_url %}active{% endif %}"
-                href="{% url 'articles' %}">Articles</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item hvr-grow">

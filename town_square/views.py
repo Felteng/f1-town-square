@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import RaceEvent, Article
+from django.shortcuts import render, get_object_or_404
+from .models import RaceEvent
 
 # Create your views here.
 def home_page(request):
@@ -20,9 +20,3 @@ def calendar(request):
         }
     )
 
-
-def articles(request):
-    return render(
-        request,
-        "town_square/articles.html"
-    )
