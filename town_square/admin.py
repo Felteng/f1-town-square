@@ -13,3 +13,5 @@ class articleAdmin(SummernoteModelAdmin):
 class calendarAdmin(SummernoteModelAdmin):
   list_display = ('location', 'start_date', 'event_name',)
   search_fields = ['location']
+  prepopulated_fields = {'slug': ('event_name',)}
+

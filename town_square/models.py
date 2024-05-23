@@ -7,7 +7,8 @@ class RaceEvent(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     location = models.CharField()
-    event_name = models.CharField()
+    event_name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
     event_image = CloudinaryField('image', default='event_placeholder')
 
 
