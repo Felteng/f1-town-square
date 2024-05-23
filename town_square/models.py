@@ -9,7 +9,7 @@ class RaceEvent(models.Model):
     location = models.CharField()
     event_name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    event_image = CloudinaryField('image', default='event_placeholder')
+    event_image = CloudinaryField('Event image', default='event_placeholder')
 
 
 # Code source: https://github.com/Code-Institute-Solutions/Django3blog/blob/75bd87f4439d678bee07c149383cf2d778c38a6f/11_messages/blog/models.py#L9-L25
