@@ -21,7 +21,7 @@
         </div>
         <div class="col-4 flag-container">
           <img class="m-auto country-flag"
-            src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ event.location | lower }}.svg"
+            src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ event.location | slugify }}.svg"
             alt="{{ event.location }} flag">
         </div>
       </div>
@@ -38,5 +38,5 @@
     </div>
   </div>
   {% endfor %}
-</div>  
+</div>
 {% endblock content %}
