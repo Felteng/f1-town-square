@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">{{ event.event_info | safe }}</h1>
+{{ event.race.event_name }}
+{% endblock content %}

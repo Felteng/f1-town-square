@@ -31,7 +31,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-felteng-f1townsquare-j8f6d6uu78z.ws-eu114.gitpod.io',
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'django_summernote',
     'cloudinary',
+    'event_details',
     'town_square',
 ]
 
