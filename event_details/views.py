@@ -8,7 +8,7 @@ def event_details(request, event_id):
 
     return render(
         request,
-        'town_square/event_details.html',
+        'event_details/event_details.html',
         {
             'event': event,
         }
