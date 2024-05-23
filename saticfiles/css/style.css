@@ -8,7 +8,7 @@ body {
 }
 
 /* Bootstrap overriding */
-.card {
+.event-link, .card {
   border-left: none;
   border-top: none;
   background-color: inherit;
@@ -17,11 +17,6 @@ body {
   border-radius: 0px;
   border-width: 2px;
   border-bottom-right-radius: 10px;
-}
-
-.card-header, .card-body {
-  padding: 8px;
-  border: none;
 }
 
 .navbar-brand, .nav-link {
@@ -55,7 +50,7 @@ body {
   border-bottom-right-radius: 10px;
 }
 
-/* Custom styling */
+/* hover.css */
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;
@@ -73,6 +68,13 @@ body {
   transform: scale(1.1);
 }
 
+.event-link.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.02);
+}
+
+/* Custom styling */
 .page-logo {
   border: 2px solid #8d856d;
   border-top: none;
@@ -112,6 +114,11 @@ body {
   display: flex;
 }
 
+.event-card-header, .event-card-body {
+  padding: 8px;
+  border: none;
+}
+
 .card-line {
   width: 97%;
 }
@@ -132,6 +139,17 @@ body {
 
 .event-image {
   width: 100%;
+}
+
+.event-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover {
+  border-color: red;
+  transition-duration: 0.3s;
+  /* transition-property: transform; */
 }
 
 @media (min-width: 768px) {
