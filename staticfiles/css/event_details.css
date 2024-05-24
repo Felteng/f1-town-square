@@ -1,0 +1,20 @@
+.event-details-container, .row {
+  margin: 0;
+}  
+
+.hero-container {
+  max-height: 240px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  max-width: 100%;
+}
+
+.hero-text {
+  position: absolute;
+}
