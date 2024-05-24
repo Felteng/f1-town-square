@@ -8,7 +8,7 @@ class RaceEvent(models.Model):
     end_date = models.DateField()
     location = models.CharField(max_length=32)
     event_name = models.CharField(max_length=100, unique=True)
-    event_image = CloudinaryField('Event image', default='event_placeholder')
+    event_circuit = CloudinaryField('Event circuit', default='event_placeholder')
 
     def __str__(self):
         return self.event_name
