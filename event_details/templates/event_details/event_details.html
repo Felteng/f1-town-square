@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/event_details.css' %}">{% endblock css %}
 
 {% block content %}
 <h1 class="text-center">{{ event.event_info | safe }}</h1>
 {{ event.race.event_name }}
+<img src="{{ event.circuit_image.url }}" alt="{{ event.circuit_name }}">
 {% endblock content %}

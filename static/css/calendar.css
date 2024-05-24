@@ -1,0 +1,64 @@
+/* Bootstrap overriding */
+.calendar-container, .card {
+  border-left: none;
+  border-top: none;
+  background-color: inherit;
+  color: inherit;
+  border-color: #8d856d;
+  border-radius: 0px;
+  border-width: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Calendar styling */
+.country-flag {
+  max-height: 4rem;
+  max-width: 100%;
+}
+
+.flag-container {
+  display: flex;
+}
+
+.event-card-header, .event-card-body {
+  padding: 8px;
+  border: none;
+}
+
+.card-line {
+  width: 97%;
+}
+
+.date-container {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.date-container h2 {
+  line-height: 20px;
+}
+
+.event-name {
+  font-size: 0.8rem;
+  min-height: 45px;
+}
+
+.event-image {
+  width: 100%;
+}
+
+.event-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.calendar-container, .card:hover {
+  border-color: red;
+  transition-duration: 0.3s;
+}
+
+.event-link.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.02);
+}
