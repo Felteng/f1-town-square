@@ -8,7 +8,7 @@ body {
 }
 
 /* Bootstrap overriding */
-.event-link, .card {
+.calendar-container, .card {
   border-left: none;
   border-top: none;
   background-color: inherit;
@@ -146,7 +146,7 @@ body {
   color: inherit;
 }
 
-.card:hover {
+.calendar-container, .card:hover {
   border-color: red;
   transition-duration: 0.3s;
   /* transition-property: transform; */
