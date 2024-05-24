@@ -1,8 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block css %}<link rel="stylesheet" href="{% static 'css/event_details.css' %}">{% endblock css %}
 
 {% block content %}
-<h1 class="text-center">{{ event.event_info | safe }}</h1>
-{{ event.race.event_name }}
-<img src="{{ event.circuit_image.url }}" alt="{{ event.circuit_name }}">
+<div class="hero-container">
+  <img class="hero-image" src="{% if 'placeholder' in event.race.event_circuit.url %}
+  https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
+  {% else %}
+  {{ event.race.event_circuit.url }}{% endif %}" alt="Hero image" >
+  <h1 class="text-center hero-text">{{ event.race.event_name}}</h1>
+</div>
+<div class="container-fluid event-details-container">
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="card col-12 col-lg-5">
+      <img class="circuit-image" src="{{ event.circuit_image.url }}" alt="{{ event.circuit_name }}">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Lap Record<br></li>
+        <li class="list-group-item">Circuit Length<br></li>
+        <li class="list-group-item">Number of Grand Prix Laps<br></li>
+        <li class="list-group-item">Grand Prix Distance<br><span class="small">km</span></li>
+      </ul>
+    </div>
+  {{ event.event_info | safe }}
+ </div> 
+</div>
 {% endblock content %}
