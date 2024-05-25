@@ -11,4 +11,4 @@ class RaceEvent(models.Model):
     event_circuit = CloudinaryField('Event circuit', default='event_placeholder')
 
     def __str__(self):
-        return self.event_name
+        return self.location + ": " + self.event_name
