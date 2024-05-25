@@ -1,5 +1,5 @@
 /* Bootstrap overriding */
-.calendar-container, .card {
+.card {
   border-left: none;
   border-top: none;
   background-color: inherit;
@@ -34,7 +34,7 @@
   padding-bottom: 20px;
 }
 
-.date-container h2 {
+.calendar-card-heading {
   line-height: 20px;
 }
 
@@ -53,7 +53,7 @@
   color: inherit;
 }
 
-.calendar-container, .card:hover {
+.card:hover {
   border-color: red;
   transition-duration: 0.3s;
 }

@@ -5,15 +5,15 @@
 
 {% block content %}
 <h1 class="text-center">F1 2024 Season Calendar</h1>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 m-0 mx-md-4 calendar-container">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 m-0 mx-md-4">
   {% for event in events %}
   <a class="event-link hvr-grow" href="{% url 'event_details' event.id %}">
     <div class="col">
       <div class="card">
         <div class="event-card-header d-flex">
           <div class="date-container col-8">
-            <h2 class="">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}</h2>
-            <h2 class="">
+            <h2 class="calendar-card-heading">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}</h2>
+            <h2 class="calendar-card-heading">
               <!-- Check if the dates of the event share the same month to avoid repeating the month -->
               {% if event.start_date|date:"M" == event.end_date|date:"M" %}
               {{ event.start_date | date:"M" }}
