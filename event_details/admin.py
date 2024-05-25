@@ -5,5 +5,5 @@ from .models import RaceEventDetail
 # Register your models here.
 @admin.register(RaceEventDetail)
 class articleAdmin(SummernoteModelAdmin):
-  list_display = ('event_info',)
+  list_display = ('race')
   summernote_fields = ('event_info')
