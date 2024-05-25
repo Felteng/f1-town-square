@@ -1,3 +1,4 @@
+/* Bootstrap overriding */
 .card {
   border-left: none;
   border-top: none;
@@ -9,6 +10,7 @@
   border-bottom-right-radius: 10px;
 }
 
+/* Custom css */
 .event-details-container {
   padding: 0 2rem 0 2rem;
 }
@@ -28,10 +30,17 @@
 
 .hero-image {
   max-width: 100%;
+  opacity: .5;
+  align-self: flex-end;
 }
 
 .hero-text {
   position: absolute;
+  font-weight: 700;
+}
+
+.circuit-name {
+  font-weight: 700;
 }
 
 .stat-container {
@@ -53,4 +62,11 @@
   margin-bottom: -6px;
   font-size: 160%;
   font-weight: 700;
+}
+
+@media (min-width: 992px) {
+  
+  .hero-container {
+    max-height: 360px;
+  }
 }

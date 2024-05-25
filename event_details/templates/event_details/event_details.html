@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="hero-container">
-  <img class="hero-image" src="{{ event.event_hero_image.url }}"  alt="Hero image">
+  <img class="hero-image" src="{{ event.event_hero_image.url }}" alt="Hero image">
   <h1 class="text-center hero-text">{{ event.race.event_name}}</h1>
 </div>
 <div class="container-fluid event-details-container">
@@ -13,8 +13,8 @@
     <div class="col-7">
       {{ event.event_info | safe }} 
     </div>
-    <div class="card col-12 col-lg-5">
-      <h2 class="card-title">{{ event.circuit_name }}</h2>
+    <div class="card col-lg-5">
+      <h2 class="circuit-name">{{ event.circuit_name }}</h2>
       <img class="circuit-image" src="{{ event.race.event_circuit.url }}" alt="{{ event.circuit_name }}">
       <div class="row">
         <div class="col-md-6">
