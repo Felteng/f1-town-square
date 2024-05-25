@@ -1,3 +1,18 @@
+.card {
+  border-left: none;
+  border-top: none;
+  background-color: #121516;
+  color: inherit;
+  border-color: #8d856d;
+  border-radius: 0px;
+  border-width: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+.event-details-container {
+  padding: 0 2rem 0 2rem;
+}
+
 .event-details-container, .row {
   margin: 0;
 }  
@@ -17,4 +32,25 @@
 
 .hero-text {
   position: absolute;
+}
+
+.stat-container {
+  border: 1px solid #494949;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+  padding: 0.5rem 0;
+  margin-bottom: 12px;
+}
+
+.stat-heading {
+  margin-bottom: 2px;
+  font-size: 75%;
+  font-weight: 300;
+}
+
+.stat {
+  margin-bottom: -6px;
+  font-size: 160%;
+  font-weight: 700;
 }

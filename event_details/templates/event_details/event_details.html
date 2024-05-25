@@ -16,12 +16,32 @@
     <div class="card col-12 col-lg-5">
       <h2 class="card-title">{{ event.circuit_name }}</h2>
       <img class="circuit-image" src="{{ event.race.event_circuit.url }}" alt="{{ event.circuit_name }}">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Lap Record<br>{{ event.lap_record }}</li>
-        <li class="list-group-item">Circuit Length<br>{{ event.circuit_length }}</li>
-        <li class="list-group-item">Number of Grand Prix Laps<br>{{ event.number_of_laps }}</li>
-        <li class="list-group-item">Grand Prix Distance<br><p>{{ race_distance }}<span class="small">km</span></p></li>
-      </ul>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="stat-container">
+            <h6 class="stat-heading">Circuit Length</h6>
+            <p class="stat">{{ event.circuit_length }}<span class="small">km</span></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-container">
+            <h6 class="stat-heading">Grand Prix Laps</h6>
+            <p class="stat">{{ event.number_of_laps }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-container">
+            <h6 class="stat-heading">Grand Prix Distance</h6>
+            <p class="stat">{{ race_distance }}<span class="small">km</span></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="stat-container">
+            <h6 class="stat-heading">Lap Record</h6>
+            <p class="stat">{{ event.lap_record }}</p>
+          </div>
+        </div>
+      </div>
     </div>
  </div> 
 </div>
