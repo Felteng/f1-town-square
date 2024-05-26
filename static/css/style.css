@@ -68,6 +68,11 @@ body {
   padding-left: 9px;
 }
 
+.nav-color {
+  background-color: rgb(255 44 0);
+  color: #eeebe8;
+}
+
 .user-status {
   margin: auto;
   font-weight: 100;
@@ -75,16 +80,10 @@ body {
 }
 
 .footer {
-  
   margin-top: auto;
   width: 100%;
-  background-color: #004749;
+  background-color: #00031a;
   color: #fff;
-}
-
-.nav-color {
-  background-color: rgb(197, 20, 20);
-  color: #eeebe8;
 }
 
 @media (min-width: 768px) {
