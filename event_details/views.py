@@ -5,7 +5,7 @@ from .models import RaceEventDetail
 def event_details(request, event_id):
     queryset = RaceEventDetail.objects.filter(race=event_id)
     event = get_object_or_404(queryset)
-    race_distance = event.circuit_length * event.number_of_laps
+    race_distance = round(event.circuit_length * event.number_of_laps, 2)
 
     return render(
         request,
