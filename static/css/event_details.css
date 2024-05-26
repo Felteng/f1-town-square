@@ -11,14 +11,6 @@
 }
 
 /* Custom css */
-.event-details-container {
-  padding: 0 2rem 0 2rem;
-}
-
-.event-details-container, .row {
-  margin: 0;
-}  
-
 .hero-container {
   max-height: 240px;
   overflow: hidden;
@@ -38,6 +30,20 @@
   position: absolute;
   font-weight: 700;
 }
+
+.separator {
+  width: 100%;
+  border-width: 3rem;
+  border-color: #00031a;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  opacity: 100;
+}
+
+.event-details-container {
+  margin: 0;
+  flex-direction: column-reverse;
+}  
 
 .circuit-name {
   font-weight: 700;
@@ -64,9 +70,16 @@
   font-weight: 700;
 }
 
+.event-info {
+  margin-bottom: 12px;
+}
+
 @media (min-width: 992px) {
-  
   .hero-container {
     max-height: 360px;
+  }
+
+  .event-details-container {
+    flex-direction: row;
   }
 }
