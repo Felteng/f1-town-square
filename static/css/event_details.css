@@ -14,7 +14,7 @@
 
 /* Custom css */
 .hero-container {
-  max-height: 240px;
+  max-height: 190px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -76,6 +76,20 @@
   margin-bottom: 1rem;
 }
 
+/* Media queries */
+@media (min-width: 576px) {
+  .hero-container {
+    max-height: 240px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    max-height: 340px;
+  }
+}
+
+/* Breakpoint for content to fit in to columns instead of 1 */
 @media (min-width: 992px) {
   .hero-container {
     max-height: 360px;
@@ -83,5 +97,11 @@
 
   .event-details-container {
     flex-direction: row;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-container {
+    max-height: 460px;
   }
 }
