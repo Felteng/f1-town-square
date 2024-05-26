@@ -8,6 +8,8 @@
   border-radius: 0px;
   border-width: 2px;
   border-bottom-right-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 0 1rem 1rem 0;
 }
 
 /* Custom css */
@@ -55,7 +57,7 @@
   border-left: none;
   border-bottom-right-radius: 10px;
   padding: 0.5rem 0;
-  margin-bottom: 12px;
+  margin-top: 10px;
 }
 
 .stat-heading {
@@ -71,7 +73,7 @@
 }
 
 .event-info {
-  margin-bottom: 12px;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 992px) {
