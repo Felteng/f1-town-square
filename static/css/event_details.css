@@ -23,7 +23,7 @@
 }
 
 .hero-image {
-  max-width: 100%;
+  width: 100%;
   opacity: .5;
   align-self: flex-end;
 }
