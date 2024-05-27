@@ -11,8 +11,10 @@
 <hr class="separator">
 <div class="container-fluid">
   <div class="row event-details-container">
-    <div class="col-lg-7 event-info">
-      {{ event.event_info | safe }} 
+    <div class="col-lg-7">
+      <div class="event-info">
+        {{ event.event_info | safe }} 
+      </div>
     </div>
     <div class="col-lg-5">
       <div class="card">

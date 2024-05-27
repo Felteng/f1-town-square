@@ -74,6 +74,13 @@
 
 .event-info {
   margin-bottom: 1rem;
+  border: 1px solid #8d856d54;
+  border-left: none;
+  border-top: none;
+  border-radius: 0px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 0 1rem 1rem 0;
 }
 
 /* Media queries */
