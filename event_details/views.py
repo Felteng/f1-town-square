@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import RaceEventDetail
+from .models import RaceEventDetail, RaceEventComment
 
 # Create your views here.
 def event_details(request, event_id):
@@ -7,11 +7,14 @@ def event_details(request, event_id):
     event = get_object_or_404(queryset)
     race_distance = round(event.circuit_length * event.number_of_laps, 2)
 
+    comments = event.comments.all()
+
     return render(
         request,
         'event_details/event_details.html',
         {
             'event': event,
+            'comments': comments,
             'race_distance': race_distance,
         }
     )
