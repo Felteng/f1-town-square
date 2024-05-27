@@ -15,6 +15,9 @@ class RaceEventDetail(models.Model):
     number_of_laps = models.PositiveIntegerField(default=0)
     lap_record = models.CharField('Lap record (x:xx.xxx)', max_length=8, default='x:xx.xxx')
 
+    def __str__(self):
+        return self.race.location + ": " + self.race.event_name
+
 
 class RaceEventComment(models.Model):
     event = models.ForeignKey(
@@ -26,3 +29,11 @@ class RaceEventComment(models.Model):
     comment = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return self.comment
+
+    
