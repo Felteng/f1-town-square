@@ -54,20 +54,39 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-7 comments-container">
+  </div>
+  <div class="row comments-container">
+    <div class="col-lg-7">
       <div class="comments">
         <h2 class="comments-heading">What other people think</h2>
         {% for comment in comments %}
+        {% if comment.author == request.user and comment.approved == False %}
         <div class="comment">
-          <h6 class="">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
+          <h6 class="opacity-50">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
-          <p>{{ comment }}</p>
+          <p class="opacity-50">{{ comment }} </p>
+          <span class="text-danger">This comment has not been approved</span>
         </div>
+        {% elif comment.approved == True %}
+        <div class="comment">
+          <h6>{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
+          <hr class="comment-break">
+          <p>{{ comment }} </p>
+        </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
-    <div class="col-lg-5 comment-form-container">
-      <h2>Share you thoughts!</h2>
+    <div class="col-lg-5">
+      <div class="form-div">
+        <h2>Share you thoughts!</h2>
+        <form method="post" style="margin-top: 1rem;">
+          {% csrf_token %}
+          <label for="id_comment">Write a comment:</label>
+          {{ comment_form.comment }}
+          <input class="btn btn-primary mt-3" type="submit" value="Submit">
+        </form>
+      </div>
     </div>
   </div>
 </div>
