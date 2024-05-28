@@ -105,6 +105,15 @@
   margin-bottom: 1rem;
 }
 
+.comments::-webkit-scrollbar {
+  background: rgba(0, 0, 0, 0);
+  width: 1px;
+}
+
+.comments::-webkit-scrollbar-thumb {
+  background: #8d856d;
+}
+
 .comments-heading {
   margin-bottom: 2rem;
   font-size: calc(1.325rem + 1vw);
