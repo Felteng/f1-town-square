@@ -55,7 +55,9 @@
       </div>
     </div>
   </div>
+  <!-- Comments section -->
   <div class="row comments-container">
+    <!-- Comments -->
     <div class="col-lg-7">
       <div class="comments">
         <h2 class="comments-heading">What other people think</h2>
@@ -77,15 +79,23 @@
         {% endfor %}
       </div>
     </div>
+    <!-- Comment form -->
     <div class="col-lg-5">
       <div class="form-div">
         <h2>Share you thoughts!</h2>
+        {% if user.is_authenticated %}
         <form method="post" style="margin-top: 1rem;">
           {% csrf_token %}
           <label for="id_comment">Write a comment:</label>
           {{ comment_form.comment }}
           <input class="btn btn-primary mt-3" type="submit" value="Submit">
         </form>
+        {% else %}
+        <p>
+          Please <a class="text-decoration-none" href="{% url 'account_login' %}">log in</a>
+          if you would like to share your thougts!
+        </p>
+        {% endif %}
       </div>
     </div>
   </div>
