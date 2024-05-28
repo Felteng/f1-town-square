@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block css %}<link rel="stylesheet" href="{% static 'css/event_details.css' %}">{% endblock css %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/event_details.css' %}">
+{% endblock css %}
 
 {% block content %}
+<!-- Page hero header -->
 <div class="hero-container">
   <img class="hero-image" src="{{ event.event_hero_image.url }}" alt="Hero image">
   <h1 class="text-center hero-text">{{ event.race.event_name}}</h1>
 </div>
 <hr class="separator">
+<!-- Event content -->
 <div class="container-fluid">
   <div class="row event-details-container">
-    <div class="col-lg-7">
+    <!-- Event info -->
+    <div class="col-lg-7 event-container">
       <div class="event-info">
-        {{ event.event_info | safe }} 
+        {{ event.event_info | safe }}
       </div>
     </div>
-    <div class="col-lg-5">
+    <!-- Circuit info -->
+    <div class="col-lg-5 circuit-container">
       <div class="card">
         <h2 class="circuit-name">{{ event.circuit_name }}</h2>
         <img class="circuit-image" src="{{ event.race.event_circuit.url }}" alt="{{ event.circuit_name }}">
@@ -48,6 +54,21 @@
         </div>
       </div>
     </div>
- </div> 
+    <div class="col-lg-7 comments-container">
+      <div class="comments">
+        <h2 class="comments-heading">What other people think</h2>
+        {% for comment in comments %}
+        <div class="comment">
+          <h6 class="">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
+          <hr class="comment-break">
+          <p>{{ comment }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-5 comment-form-container">
+      <h2>Share you thoughts!</h2>
+    </div>
+  </div>
 </div>
 {% endblock content %}

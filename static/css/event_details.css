@@ -43,8 +43,7 @@
 }
 
 .event-details-container {
-  margin: 0;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }  
 
 .circuit-name {
@@ -73,14 +72,67 @@
 }
 
 .event-info {
-  margin-bottom: 1rem;
   border: 1px solid #8d856d54;
   border-left: none;
   border-top: none;
   border-radius: 0px;
   border-bottom-right-radius: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   padding: 0 1rem 1rem 0;
+}
+
+/* Event comments */
+.comments {
+  height: 65vh;
+  overflow: auto;
+  border: 1px solid #8d856d54;
+  border-left: none;
+  border-top: none;
+  border-radius: 0px;
+  border-bottom-right-radius: 10px;
+  padding: 0 1rem 1rem 0;
+}
+
+.comments-heading {
+  margin-bottom: 2rem;
+}
+
+.comment-date {
+  color: rgba(255, 255, 255, 0.288);
+  font-weight: 300;
+}
+
+.comment-break {
+  margin: 8px 0;
+  color: #ffffff54;
+}
+
+.comment {
+  border: 1px solid #494949;
+  border-top: none;
+  border-left: none;
+  border-bottom-right-radius: 10px;
+  padding: 0 1rem 0 0;
+  margin-top: 2rem;
+}
+
+
+
+/* Container layout */
+.circuit-container {
+  order: 1;
+}
+
+.event-container {
+  order: 2;
+}
+
+.comments-container {
+  order: 3;
+}
+
+.comment-form-container {
+  order: 4;
 }
 
 /* Media queries */
@@ -96,7 +148,7 @@
   }
 }
 
-/* Breakpoint for content to fit in to columns instead of 1 */
+/* Breakpoint for content to fit in to 2 columns instead of 1 */
 @media (min-width: 992px) {
   .hero-container {
     max-height: 360px;
@@ -105,6 +157,23 @@
   .event-details-container {
     flex-direction: row;
   }
+
+  .circuit-container {
+    order: 2;
+  }
+  
+  .event-container {
+    order: 1;
+  }
+  
+  .comments-container {
+    order: 3;
+  }
+
+  .comment-form-container {
+    order: 4;
+  }
+  
 }
 
 @media (min-width: 1200px) {

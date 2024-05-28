@@ -12,4 +12,4 @@ class articleAdmin(SummernoteModelAdmin):
 class commentAdmin(SummernoteModelAdmin):
   list_display = ('comment', 'author', 'approved')
   list_filter = ('approved',)
-  
+  summernote_fields = ('')
