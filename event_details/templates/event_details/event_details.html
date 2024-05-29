@@ -60,20 +60,35 @@
     <!-- Comments -->
     <div class="col-lg-7">
       <div class="comments">
+        {% if comment_count == 0 %}
+        <h4>No one has shared their thougts yet, be the first!</h4>
+        {% else %}
         <h2 class="comments-heading">What other people think</h2>
+        {% endif %}
         {% for comment in comments %}
-        {% if comment.author == request.user and comment.approved == False %}
+        {% if comment.author == user and comment.approved == False or user.is_superuser and comment.approved == False %}
         <div class="comment">
           <h6 class="opacity-50">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
           <p class="opacity-50">{{ comment }} </p>
-          <span class="text-danger">This comment has not been approved</span>
+          <p class="text-danger">This comment has not been approved</p>
+          {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-warning">Edit</button>
+          {% endif %}
+          {% if user.is_superuser %}
+          <button class="btn btn-success align-self-end">Approve</button>
+          {% endif %}
         </div>
         {% elif comment.approved == True %}
         <div class="comment">
           <h6>{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
           <p>{{ comment }} </p>
+          {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-warning">Edit</button>
+          {% endif %}
         </div>
         {% endif %}
         {% endfor %}

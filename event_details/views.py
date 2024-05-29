@@ -8,7 +8,7 @@ def event_details(request, event_id):
     event = get_object_or_404(queryset)
     race_distance = round(event.circuit_length * event.number_of_laps, 2)
     comments = event.comments.all()
-    comment_count = comments.count()
+    comment_count = comments.filter(approved=True).count()
 
     if request.method == "POST":
         race_comment_form = RaceCommentForm(data=request.POST)
