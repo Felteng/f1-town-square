@@ -73,11 +73,11 @@
           <p class="opacity-50">{{ comment }} </p>
           <p class="text-danger">This comment has not been approved</p>
           {% if user.is_authenticated and comment.author == user %}
-          <button class="btn btn-danger">Delete</button>
-          <button class="btn btn-warning">Edit</button>
+          <button class="btn btn-danger" data-target_comment="{{ comment.id }}">Delete</button>
+          <button class="btn btn-warning" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
           {% if user.is_superuser %}
-          <button class="btn btn-success align-self-end">Approve</button>
+          <button class="btn btn-success align-self-end" data-target_comment="{{ comment.id }}">Approve</button>
           {% endif %}
         </div>
         {% elif comment.approved == True %}
@@ -86,8 +86,8 @@
           <hr class="comment-break">
           <p>{{ comment }} </p>
           {% if user.is_authenticated and comment.author == user %}
-          <button class="btn btn-danger">Delete</button>
-          <button class="btn btn-warning">Edit</button>
+          <button class="btn btn-danger" data-target_comment="{{ comment.id }}">Delete</button>
+          <button class="btn btn-warning" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
         {% endif %}
