@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '8000-felteng-f1townsquare-j8f6d6uu78z.ws-eu114.gitpod.io',
+    '8000-felteng-f1townsquare-0gjtquwe8fl.ws.codeinstitute-ide.net',
     '.herokuapp.com'
     ]
 
@@ -117,7 +117,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.gitpod.io',
+    'https://*.codeinstitute-ide.net',
     'https://*.herokuapp.com'
 ]
 # Password validation

@@ -10,7 +10,7 @@ class RaceEvent(models.Model):
     event_circuit = CloudinaryField('Event circuit', default='event_placeholder')
 
     class Meta:
-        ordering = ["start_date"]
+        ordering = ['start_date']
 
     def __str__(self):
         return self.location + ": " + self.event_name
