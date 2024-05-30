@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
+from django.http import HttpResponseRedirect, HttpResponse
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
 
@@ -31,3 +32,16 @@ def event_details(request, event_id):
             'comment_count': comment_count,
         }
     )
+
+
+def approve_comment(request, event_id, target_comment):
+
+    queryset = RaceEventDetail.objects.filter(race=event_id)
+    event = get_object_or_404(queryset)
+    comment = get_object_or_404(RaceEventComment, pk=target_comment)
+
+    if request.user.is_superuser:
+        comment.approved = True
+        comment.save()
+
+    return HttpResponse('<script>window.close();</script>') 
