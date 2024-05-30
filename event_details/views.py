@@ -36,12 +36,10 @@ def event_details(request, event_id):
 
 def approve_comment(request, event_id, target_comment):
 
-    queryset = RaceEventDetail.objects.filter(race=event_id)
-    event = get_object_or_404(queryset)
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
 
     if request.user.is_superuser:
         comment.approved = True
         comment.save()
 
-    return HttpResponse('<script>window.close();</script>') 
+    return HttpResponse('<script>window.close();</script>')
