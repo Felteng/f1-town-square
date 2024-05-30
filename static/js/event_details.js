@@ -26,7 +26,7 @@ approveButtons.forEach(button => {
    * restored when the user is returned to the event page.
    * 
    * Redirect to approve_comment view where HttpResponseRedirect will be
-   * executed after the comment has been approved to return the user
+   * executed after the comment approval has been attempted to return the user
    * to the previous page, ie the event page where the comment was made.
    */
   $(button).click((e) => {
@@ -37,6 +37,32 @@ approveButtons.forEach(button => {
       // Store current scroll position
       localStorage.setItem('scrollPosition', window.scrollY);
       window.location.href = `approve_comment/${commentId}`;
+    } else {
+      console.error('Comment ID not found.');
+    }
+  });
+});
+
+
+// Delete button functionality
+deleteButtons.forEach(button => {
+    /**
+   * Given the button clicked is linked to a valid comment id
+   * store the current scroll position so that it can be
+   * restored when the user is returned to the event page.
+   * 
+   * Redirect to delete_comment view where HttpResponseRedirect will be
+   * executed after the comment deletion has been attempted to return the user
+   * to the previous page, ie the event page where the comment was made.
+   */
+  $(button).click((e) => {
+    const commentId = e.target.dataset.target_comment;
+    console.log(commentId)
+
+    if (commentId) {
+      // Store current scroll position
+      localStorage.setItem('scrollPosition', window.scrollY);
+      window.location.href = `delete_comment/${commentId}`;
     } else {
       console.error('Comment ID not found.');
     }

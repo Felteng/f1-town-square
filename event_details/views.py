@@ -41,7 +41,7 @@ def approve_comment(request, event_id, target_comment):
     **Context**
 
     ``comment``
-    The comment related to the comment.id targeted from the template.
+    The single comment related to the comment.id targeted from the template.
 
     """
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
@@ -49,5 +49,23 @@ def approve_comment(request, event_id, target_comment):
     if request.user.is_superuser:
         comment.approved = True
         comment.save()
+
+    return HttpResponseRedirect(reverse('event_details', args=[event_id]))
+
+
+def delete_comment(request, event_id, target_comment):
+    """
+    Delete an individual comment.
+
+    **Context**
+
+    ``comment``
+    The single comment related to the comment.id targeted from the template.
+
+    """
+    comment = get_object_or_404(RaceEventComment, pk=target_comment)
+
+    if request.user == comment.author:
+        comment.delete()
 
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
