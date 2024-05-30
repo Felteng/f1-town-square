@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
 
@@ -35,11 +35,19 @@ def event_details(request, event_id):
 
 
 def approve_comment(request, event_id, target_comment):
+    """
+    Approve an indiviual comment.
 
+    **Context**
+
+    ``comment``
+    The comment related to the comment.id targeted from the template.
+
+    """
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
 
     if request.user.is_superuser:
         comment.approved = True
         comment.save()
 
-    return HttpResponse('<script>window.location.replace(document.referrer);</script>')
+    return HttpResponseRedirect(reverse('event_details', args=[event_id]))
