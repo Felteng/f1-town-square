@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
@@ -42,4 +42,4 @@ def approve_comment(request, event_id, target_comment):
         comment.approved = True
         comment.save()
 
-    return HttpResponse('<script>window.close();</script>')
+    return HttpResponse('<script>window.location.replace(document.referrer);</script>')

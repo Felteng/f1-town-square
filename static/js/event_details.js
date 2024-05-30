@@ -1,23 +1,28 @@
-const approveButtons = $(".approve-btn");
-const deleteButtons = $(".delete-btn");
+const approveButtons = document.querySelectorAll(".approve-btn");
+const deleteButtons = document.querySelectorAll(".delete-btn");
+    
 
-for (let button of approveButtons) {
-    $(button).click( (e) => {
-        let comment = e.target.dataset.target_comment;
-        /**
-         * Opens a new window to carry out the database update
-         * to the comments approval status. The window automatically
-         * gets closed in views.py when done, then location.reload
-         * gets exectued to display the updated comment status and
-         * retain the same scroll positon the user had.
-         */
-        const approveWindow = window.open(`approve_comment/${comment}`, "approve", "popup=1 width=100 height=100");
-        const closedCheck = setInterval(() => {
-            if (approveWindow.closed) {
-              clearInterval(closedCheck);
-              location.reload()
-              alert('Comment Approved, window closed!');
-            }
-          }, 100);
-    })
+// Check if we need to restore the scroll position
+const scrollPosition = localStorage.getItem('scrollPosition');
+console.log(scrollPosition)
+if (scrollPosition) {
+  window.scrollTo(0, parseInt(scrollPosition));
+  localStorage.removeItem('scrollPosition');
 }
+
+
+// Approve button functionality
+approveButtons.forEach(button => {
+  $(button).click( (e) => {
+    const commentId = e.target.dataset.target_comment;
+    console.log(commentId)
+
+    if (commentId) {
+      // Store current scroll position
+      localStorage.setItem('scrollPosition', window.scrollY);
+      window.location.href = `approve_comment/${commentId}`;
+    } else {
+      console.error('Comment ID not found.');
+    }
+  });
+});
