@@ -64,8 +64,29 @@ def delete_comment(request, event_id, target_comment):
 
     """
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
-
+    
     if request.user == comment.author:
         comment.delete()
+
+    return HttpResponseRedirect(reverse('event_details', args=[event_id]))
+
+
+def edit_comment(request, event_id, target_comment):
+    """
+    Delete an individual comment.
+
+    **Context**
+
+    ``comment``
+    The single comment related to the comment.id targeted from the template.
+
+    """
+    if request.method == "POST":
+        comment = get_object_or_404(RaceEventComment, pk=target_comment)
+        race_comment_form = RaceCommentForm(data=request.POST, instance=comment)
+        if request.user == comment.author and race_comment_form.is_valid():
+            comment = race_comment_form.save(commit=False)
+            comment.approved = False
+            comment.save()
 
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))

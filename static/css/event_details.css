@@ -27,6 +27,7 @@
 .btn {
   margin: 0.5rem 8px 0.5rem 0;
   color: #fff;
+  transition-duration: 0.3s;
 }
 
 .btn.disabled {
@@ -124,7 +125,7 @@
   border-top: none;
   border-radius: 0px;
   border-bottom-right-radius: 10px;
-  padding: 0 1rem 1rem 0;
+  padding: 0 1rem 1rem 2px;
   margin-bottom: 1rem;
 }
 
@@ -183,6 +184,11 @@
 .approve-btn {
   background-color: #2e8513;
   --bs-btn-hover-bg: #1e5f0a;
+}
+
+.close-edit-btn {
+  background-color: #353535;
+  --bs-btn-hover-bg: #292929;
 }
 
 /* Container layout */

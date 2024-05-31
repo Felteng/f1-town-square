@@ -71,7 +71,7 @@
         <div class="comment">
           <h6 class="opacity-50">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
-          <p class="opacity-50">{{ comment }} </p>
+          <div id="comment{{ comment.id }}" class="opacity-50">{{ comment | linebreaks }} </div>
           <p class="text-danger">This comment has not been approved</p>
           <!-- CRUD buttons unapproved comment -->
           {% if user.is_authenticated and comment.author == user %}
@@ -86,7 +86,7 @@
         <div class="comment">
           <h6>{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
-          <p>{{ comment }} </p>
+          <div id="comment{{ comment.id }}">{{ comment | linebreaks }} </div>
           <!-- CRUD buttons approved comment -->
           {% if user.is_authenticated and comment.author == user %}
           <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
@@ -103,7 +103,7 @@
       <div class="form-div">
         <h2>Share you thoughts!</h2>
         {% if user.is_authenticated %}
-        <form method="post" style="margin-top: 1rem;">
+        <form id="commentForm" method="post" style="margin-top: 1rem;">
           {% csrf_token %}
           <label for="id_comment">Write a comment:</label>
           {{ comment_form.comment }}
@@ -132,7 +132,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+        <button type="button" class="btn delete-btn" id="confirmDelete">Delete</button>
       </div>
     </div>
   </div>
