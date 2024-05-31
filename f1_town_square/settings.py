@@ -67,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    # Other middleware classes
+    'f1_town_square.middleware.StorePreviousURLMiddleware',
 ]
 
 ROOT_URLCONF = 'f1_town_square.urls'
@@ -87,8 +89,10 @@ TEMPLATES = [
     },
 ]
 
+ACCOUNT_ADAPTER = 'f1_town_square.users.adapter.MyAccountAdapter'
 
-LOGIN_REDIRECT_URL = "/"
+# LOGIN_REDIRECT_URL = ""
+# LOGOUT_REDIRECT_URL = ""
 
 
 AUTHENTICATION_BACKENDS = [
