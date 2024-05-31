@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Store current scroll position
         localStorage.setItem('scrollPosition', window.scrollY);
         $("#confirmDelete").click(() => {
-          window.location.href = `delete_comment/${commentId}`
+          $("#confirmDelete").addClass("disabled");
+          window.location.href = `delete_comment/${commentId}`;
         });
       } else {
         console.error('Comment ID not found.');
