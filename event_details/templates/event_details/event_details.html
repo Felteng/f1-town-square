@@ -75,11 +75,11 @@
           <p class="text-danger">This comment has not been approved</p>
           <!-- CRUD buttons unapproved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
-          <button type="button" class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
+          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
           {% if user.is_superuser %}
-          <button type="button" class="btn btn-success approve-btn" data-target_comment="{{ comment.id }}">Approve</button>
+          <button type="button" class="btn approve-btn" data-target_comment="{{ comment.id }}">Approve</button>
           {% endif %}
         </div>
         {% elif comment.approved == True %}
@@ -89,8 +89,8 @@
           <p>{{ comment }} </p>
           <!-- CRUD buttons approved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
-          <button type="button" class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
+          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
         {% endif %}
