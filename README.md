@@ -203,6 +203,24 @@ An authenticated user can delete any of their contributions made to the site.
 
 
 ### Addressed Bugs
+- Clicking twice in quick succession when confirming the deletion of a comment leads to a 404 error.
+![Delete confirmation](readme-assets/double-click-delete.png)
+![Delete confirmation 404 bug](readme-assets/double-delete-404.png)
+
+    - The reason for this is the fact that after the first time the url was called the comment was deleted and the comment with id 41 in the above example no longer exists, so the url cannot be properly built.
+
+        - The solution to the problem was to disable the button from being clicked after the first click with the following line: 
+            ```javascript
+            $("#confirmDelete").addClass("disabled");
+            ``` 
+            to this code block:
+            ```javascript
+            $("#confirmDelete").click(() => {
+                $("#confirmDelete").addClass("disabled");
+                window.location.href = `delete_comment/${commentId}`;
+            });
+            ```
+
 
 
 ### Unaddressed Bugs
@@ -223,7 +241,7 @@ An authenticated user can delete any of their contributions made to the site.
 
 ### Media
 #### Circuit SVGs
-- By ごひょううべこ (talk) 05:56, 16 March 2022 (UTC) - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=116112303
+- By ごひょううべこ - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=116112303
 - By ごひょううべこ - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=131259613
 - By ごひょううべこ - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=130609950
 - By ごひょううべこ - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=123016102
@@ -251,7 +269,11 @@ An authenticated user can delete any of their contributions made to the site.
 
 
 
+#### Hero images
+- CaterhamF1, https://www.flickr.com/photos/caterhamf1/13678967474
+- Automotive Rhythms, https://www.flickr.com/photos/artvlive/51696022965
 
+By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
 
 - By chensiyuan - chensiyuan, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=21856333
 
