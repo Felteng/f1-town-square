@@ -65,6 +65,7 @@
         {% else %}
         <h2 class="comments-heading">What other people think</h2>
         {% endif %}
+        <!-- For loop to loop through every comment on the event -->
         {% for comment in comments %}
         {% if comment.author == user and comment.approved == False or user.is_superuser and comment.approved == False %}
         <div class="comment">
@@ -72,13 +73,13 @@
           <hr class="comment-break">
           <p class="opacity-50">{{ comment }} </p>
           <p class="text-danger">This comment has not been approved</p>
-          <!-- CRUD buttons -->
+          <!-- CRUD buttons unapproved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button class="btn btn-danger delete-btn" data-target_comment="{{ comment.id }}">Delete</button>
-          <button class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
+          <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
           {% if user.is_superuser %}
-          <button class="btn btn-success approve-btn" data-target_comment="{{ comment.id }}">Approve</button>
+          <button type="button" class="btn btn-success approve-btn" data-target_comment="{{ comment.id }}">Approve</button>
           {% endif %}
         </div>
         {% elif comment.approved == True %}
@@ -86,13 +87,14 @@
           <h6>{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
           <hr class="comment-break">
           <p>{{ comment }} </p>
-          <!-- CRUD buttons -->
+          <!-- CRUD buttons approved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button class="btn btn-danger delete-btn" data-target_comment="{{ comment.id }}">Delete</button>
-          <button class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
+          <button type="button" class="btn btn-danger delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn btn-warning edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
         {% endif %}
+        <!-- Comment iteration loop ends here -->
         {% endfor %}
       </div>
     </div>
@@ -113,6 +115,24 @@
           if you would like to share your thougts!
         </p>
         {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for confirmation when attempting to delete a comment -->
+<div class="modal" tabindex="-1" id="confirmModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Comment</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete your comment? This cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
       </div>
     </div>
   </div>

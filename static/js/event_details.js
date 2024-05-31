@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     $(button).click((e) => {
       const commentId = e.target.dataset.target_comment;
-      console.log(commentId)
 
       if (commentId) {
         // Store current scroll position
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Delete button functionality
   deleteButtons.forEach(button => {
-      /**
+    /**
      * Given the button clicked is linked to a valid comment id
      * store the current scroll position so that it can be
      * restored when the user is returned to the event page.
@@ -58,12 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     $(button).click((e) => {
       const commentId = e.target.dataset.target_comment;
-      console.log(commentId)
 
       if (commentId) {
         // Store current scroll position
         localStorage.setItem('scrollPosition', window.scrollY);
-        window.location.href = `delete_comment/${commentId}`;
+        $("#confirmDelete").click(() => {
+          window.location.href = `delete_comment/${commentId}`
+        });
       } else {
         console.error('Comment ID not found.');
       }
