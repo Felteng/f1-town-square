@@ -1,0 +1,69 @@
+/* Bootstrap overriding */
+.card {
+  border-left: none;
+  border-top: none;
+  background-color: inherit;
+  color: inherit;
+  border-color: #8d856d;
+  border-radius: 0px;
+  border-width: 2px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Event cards styling */
+.country-flag {
+  max-height: 4rem;
+  max-width: 100%;
+}
+
+.flag-container {
+  display: flex;
+}
+
+.event-card-header, .event-card-body {
+  padding: 8px;
+  border: none;
+}
+
+.card-line {
+  width: 90%;
+  margin: 0;
+}
+
+.date-container {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.calendar-card-heading {
+  line-height: 20px;
+}
+
+.event-location {
+  font-size: 115%;
+}
+
+.event-image {
+  width: 100%;
+  height: 10vh;
+}
+
+.event-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.upcoming:hover {
+  border-color: red;
+  transition-duration: 0.3s;
+}
+
+.card.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.02);
+}
+
+.hvr-grow {
+  display: block;
+}
