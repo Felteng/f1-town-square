@@ -1,6 +1,95 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
 
 {% block content %}
-<h1>Hello</h1>
-<p>World</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7 col-lg-5">
+      <h4 class="text-center mt-1">Upcoming, and recent races</h4>
+      <div class="row row-cols-2 g-4">
+        <!-- Closest upcoming event card -->
+        <div class="col">
+          <a class="event-link" href="{% url 'event_details' upcoming_event.id %}">
+            <div class="card upcoming hvr-grow">
+              <div class="event-card-header d-flex">
+                <div class="date-container col-8">
+                  <h2 class="calendar-card-heading">
+                    {{ upcoming_event.start_date | date:"d" }}-{{ upcoming_event.end_date | date:"d"}}</h2>
+                  <h2 class="calendar-card-heading">
+                    <!-- Check if the dates of the event share the same month to avoid repeating the month -->
+                    {% if upcoming_event.start_date|date:"M" == upcoming_event.end_date|date:"M" %}
+                    {{ upcoming_event.start_date | date:"M" }}
+                    {% else %}
+                    {{ upcoming_event.start_date | date:"M" }}-{{ upcoming_event.end_date | date:"M" }}
+                    {% endif %}
+                  </h2>
+                </div>
+                <div class="col-4 flag-container">
+                  <img class="m-auto country-flag"
+                    src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ upcoming_event.location|slugify }}.svg"
+                    alt="{{ upcoming_event.location }} flag">
+                </div>
+              </div>
+              <hr class="card-line">
+              <div class="event-card-body">
+                <h5 class="fw-bold">{{ upcoming_event.location }}</h5>
+                <div>
+                  <img class="event-image" src="{% if 'placeholder' in upcoming_event.event_circuit.url %}
+              https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
+              {% else %}
+              {{ upcoming_event.event_circuit.url }}{% endif %}" alt="Event image">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Previous 3 events cards -->
+        {% for event in previous_events %}
+        <div class="col opacity-50">
+          <a class="event-link" href="{% url 'event_details' event.id %}">
+            <div class="card hvr-grow">
+              <div class="event-card-header d-flex">
+                <div class="date-container col-8">
+                  <h2 class="calendar-card-heading">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}
+                  </h2>
+                  <h2 class="calendar-card-heading">
+                    <!-- Check if the dates of the event share the same month to avoid repeating the month -->
+                    {% if event.start_date|date:"M" == event.end_date|date:"M" %}
+                    {{ event.start_date | date:"M" }}
+                    {% else %}
+                    {{ event.start_date | date:"M" }}-{{ event.end_date | date:"M" }}
+                    {% endif %}
+                  </h2>
+                </div>
+                <div class="col-4 flag-container">
+                  <img class="m-auto country-flag"
+                    src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ event.location|slugify }}.svg"
+                    alt="{{ event.location }} flag">
+                </div>
+              </div>
+              <hr class="card-line">
+              <div class="event-card-body">
+                <h5 class="fw-bold event-location">{{ event.location }}</h5>
+                <div>
+                  <img class="event-image"
+                    src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
+                    alt="Checkered flags">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 {% endblock content %}

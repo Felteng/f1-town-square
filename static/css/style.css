@@ -66,6 +66,7 @@ body {
   padding-right: 9px;
   padding-bottom: 9px;
   padding-left: 9px;
+  transition-duration: 0.3s;
 }
 
 .nav-color {
