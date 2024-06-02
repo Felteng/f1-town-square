@@ -1,50 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Calendar{% endblock title %}
+
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/calendar.css' %}">{% endblock css %}
+<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+{% endblock css %}
 
 {% block content %}
 <h1 class="text-center">F1 2024 Season Calendar</h1>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 m-0 mx-md-4">
-  {% for event in events %}
-
-  <div class="col">
-    <a class="event-link" href="{% url 'event_details' event.id %}">
-      <div class="card hvr-grow">
-        <div class="event-card-header d-flex">
-          <div class="date-container col-8">
-            <h2 class="calendar-card-heading">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}</h2>
-            <h2 class="calendar-card-heading">
-              <!-- Check if the dates of the event share the same month to avoid repeating the month -->
-              {% if event.start_date|date:"M" == event.end_date|date:"M" %}
-              {{ event.start_date | date:"M" }}
-              {% else %}
-              {{ event.start_date | date:"M" }}-{{ event.end_date | date:"M" }}
-              {% endif %}
-            </h2>
+<div class="container-fluid">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mt-1">
+    {% for event in events %}
+    <div class="col">
+      <a class="event-link" href="{% url 'event_details' event.id %}">
+        <div class="card hvr-grow">
+          <div class="event-card-header d-flex">
+            <div class="date-container col-8">
+              <h2 class="calendar-card-heading">{{ event.start_date | date:"d" }}-{{ event.end_date | date:"d"}}</h2>
+              <h2 class="calendar-card-heading">
+                <!-- Check if the dates of the event share the same month to avoid repeating the month -->
+                {% if event.start_date|date:"M" == event.end_date|date:"M" %}
+                {{ event.start_date | date:"M" }}
+                {% else %}
+                {{ event.start_date | date:"M" }}-{{ event.end_date | date:"M" }}
+                {% endif %}
+              </h2>
+            </div>
+            <div class="col-4 flag-container">
+              <img class="m-auto country-flag"
+                src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ event.location|slugify }}.svg"
+                alt="{{ event.location }} flag">
+            </div>
           </div>
-          <div class="col-4 flag-container">
-            <img class="m-auto country-flag"
-              src="https://res.cloudinary.com/djmipr2p0/image/upload/{{ event.location|slugify }}.svg"
-              alt="{{ event.location }} flag">
-          </div>
-        </div>
-        <hr class="card-line">
-        <div class="event-card-body">
-          <h5 class="fw-bold">{{ event.location }}</h5>
-          <h6 class="event-name">{{ event.event_name }}</h6>
-          <div class="col-12">
-            <img class="event-image" src="{% if 'placeholder' in event.event_circuit.url %}
+          <hr class="card-line">
+          <div class="event-card-body">
+            <h5 class="fw-bold">{{ event.location }}</h5>
+            <h6 class="event-name">{{ event.event_name }}</h6>
+            <div class="col-12">
+              <img class="event-image" src="{% if 'placeholder' in event.event_circuit.url %}
               https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
               {% else %}
               {{ event.event_circuit.url }}{% endif %}" alt="Event image">
+            </div>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
+    {% endfor %}
   </div>
-
-  {% endfor %}
 </div>
+
 {% endblock content %}
