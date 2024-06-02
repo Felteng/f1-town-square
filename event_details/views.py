@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
+
 
 # Create your views here.
 def event_details(request, event_id):
@@ -64,7 +65,7 @@ def delete_comment(request, event_id, target_comment):
 
     """
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
-    
+
     if request.user == comment.author:
         comment.delete()
 
@@ -83,7 +84,9 @@ def edit_comment(request, event_id, target_comment):
     """
     if request.method == "POST":
         comment = get_object_or_404(RaceEventComment, pk=target_comment)
-        race_comment_form = RaceCommentForm(data=request.POST, instance=comment)
+        race_comment_form = RaceCommentForm(
+            data=request.POST, instance=comment
+            )
         if request.user == comment.author and race_comment_form.is_valid():
             comment = race_comment_form.save(commit=False)
             comment.approved = False
