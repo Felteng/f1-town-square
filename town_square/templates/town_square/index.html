@@ -6,9 +6,10 @@
 {% endblock css %}
 
 {% block content %}
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-7 col-lg-5">
+    <div class="col-md-7 col-lg-5 events-container">
       <h4 class="text-center mt-1">Upcoming, and recent races</h4>
       <div class="row row-cols-2 g-4">
         <!-- Closest upcoming event card -->
@@ -37,17 +38,13 @@
               <hr class="card-line">
               <div class="event-card-body">
                 <h5 class="fw-bold">{{ upcoming_event.location }}</h5>
-                <div>
-                  <img class="event-image" src="{% if 'placeholder' in upcoming_event.event_circuit.url %}
-              https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
-              {% else %}
-              {{ upcoming_event.event_circuit.url }}{% endif %}" alt="Event image">
-                </div>
+                <img class="event-image" src="{% if 'placeholder' in upcoming_event.event_circuit.url %}
+                  https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
+                  {% else %}{{ upcoming_event.event_circuit.url }}{% endif %}" alt="Event image">
               </div>
             </div>
           </a>
         </div>
-
         <!-- Previous 3 events cards -->
         {% for event in previous_events %}
         <div class="col opacity-50">
@@ -75,21 +72,36 @@
               <hr class="card-line">
               <div class="event-card-body">
                 <h5 class="fw-bold event-location">{{ event.location }}</h5>
-                <div>
-                  <img class="event-image"
-                    src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
-                    alt="Checkered flags">
-                </div>
+                <img class="event-image"
+                  src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
+                  alt="Checkered flags">
               </div>
             </div>
           </a>
         </div>
         {% endfor %}
       </div>
+    </div>
 
+    <div class="col-md-5 col-lg-7">
+      <!-- Live chat -->
+      {% if request.user.is_authenticated  %}
+      <p class="text-center"> Logout the chat Page <a href="{% url 'account_logout' %}">Logout</a></p>
+      {% endif %}
+      <div class="chat_item_container text-center" id="id_chat_item_container">
+        <br />
+        <input type="text" id="id_message_send_input" />
+        <button type="submit" id="id_message_send_button">Send Message</button>
+        <br />
+        <br />
+      </div>
     </div>
   </div>
 </div>
 
+<script>
+  let username = "{{request.user.username}}"
+</script>
 
+<script src="{% static 'js/live_chat.js' %}"></script>
 {% endblock content %}

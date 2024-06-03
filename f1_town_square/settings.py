@@ -47,10 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'allauth',
     'allauth.account',
+    'channels',
     'django_summernote',
     'cloudinary',
     'event_details',
@@ -91,9 +93,6 @@ TEMPLATES = [
 
 ACCOUNT_ADAPTER = 'f1_town_square.users.adapter.MyAccountAdapter'
 
-# LOGIN_REDIRECT_URL = ""
-# LOGOUT_REDIRECT_URL = ""
-
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -104,6 +103,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = 'f1_town_square.wsgi.application'
+ASGI_APPLICATION = 'f1_town_square.asgi.application'
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
 
 
 # Database

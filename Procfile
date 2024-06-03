@@ -1,1 +1,2 @@
-web: gunicorn f1_town_square.wsgi
+web: daphne f1_town_square.asgi:application --port $PORT --bind 0.0.0.0 -v2
+
