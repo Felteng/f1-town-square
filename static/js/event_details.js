@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const deleteButtons = document.querySelectorAll(".delete-btn");
   const editButtons = document.querySelectorAll(".edit-btn");
   const formSubmitBtn = document.querySelector("#form-submit-btn");
-  const formCommentField = document.querySelector("#comment_id");
+  const formCommentField = document.querySelector("#id_comment");
 
 
   /**
@@ -85,8 +85,15 @@ document.addEventListener("DOMContentLoaded", function () {
     /**
      * Capture scroll position when form is submitted so
      * scroll level can be restored once comment is posted.
+     * 
+     * Disable the button if there's any content in the form
+     * to POST to stay consistent with the other button
+     * behaviors.
      */
     localStorage.setItem("scrollPosition", window.scrollY);
+    if (formCommentField.value !== "") {
+      $(formSubmitBtn).addClass("disabled");
+    }
   });
 
 
