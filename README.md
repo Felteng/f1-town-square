@@ -211,14 +211,41 @@ An authenticated user can delete any of their contributions made to the site.
 
         - The solution to the problem was to disable the button from being clicked after the first click with the following line: 
             ```javascript
-            $("#confirmDelete").addClass("disabled");
+            $("#confirm-delete").addClass("disabled");
             ``` 
             to this code block:
             ```javascript
-            $("#confirmDelete").click(() => {
-                $("#confirmDelete").addClass("disabled");
+            $("#confirm-delete").click(() => {
+                $("#confirm-delete").addClass("disabled");
                 window.location.href = `delete_comment/${commentId}`;
             });
+            ```
+
+- Getting alert of Comment ID not found when confirming deletion,
+![Comment ID not found](readme-assets/comment-id-not-found.png)
+    - This occurs because the class that is used to style all the delete buttons was also used on the confirmation button, which is also the class that javascript targets when applying event listeners to all delete buttons.
+
+        - The solution to the problem was to make a seperate class for the confirmation button to keep the same style but not interfere with the javascript.
+            ```html
+            <button type="button" class="btn delete-btn" id="confirm-delete">Delete</button>
+            ```
+            to:
+            ```html
+            <button type="button" class="btn confirm-delete-btn" id="confirm-delete">Delete</button>
+            ```
+            and in the css file:
+            ```css
+            .delete-btn {
+            background-color: #df2525;
+            --bs-btn-hover-bg: #8d1414;
+            }
+            ```
+            to:
+            ```css
+            .delete-btn, .confirm-delete-btn {
+            background-color: #df2525;
+            --bs-btn-hover-bg: #8d1414;
+            }
             ```
 
 
@@ -276,5 +303,8 @@ An authenticated user can delete any of their contributions made to the site.
 By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
 
 - By chensiyuan - chensiyuan, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=21856333
+
+#### Favicon
+- Site favicon from [Favicon.io](https://favicon.io)
 
 ### Honorable Mentions
