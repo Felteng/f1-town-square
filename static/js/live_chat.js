@@ -1,15 +1,18 @@
 // Source: https://www.geeksforgeeks.org/realtime-chat-app-using-django/
 const chatSocket = new WebSocket("wss://" + window.location.host + "/");
+const liveChatContainer = document.querySelector("#id-chat-item-container");
+const chatAnchor = document.querySelector("#chat-anchor");
+
 chatSocket.onopen = function () {
   let div = document.createElement("div");
   div.innerHTML = "Connected to chat!";
-  document.querySelector("#id_chat_item_container").appendChild(div);
+  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
 };
 chatSocket.onclose = function () {
   let div = document.createElement("div");
   div.innerHTML =("Connection to chat has closed due to inactivity!"
                 + "<br/>Refresh page to reconnect");
-  document.querySelector("#id_chat_item_container").appendChild(div);
+  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
 };
 document.querySelector("#id_message_send_input").focus();
 document.querySelector("#id_message_send_input").onkeyup = function (e) {
@@ -31,5 +34,5 @@ chatSocket.onmessage = function (e) {
   let div = document.createElement("div");
   div.innerHTML = data.username + " : " + data.message;
   document.querySelector("#id_message_send_input").value = "";
-  document.querySelector("#id_chat_item_container").appendChild(div);
+  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
 };

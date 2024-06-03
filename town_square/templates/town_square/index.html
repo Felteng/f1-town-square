@@ -85,22 +85,23 @@
 
     <div class="col-md-5 col-lg-7">
       <!-- Live chat -->
-      {% if request.user.is_authenticated  %}
-      <p class="text-center"> Logout the chat Page <a href="{% url 'account_logout' %}">Logout</a></p>
-      {% endif %}
-      <div class="chat_item_container text-center" id="id_chat_item_container">
-        <br />
-        <input type="text" id="id_message_send_input" />
-        <button type="submit" id="id_message_send_button">Send Message</button>
-        <br />
-        <br />
+      <div class="live-chat-container text-center mt-2">
+        <div class="live-messages-container" id="id-chat-item-container">
+          <div id="chat-anchor"></div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="chat-input">
+          <input type="text" id="id_message_send_input" />
+          <button type="submit" id="id_message_send_button">Send Message</button>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  let username = "{{request.user.username}}"
+  let username = "{{user.username}}"
 </script>
 
 <script src="{% static 'js/live_chat.js' %}"></script>
