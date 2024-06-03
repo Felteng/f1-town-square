@@ -7,8 +7,8 @@ chatSocket.onopen = function () {
 };
 chatSocket.onclose = function () {
   let div = document.createElement("div");
-  div.innerHTML = ```Connection to chat has closed to inactivity!
-  <br/>Refresh page to reconnect```;
+  div.innerHTML =("Connection to chat has closed due to inactivity!"
+                + "<br/>Refresh page to reconnect");
   document.querySelector("#id_chat_item_container").appendChild(div);
 };
 document.querySelector("#id_message_send_input").focus();
