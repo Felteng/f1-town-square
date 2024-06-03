@@ -148,10 +148,14 @@ document.addEventListener("DOMContentLoaded", function () {
    *
    * Replace the comment's HTML with an edit form to handle
    * the POST request, with the orignal comment text in the
-   * textarea for the user to edit from.
-   *
+   * textarea for the user to start editing from (csrftoken is
+   * defined in the template using DTL).
+   * 
+   * 
    * Disable the save button after it is clicked to prevent
    * multiple submission requests.
+   * 
+   * 
    *
    * @param button - The button that triggered the edit mode.
    * @param commentId - The ID of the comment to be edited.
