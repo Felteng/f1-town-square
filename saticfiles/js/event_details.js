@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (commentId) {
         localStorage.setItem("scrollPosition", window.scrollY);
-        $("#confirmDelete").click(() => {
-          $("#confirmDelete").addClass("disabled");
+        $("#confirm-delete").click(() => {
+          $("#confirm-delete").addClass("disabled");
           window.location.href = `delete_comment/${commentId}`;
         });
       } else {

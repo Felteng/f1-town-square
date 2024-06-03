@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const approveButtons = document.querySelectorAll(".approve-btn");
   const deleteButtons = document.querySelectorAll(".delete-btn");
   const editButtons = document.querySelectorAll(".edit-btn");
+  const formSubmitBtn = document.querySelector("#form-submit-btn");
+  const formCommentField = document.querySelector("#comment_id");
 
 
   /**
@@ -68,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (commentId) {
         localStorage.setItem("scrollPosition", window.scrollY);
-        $("#confirmDelete").click(() => {
-          $("#confirmDelete").addClass("disabled");
+        $("#confirm-delete").click(() => {
+          $("#confirm-delete").addClass("disabled");
           window.location.href = `delete_comment/${commentId}`;
         });
       } else {
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  $("#formSubmitBtn").click(() => {
+  $(formSubmitBtn).click(() => {
     /**
      * Capture scroll position when form is submitted so
      * scroll level can be restored once comment is posted.
