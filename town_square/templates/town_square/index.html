@@ -85,19 +85,21 @@
 
     <div class="col-md-5 col-lg-7">
       <!-- Live chat -->
-      <div class="live-chat-container text-center mt-2">
+
+      <fieldset class="live-chat-container mt-1">
+        <legend>Chat live with other users</legend>
         <div class="live-messages-container">
           <div class="messages" id="id-chat-item-container">
             <div id="chat-anchor"></div>
           </div>
         </div>
         {% if user.is_authenticated %}
-        <div class="chat-input">
-          <input type="text" id="id_message_send_input" />
-          <button type="submit" id="id_message_send_button">Send Message</button>
+        <div class="chat-input-container">
+          <input type="text" class="message-input" id="id_message_send_input" placeholder="Send a message"/>
+          <button type="submit" class="send-message" id="id_message_send_button" title="Send message"><i class="fa-regular fa-paper-plane"></i></i></button>
         </div>
         {% endif %}
-      </div>
+      </fieldset>
     </div>
   </div>
 </div>
