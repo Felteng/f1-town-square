@@ -86,8 +86,10 @@
     <div class="col-md-5 col-lg-7">
       <!-- Live chat -->
       <div class="live-chat-container text-center mt-2">
-        <div class="live-messages-container" id="id-chat-item-container">
-          <div id="chat-anchor"></div>
+        <div class="live-messages-container">
+          <div class="messages" id="id-chat-item-container">
+            <div id="chat-anchor"></div>
+          </div>
         </div>
         {% if user.is_authenticated %}
         <div class="chat-input">

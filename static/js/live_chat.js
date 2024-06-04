@@ -7,7 +7,8 @@ const chatAnchor = document.querySelector("#chat-anchor");
 chatSocket.onopen = function () {
   let div = document.createElement("div");
   div.innerHTML = "Connected to chat!";
-  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
+  $(div).addClass("text-start")
+  liveChatContainer.insertBefore(div, chatAnchor);
 };
 
 
@@ -16,8 +17,8 @@ chatSocket.onclose = function () {
   div.innerHTML =(`Connection to chat has closed due to inactivity!
     <br/>Refresh page to reconnect`
   );
-
-  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
+  $(div).addClass("text-start")
+  liveChatContainer.insertBefore(div, chatAnchor);
 };
 
 
@@ -54,6 +55,7 @@ chatSocket.onmessage = function (e) {
   const data = JSON.parse(e.data);
   let div = document.createElement("div");
   div.innerHTML = data.username + " : " + data.message;
+  $(div).addClass("text-start")
   document.querySelector("#id_message_send_input").value = "";
-  liveChatContainer.insertBefore(div, chatAnchor.nextSibling);
+  liveChatContainer.insertBefore(div, chatAnchor);
 };
