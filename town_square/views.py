@@ -18,6 +18,9 @@ def home_page(request):
     previous = []
 
     for event in events:
+        # https://stackoverflow.com/a/57682143: forcing https for image.
+        event.event_circuit.url_options.update({'secure':True})
+
         event.end_date = event.start_date + timedelta(days=2)
         if event.start_date + timedelta(days=3) >= datetime.date(datetime.now()):
             upcoming_event = event
@@ -41,6 +44,7 @@ def calendar(request):
     events = RaceEvent.objects.all()
 
     for event in events:
+        event.event_circuit.url_options.update({'secure':True})
         event.end_date = event.start_date + timedelta(days=2)
 
     return render(

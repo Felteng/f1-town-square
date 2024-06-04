@@ -12,6 +12,10 @@ def event_details(request, event_id):
     comments = event.comments.all()
     comment_count = comments.filter(approved=True).count()
 
+    # https://stackoverflow.com/a/57682143: forcing https for images.
+    event.event_hero_image.url_options.update({'secure':True})
+    event.race.event_circuit.url_options.update({'secure':True})
+
     if request.method == "POST":
         race_comment_form = RaceCommentForm(data=request.POST)
         if race_comment_form.is_valid():

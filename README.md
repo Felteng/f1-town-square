@@ -276,10 +276,10 @@ An authenticated user can delete any of their contributions made to the site.
 ### Live Deployment
 
 
-## Source Credits
+## Credits
 
 ### Technical
-
+- [caffsushi](https://stackoverflow.com/a/57682143) - For forcing https protocol over http when loading images from cloudinary by accessing an objects .url tag.
 
 ### Media
 #### Circuit SVGs
