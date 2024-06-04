@@ -34,8 +34,8 @@
           </div>
           <hr class="card-line">
           <div class="event-card-body">
-            <h5 class="fw-bold">{{ event.location }}</h5>
-            <h6 class="event-name">{{ event.event_name }}</h6>
+            <h3 class="fw-bold event-location">{{ event.location }}</h3>
+            <p class="event-name">{{ event.event_name }}</p>
             <img class="event-image" src="{% if 'placeholder' in event.event_circuit.url %}
               https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
               {% else %}
