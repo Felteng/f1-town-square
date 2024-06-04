@@ -29,25 +29,25 @@
         <div class="row">
           <div class="col-md-6">
             <div class="stat-container">
-              <h6 class="stat-heading">Circuit Length</h6>
+              <p class="stat-heading">Circuit Length</p>
               <p class="stat">{{ event.circuit_length }}<span class="small">km</span></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <h6 class="stat-heading">Grand Prix Laps</h6>
+              <p class="stat-heading">Grand Prix Laps</p>
               <p class="stat">{{ event.number_of_laps }}</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <h6 class="stat-heading">Grand Prix Distance</h6>
+              <p class="stat-heading">Grand Prix Distance</p>
               <p class="stat">{{ race_distance }}<span class="small">km</span></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <h6 class="stat-heading">Lap Record</h6>
+              <p class="stat-heading">Lap Record</p>
               <p class="stat">{{ event.lap_record }}</p>
             </div>
           </div>
@@ -76,7 +76,8 @@
           <p class="text-danger">This comment has not been approved</p>
           <!-- CRUD buttons unapproved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal"
+            data-target_comment="{{ comment.id }}">Delete</button>
           <button type="button" class="btn edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
           {% if user.is_superuser %}
@@ -86,12 +87,13 @@
         <!-- Approved comments -->
         {% elif comment.approved == True %}
         <div class="comment">
-          <h6>{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></h6>
+          <p class="fw-semibold">{{ comment.author }} <span class="comment-date">{{ comment.created_on }}</span></p>
           <hr class="comment-break">
           <div id="comment{{ comment.id }}">{{ comment | linebreaks }} </div>
           <!-- CRUD buttons approved comment -->
           {% if user.is_authenticated and comment.author == user %}
-          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" data-target_comment="{{ comment.id }}">Delete</button>
+          <button type="button" class="btn delete-btn" data-bs-toggle="modal" data-bs-target="#confirmModal"
+            data-target_comment="{{ comment.id }}">Delete</button>
           <button type="button" class="btn edit-btn" data-target_comment="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
@@ -126,7 +128,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Comment</h5>
+        <h3 class="modal-title fs-5">Delete Comment</h3>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
