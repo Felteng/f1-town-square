@@ -38,9 +38,14 @@
   line-height: 20px;
 }
 
+.event-location {
+  font-size: 1.25rem;
+}
+
 .event-name {
   font-size: 0.8rem;
   min-height: 45px;
+  line-height: 1.2;
 }
 
 .event-image {
