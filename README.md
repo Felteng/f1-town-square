@@ -225,7 +225,7 @@ An authenticated user can delete any of their contributions made to the site.
 ![Comment ID not found](readme-assets/comment-id-not-found.png)
     - This occurs because the class that is used to style all the delete buttons was also used on the confirmation button, which is also the class that javascript targets when applying event listeners to all delete buttons.
 
-        - The solution to the problem was to make a seperate class for the confirmation button to keep the same style but not interfere with the javascript.
+        - The solution to the problem was to make a seperate class for the confirmation button to keep the same style but not interfere with the javascript:
             ```html
             <button type="button" class="btn delete-btn" id="confirm-delete">Delete</button>
             ```
@@ -247,6 +247,21 @@ An authenticated user can delete any of their contributions made to the site.
             --bs-btn-hover-bg: #8d1414;
             }
             ```
+
+- Cannot read properties of null live chat input.
+![Console error](readme-assets/cannot-read-prop.png)
+    - This console error is logged whenever an unauthenticated user visits the homepage, when the live chat message input is attempted to be put into focus.
+
+        - The solution to this issue was to check whether or not the input field is visible (Which it only is to a logged in user) and then add the call focus():
+        ```javascript
+        document.querySelector("#id_message_send_input").focus();
+        ```
+        to:
+        ```javascript
+        if (document.querySelector("#id_message_send_input")) {
+        document.querySelector("#id_message_send_input").focus();
+        }
+        ```
 
 
 
