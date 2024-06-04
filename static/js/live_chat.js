@@ -22,7 +22,11 @@ chatSocket.onclose = function () {
 };
 
 
-document.querySelector("#id_message_send_input").focus();
+if (document.querySelector("#id_message_send_input")) {
+  document.querySelector("#id_message_send_input").focus();
+}
+
+
 document.querySelector("#id_message_send_input").onkeyup = function (e) {
   if (e.keyCode === 13) {
     document.querySelector("#id_message_send_button").click();
