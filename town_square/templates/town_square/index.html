@@ -10,7 +10,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-7 col-lg-5 events-container">
-      <h4 class="text-center mt-1">Upcoming, and recent races</h4>
+      <h1 class="text-center mt-1 fs-3">Upcoming, and recent races</h1>
       <div class="row row-cols-2 g-4">
         <!-- Closest upcoming event card -->
         <div class="col">
@@ -37,7 +37,7 @@
               </div>
               <hr class="card-line">
               <div class="event-card-body">
-                <h5 class="fw-bold">{{ upcoming_event.location }}</h5>
+                <h3 class="fw-bold event-location">{{ upcoming_event.location }}</h3>
                 <img class="event-image" src="{% if 'placeholder' in upcoming_event.event_circuit.url %}
                   https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
                   {% else %}{{ upcoming_event.event_circuit.url }}{% endif %}" alt="Event image">
@@ -71,7 +71,7 @@
               </div>
               <hr class="card-line">
               <div class="event-card-body">
-                <h5 class="fw-bold event-location">{{ event.location }}</h5>
+                <h3 class="fw-bold event-location">{{ event.location }}</h3>
                 <img class="event-image"
                   src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
                   alt="Checkered flags">
@@ -85,20 +85,24 @@
 
     <div class="col-md-5 col-lg-7">
       <!-- Live chat -->
-
-      <fieldset class="live-chat-container mt-1">
-        <legend>Chat live with other users</legend>
+      <fieldset class="live-chat-container mt-4 mt-md-1">
+        <legend><h2 class="chat-heading">Chat live with other users</h2></legend>
         <div class="live-messages-container">
           <div class="messages" id="id-chat-item-container">
             <div id="chat-anchor"></div>
           </div>
         </div>
-        {% if user.is_authenticated %}
         <div class="chat-input-container">
-          <input type="text" class="message-input" id="id_message_send_input" placeholder="Send a message"/>
-          <button type="submit" class="send-message" id="id_message_send_button" title="Send message"><i class="fa-regular fa-paper-plane"></i></i></button>
+          {% if user.is_authenticated %}
+          <input type="text" class="message-input" id="id_message_send_input" placeholder="Send a message">
+          <button type="submit" class="send-message" id="id_message_send_button" title="Send message"><i
+              class="fa-regular fa-paper-plane"></i></button>
+          {% else %}
+          <p>Please <a class="text-decoration-none" href="{% url 'account_login' %}">log in</a>
+            if you would like send a message!
+          </p>
+          {% endif %}
         </div>
-        {% endif %}
       </fieldset>
     </div>
   </div>
