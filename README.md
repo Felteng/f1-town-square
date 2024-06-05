@@ -236,15 +236,15 @@ An authenticated user can delete any of their contributions made to the site.
             and in the css file:
             ```css
             .delete-btn {
-            background-color: #df2525;
-            --bs-btn-hover-bg: #8d1414;
+                background-color: #df2525;
+                --bs-btn-hover-bg: #8d1414;
             }
             ```
             to:
             ```css
             .delete-btn, .confirm-delete-btn {
-            background-color: #df2525;
-            --bs-btn-hover-bg: #8d1414;
+                background-color: #df2525;
+                --bs-btn-hover-bg: #8d1414;
             }
             ```
 
@@ -259,10 +259,28 @@ An authenticated user can delete any of their contributions made to the site.
         to:
         ```javascript
         if (document.querySelector("#id_message_send_input")) {
-        document.querySelector("#id_message_send_input").focus();
+            document.querySelector("#id_message_send_input").focus();
         }
         ```
 
+- Mobile user gets scrolled to the bottom of the homepage when visiting.
+
+    - Whenever a logged in user visits from a device with a width smaller than 768px, essentially using the 1 column layout, they are scrolled down to the bottom of the page where the live chat input field is located. The reason this occurs is because the input field is put into focus when loaded.
+
+        - To solve this this code was modified:
+        ```javascript
+        if (document.querySelector("#id_message_send_input")) {
+            document.querySelector("#id_message_send_input").focus();
+        }
+        ```
+        to:
+        ```javascript
+        if (document.querySelector("#id_message_send_input")) {
+            if (window.matchMedia("(min-width: 768px)").matches) {
+                document.querySelector("#id_message_send_input").focus();
+            }
+        }
+        ```
 
 
 ### Unaddressed Bugs
