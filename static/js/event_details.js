@@ -107,10 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
      * Call $(button).off(); after the initial click event to
      * avoid duplicate execution on the same comment.
      *
-     * Call editComment to start the editing and then add a new
-     * click event listener to initiate toggling between editing,
-     * and the original comment if the user chooses to abandon
-     * editing the comment.
+     * Call editComment to start the editing and change the button
+     * edit button content, then add a new click event listener to
+     * initiate toggling between editing, and the original comment
+     * if the user chooses to abandon editing the comment.
+     *
+     * Every time the toggler is clicked the button's content
+     * and class is updated to update the togglers state and
+     * to inform the user of the state.
      */
     $(button).click((e) => {
       const commentId = e.target.dataset.target_comment;
@@ -119,13 +123,19 @@ document.addEventListener("DOMContentLoaded", function () {
       $(button).off();
 
       if (commentId) {
-        editComment(button, commentId, commentText);
+        button.innerHTML = "Cancel";
+        button.classList.replace("edit-btn", "close-edit-btn");
+        editComment(commentId, commentText);
 
         $(button).click(() => {
           if (button.innerHTML == "Edit") {
-            editComment(button, commentId, commentText);
+            button.innerHTML = "Cancel";
+            button.classList.replace("edit-btn", "close-edit-btn");
+            editComment(commentId, commentText);
           } else if (button.innerHTML == "Cancel") {
-            restoreComment(button, commentId, commentHtml);
+            button.innerHTML = "Edit";
+            button.classList.replace("close-edit-btn", "edit-btn");
+            restoreComment(commentId, commentHtml);
           }
         });
       } else {
@@ -142,29 +152,19 @@ document.addEventListener("DOMContentLoaded", function () {
    * to restore the user back to same position after
    * submission.
    *
-   * Change the content and class of the edit button
-   * to indicate its new purpose and to change the state
-   * of the edit toggler in the click event listener above.
-   *
    * Replace the comment's HTML with an edit form to handle
    * the POST request, with the orignal comment text in the
    * textarea for the user to start editing from (csrftoken is
    * defined in the template using DTL).
-   * 
-   * 
+   *
    * Disable the save button after it is clicked to prevent
    * multiple submission requests.
-   * 
-   * 
    *
-   * @param button - The button that triggered the edit mode.
    * @param commentId - The ID of the comment to be edited.
    * @param commentText - The original text content of the comment.
    */
-  function editComment(button, commentId, commentText) {
+  function editComment(commentId, commentText) {
     localStorage.setItem("scrollPosition", window.scrollY);
-    button.innerHTML = "Cancel";
-    button.classList.replace("edit-btn", "close-edit-btn");
 
     $(`#comment${commentId}`).html(`
     <form method="post" action="edit_comment/${commentId}">
@@ -194,22 +194,15 @@ document.addEventListener("DOMContentLoaded", function () {
    * Remove the stored scroll position as it will not be needed
    * if the user canceled editing since no redirection will take place.
    *
-   * Change the button's content and class back to edit to update
-   * the state of the click event toggler and to signify the changed
-   * purpose to the user.
-   *
    * Restore the comment back to it's saved original state.
    *
    * If the comment is unapproved restore the opacity too.
    *
-   * @param button - The button that triggered the restore.
    * @param commentId - The ID of the comment to be restored.
    * @param commentHtml - The original HTML content of the comment.
    */
-  function restoreComment(button, commentId, commentHtml) {
+  function restoreComment(commentId, commentHtml) {
     localStorage.removeItem("scrollPosition");
-    button.innerHTML = "Edit";
-    button.classList.replace("close-edit-btn", "edit-btn");
 
     $(`#comment${commentId}`).html(commentHtml);
 
