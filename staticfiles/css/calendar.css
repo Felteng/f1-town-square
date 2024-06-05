@@ -1,5 +1,5 @@
 /* Bootstrap overriding */
-.calendar-container, .card {
+.card {
   border-left: none;
   border-top: none;
   background-color: inherit;
@@ -34,13 +34,18 @@
   padding-bottom: 20px;
 }
 
-.date-container h2 {
+.calendar-card-heading {
   line-height: 20px;
+}
+
+.event-location {
+  font-size: 1.25rem;
 }
 
 .event-name {
   font-size: 0.8rem;
   min-height: 45px;
+  line-height: 1.2;
 }
 
 .event-image {
@@ -53,13 +58,17 @@
   color: inherit;
 }
 
-.calendar-container, .card:hover {
+.card:hover {
   border-color: red;
   transition-duration: 0.3s;
 }
 
-.event-link.hvr-grow:hover,
+.card.hvr-grow:hover,
 .hvr-grow:focus,
 .hvr-grow:active {
   transform: scale(1.02);
+}
+
+.hvr-grow {
+  display: block;
 }
