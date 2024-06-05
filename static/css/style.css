@@ -39,6 +39,27 @@ body {
   border-bottom-right-radius: 10px;
 }
 
+.alert {
+  padding: 1rem;
+  font-size: 110%;
+  position: fixed;
+  z-index: 10;
+  width: 90vw;
+  margin-left: 5vw;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-dismissible .btn-close {
+  position: relative;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0 0 0 1rem;
+}
+
 /* hover.css */
 .hvr-grow {
   display: inline-block;
@@ -88,9 +109,27 @@ body {
   color: #fff;
 }
 
+/* CRUD message response */
+.success-alert {
+  background-color: #001c00;
+  border-color: #9ecd9e1c;
+  color: #cdffcd;
+}
+
+.error-alert {
+  background-color: #1c0000;
+  border-color: #cd9e9e1c;
+  color: #ffcdcd;
+}
+
 @media (min-width: 768px) {
 
   .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
     border-width: 1px;
+  }
+
+  .alert {
+    width: 60vw;
+    margin-left: 20vw;
   }
 }

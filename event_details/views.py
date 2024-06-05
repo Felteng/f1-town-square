@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
 
@@ -23,6 +24,9 @@ def event_details(request, event_id):
             comment.author = request.user
             comment.event = event
             comment.save()
+            messages.add_message(request, messages.SUCCESS, "Your comment has been added.")
+        else:
+            messages.add_message(request, messages.ERROR, "Something went wrong, your comment could not be added.")
 
     race_comment_form = RaceCommentForm()
 
@@ -54,7 +58,10 @@ def approve_comment(request, event_id, target_comment):
     if request.user.is_superuser:
         comment.approved = True
         comment.save()
-
+        messages.add_message(request, messages.SUCCESS, "Comment approved successfully.")
+    else:
+        messages.add_message(request, messages.ERROR, "Comment could not be approved, are you a site admin?")
+    
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
 
 
@@ -72,6 +79,9 @@ def delete_comment(request, event_id, target_comment):
 
     if request.user == comment.author:
         comment.delete()
+        messages.add_message(request, messages.SUCCESS, "Comment deleted successfully.")
+    else:
+        messages.add_message(request, messages.ERROR, "Comment could not be deleted, are you the author?")
 
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
 
@@ -95,5 +105,8 @@ def edit_comment(request, event_id, target_comment):
             comment = race_comment_form.save(commit=False)
             comment.approved = False
             comment.save()
+            messages.add_message(request, messages.SUCCESS, "Comment edited successfully.")
+        else:
+            messages.add_message(request, messages.ERROR, "Comment could not be edited, are you the author?")
 
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
