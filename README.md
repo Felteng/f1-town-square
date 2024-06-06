@@ -134,7 +134,7 @@ The principles of CRUD are at the essence of this project's features and any fut
 An authenticated user can create comments and send messages in the live chat.
 
 **Read:**
-A user can browse and read articles posted by the site admin, as well as the conversation in the live chat.
+A user can browse and read about the current season's race events and any comments made under them, as well as the conversation in the live chat.
 
 **Update:**
 An authenticated user can edit and update their individual contributions to the site.
@@ -147,7 +147,7 @@ An authenticated user can delete any of their contributions made to the site.
 ### Environments
 
 - [Balsamiq](https://www.balsamiq.com/) (Wireframes)
-- [Lucid](https://lucid.app/) (ERD diagrams)
+- [Cacoo](https://cacoo.com/) (ERD diagrams)
 - [GitHub](https://github.com/) (Version control)
 - [GitPod](https://gitpod.io/) (IDE)
 - [Heroku](https://heroku.com/) (Site hosting)
