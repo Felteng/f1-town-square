@@ -14,16 +14,27 @@ chatSocket.onopen = function () {
 
 chatSocket.onclose = function () {
   let div = document.createElement("div");
-  div.innerHTML =(`Connection to chat has closed!
-    <br/>Refresh page to try to reconnect`
-  );
+  div.innerHTML = (`Connection to chat has closed!
+    <br/>Refresh page to try to reconnect`);
   $(div).addClass("text-start text-danger");
   liveChatContainer.insertBefore(div, chatAnchor);
 };
 
 
+/**
+ * Checks if the input element (#id_message_send_input) exists,
+ * which it only will if the user is logged in.
+ * 
+ * Then check if the layout matches that of 768px screen width
+ * to set the input in focus.
+ * That is to ensure that if the user is visitng from a mobile
+ * device they are not instantly scrolled down to the bottom
+ * of the homepage layout where the input is.
+ */
 if (document.querySelector("#id_message_send_input")) {
-  document.querySelector("#id_message_send_input").focus();
+  if (window.matchMedia("(min-width: 768px)").matches) {
+    document.querySelector("#id_message_send_input").focus();
+  }
 }
 
 
@@ -48,9 +59,9 @@ document.querySelector("#id_message_send_button").onclick = function () {
   ).value;
   if (/[a-z0-9]/i.test(messageInput)) {
     chatSocket.send(JSON.stringify({
-    message: messageInput,
-    username: username
-  }));
+      message: messageInput,
+      username: username
+    }));
   }
 };
 
