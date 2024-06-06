@@ -1,7 +1,7 @@
 // Source: https://www.geeksforgeeks.org/realtime-chat-app-using-django/
+const chatAnchor = document.querySelector("#chat-anchor");
 const chatSocket = new WebSocket("wss://" + window.location.host + "/");
 const liveChatContainer = document.querySelector("#id-chat-item-container");
-const chatAnchor = document.querySelector("#chat-anchor");
 
 
 chatSocket.onopen = function () {
@@ -23,7 +23,9 @@ chatSocket.onclose = function () {
 
 /**
  * Checks if the input element (#id_message_send_input) exists,
- * which it only will if the user is logged in.
+ * which it only will if the user is logged in. This is to
+ * avoid trying to add the event listeners to send_input and
+ * send_button, which would result in a console error.
  * 
  * Then check if the layout matches that of 768px screen width
  * to set the input in focus.
@@ -35,36 +37,35 @@ if (document.querySelector("#id_message_send_input")) {
   if (window.matchMedia("(min-width: 768px)").matches) {
     document.querySelector("#id_message_send_input").focus();
   }
+
+
+  document.querySelector("#id_message_send_input").onkeyup = function (e) {
+    if (e.keyCode === 13) {
+      document.querySelector("#id_message_send_button").click();
+    }
+  };
+
+
+  document.querySelector("#id_message_send_button").onclick = function () {
+    /**
+     * Custom addition of 'if (/[a-z0-9]/i.test(messageInput))'
+     * used to check if the input contains any alphanumerical
+     * characters to not have the chat spammed with empty
+     * strings of text.
+     *
+     * Username variable is defined in the template using DTL.
+     */
+    let messageInput = document.querySelector(
+      "#id_message_send_input"
+    ).value;
+    if (/[a-z0-9]/i.test(messageInput)) {
+      chatSocket.send(JSON.stringify({
+        message: messageInput,
+        username: username
+      }));
+    }
+  };
 }
-
-
-document.querySelector("#id_message_send_input").onkeyup = function (e) {
-  if (e.keyCode === 13) {
-    document.querySelector("#id_message_send_button").click();
-  }
-};
-
-
-document.querySelector("#id_message_send_button").onclick = function () {
-  /**
-   * Custom addition of 'if (/[a-z0-9]/i.test(messageInput))'
-   * used to check if the input contains any alphanumerical
-   * characters to not have the chat spammed with empty
-   * strings of text.
-   *
-   * Username variable is defined in the template using DTL.
-   */
-  let messageInput = document.querySelector(
-    "#id_message_send_input"
-  ).value;
-  if (/[a-z0-9]/i.test(messageInput)) {
-    chatSocket.send(JSON.stringify({
-      message: messageInput,
-      username: username
-    }));
-  }
-};
-
 
 chatSocket.onmessage = function (e) {
   /**
