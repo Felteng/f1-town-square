@@ -109,6 +109,25 @@ body {
   color: #fff;
 }
 
+/* Account authentication */
+.btn-cancel {
+  color: #ffffff94;
+}
+
+.auth-container {
+  min-height: 60vh;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container label {
+  display: block;
+  margin-bottom: 2px;
+}
+
 /* CRUD message response */
 .success-alert {
   background-color: #001c00;

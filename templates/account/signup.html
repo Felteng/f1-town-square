@@ -4,15 +4,52 @@
 {% block title %}Signup{% endblock title %}
 {% block content %}
 
-<h1>Sign Up</h1>
-<p>Already have an account? Then please <a href="{% url 'account_login' %}">sign in</a>.</p>
-<form action="{% url 'account_signup' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button type="submit" class="btn btn-success">Sign up!</button>
-</form>
+<div class="auth-container">
+  <div>
+    <h1>Sign Up</h1>
+    <p>Create an account to interact with other users!</p>
+    <p>Already have an account? Then please <a class="text-decoration-none" href="{% url 'account_login' %}">sign
+        in</a>.
+    </p>
+    <form action="/accounts/signup/" method="post" class="">
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <p>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" placeholder="Username" autocomplete="username" minlength="1" maxlength="150"
+          required="" id="id_username">
+      </p>
+      <p>
+        <label for="id_email">Email (optional):</label>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" maxlength="320" id="id_email">
+      </p>
+      <p>
+        <label for="id_password1">Password:</label>
+        <input type="password" name="password1" placeholder="Password" autocomplete="new-password" required=""
+          aria-describedby="id_password1_helptext" id="id_password1">
+        <span class="helptext" id="id_password1_helptext"></span>
+      </p>
+      <ul>
+        <li>Your password can’t be too similar to your other personal information.</li>
+        <li>Your password must contain at least 8 characters.</li>
+        <li>Your password can’t be a commonly used password.</li>
+        <li>Your password can’t be entirely numeric.</li>
+      </ul>
+      <p>
+        <label for="id_password2">Password (again):</label>
+        <input type="password" name="password2" placeholder="Password (again)" autocomplete="new-password" required=""
+          id="id_password2">
+      </p>
+      <button type="submit" class="btn btn-success">Sign up!</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
 
 {% endblock content %}

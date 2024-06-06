@@ -4,13 +4,16 @@
 {% block title %}Sign Out{% endblock title %}
 {% block content %}
 
-<h1>Sign Out</h1>
-<p>Are you sure you want to sign out <span class="fw-semibold">{{ user }}</span>?</p>
-<form action="{% url 'account_logout' %}" method="POST">
+<div class="auth-container">
+  <h1>Sign Out</h1>
+  <p>Are you sure you want to sign out <span class="fw-semibold">{{ user }}</span>?</p>
+  <form action="{% url 'account_logout' %}" method="post">
     {% csrf_token %}
     {{ redirect_field }}
-    <a onclick="history.back()" class="btn">Cancel</a>
+    <a onclick="history.back()" class="btn btn-cancel">Cancel</a>
     <button type="submit" class="btn btn-dark">Sign out</button>
-</form>
+  </form>
+</div>
+
 
 {% endblock content %}
