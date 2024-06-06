@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, Http404
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import RaceEventDetail, RaceEventComment
 from .forms import RaceCommentForm
 
@@ -51,9 +52,16 @@ def event_details(request, event_id):
     )
 
 
+# Decorator taken from: https://stackoverflow.com/a/12003808
+@user_passes_test(
+    lambda u: u.is_superuser, login_url="/not_an_admin",
+    redirect_field_name=None
+)
 def approve_comment(request, event_id, target_comment):
     """
-    Approve an indiviual comment.
+    Approve an indiviual comment if user passes the superuser check.
+
+    If the check returns false the user is redirected to 404 /not_an_admin
 
     **Context**
 
@@ -62,57 +70,55 @@ def approve_comment(request, event_id, target_comment):
 
     """
     comment = get_object_or_404(RaceEventComment, pk=target_comment)
-
-    if request.user.is_superuser:
-        comment.approved = True
-        comment.save()
-        messages.add_message(
-            request,
-            messages.SUCCESS,
-            "Comment approved successfully."
-        )
-    else:
-        messages.add_message(
-            request,
-            messages.ERROR,
-            "Comment could not be approved, are you a site admin?"
-        )
-
+    comment.approved = True
+    comment.save()
+    messages.add_message(
+        request,
+        messages.SUCCESS,
+        "Comment approved successfully."
+    )
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
 
 
+@login_required
 def delete_comment(request, event_id, target_comment):
     """
     Delete an individual comment.
 
+    Raise 404 if the query fails.
+
     **Context**
 
     ``comment``
     The single comment related to the comment.id targeted from the template.
 
     """
-    comment = get_object_or_404(RaceEventComment, pk=target_comment)
-
-    if request.user == comment.author:
-        comment.delete()
-        messages.add_message(
-            request,
-            messages.SUCCESS,
-            "Comment deleted successfully."
+    try:
+        comment = get_object_or_404(
+            RaceEventComment,
+            pk=target_comment,
+            author=request.user
         )
-    else:
-        messages.add_message(
-            request,
-            messages.ERROR,
-            "Comment could not be deleted, are you the author?"
-        )
+    except Http404:
+        raise Http404("Can't delete the comment.. Are you the author?")
 
+    comment.delete()
+    messages.add_message(
+        request,
+        messages.SUCCESS,
+        "Comment deleted successfully."
+        )
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
 
 
+@login_required
 def edit_comment(request, event_id, target_comment):
     """
     Delete an individual comment.
+
+    Only attempt comment query if the comment form is valid
+    to avoid unnecessary query requests. If the query fails
+    raise 404.
 
     **Context**
 
@@ -121,11 +127,20 @@ def edit_comment(request, event_id, target_comment):
 
     """
     if request.method == "POST":
-        comment = get_object_or_404(RaceEventComment, pk=target_comment)
-        race_comment_form = RaceCommentForm(
-            data=request.POST, instance=comment
+        race_comment_form = RaceCommentForm(data=request.POST)
+        if race_comment_form.is_valid():
+            try:
+                comment = get_object_or_404(
+                    RaceEventComment,
+                    pk=target_comment,
+                    author=request.user
+                )
+            except Http404:
+                raise Http404("Can't edit the comment.. Are you the author?")
+
+            race_comment_form = RaceCommentForm(
+                data=request.POST, instance=comment
             )
-        if request.user == comment.author and race_comment_form.is_valid():
             comment = race_comment_form.save(commit=False)
             comment.approved = False
             comment.save()
@@ -133,12 +148,6 @@ def edit_comment(request, event_id, target_comment):
                 request,
                 messages.SUCCESS,
                 "Comment edited successfully."
-            )
-        else:
-            messages.add_message(
-                request,
-                messages.ERROR,
-                "Comment could not be edited, are you the author?"
             )
 
     return HttpResponseRedirect(reverse('event_details', args=[event_id]))
