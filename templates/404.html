@@ -2,7 +2,13 @@
 
 {% block content %}
 <div class="text-center mt-5">
-  <h1 class="fw-light">This page has not been created yet</h1>
-  <a href="javascript:history.back()" class="text-decoration-none"><h2>&#9204;Go back</h2></a>
+  {% if request_path == '/not_an_admin' %}
+  <h1 class="fw-light">This account lacks admin privileges</h1>
+  {% else %}
+  <h1 class="fw-light">{{ exception }}</h1>
+  {% endif %}
+  <p>{{ request_path }}</p>
+  <a href="javascript:history.back()" class="text-decoration-none"><h2><i class="fa-solid fa-caret-left"></i> Go back</h2></a>
+  
 </div>
 {% endblock content %}
