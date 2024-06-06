@@ -19,17 +19,14 @@ class StorePreviousURLMiddleware(MiddlewareMixin):
     to the event, and not to the login page.
     """
     def process_request(self, request):
-        if (
+        if not (
             request.path.startswith('/accounts/') or
             request.path.startswith('/favicon.ico/')
         ):
-            return
-        else:
             request.session['previous_url'] = request.get_full_path()
 
     def process_response(self, request, response):
         # Check if the response status is 404 to remove the previous URL
-        if response.status_code == 404:
-            if 'previous_url' in request.session:
+        if response.status_code == 404 and 'previous_url' in request.session:
                 del request.session['previous_url']
         return response
