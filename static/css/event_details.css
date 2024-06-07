@@ -67,6 +67,7 @@
 .hero-text {
   position: absolute;
   font-weight: 700;
+  font-size: 150%;
 }
 
 .separator {
@@ -205,6 +206,9 @@
 @media (min-width: 576px) {
   .hero-container {
     max-height: 240px;
+  }
+  .hero-text {
+    font-size: revert;
   }
 }
 
