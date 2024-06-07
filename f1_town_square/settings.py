@@ -91,6 +91,12 @@ TEMPLATES = [
     },
 ]
 
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'fontSizes': ['8', '9', '10', '11', '12', '14', '16', '18', '22','24', '36', '48' , '64', '82', '150'],
+    },
+}
+
 ACCOUNT_ADAPTER = 'f1_town_square.users.adapter.MyAccountAdapter'
 
 
