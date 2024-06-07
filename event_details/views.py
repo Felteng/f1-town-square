@@ -16,17 +16,21 @@ def event_details(request, event_id):
     **Context**
 
     ``event``
-        The instance of :model:`event_details.RaceEventDetail` with
-        the one-to-one relation to the :model:`town_square.RaceEvent`
-        identified by the event_id arg.
+    The instance of :model:`event_details.RaceEventDetail` with
+    the one-to-one relation to the :model:`town_square.RaceEvent`
+    identified by the event_id arg.
+    
     ``race_distance``
-        Product of queried event.circuit_length and event.number_of_laps.
+    Product of queried event.circuit_length and event.number_of_laps.
+
     ``comments``
-        All comments related to the datailed event.
+    All comments related to the datailed event.
+
     ``comment_count``
-        The amount of related comments with an approved status of True.
+    The amount of related comments with an approved status of True.
+
     ``race_comment_form``
-        An instance of :form:`event_details.RaceCommentForm`.
+    An instance of :form:`event_details.RaceCommentForm`.
 
     **Template:**
     :template:`event_details/event_details.html`
