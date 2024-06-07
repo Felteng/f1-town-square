@@ -1,7 +1,4 @@
-from django.utils.deprecation import MiddlewareMixin
-
-
-class StorePreviousURLMiddleware(MiddlewareMixin):
+class StorePreviousURLMiddleware:
     """
     Create a middleware to store the URL of the page the user
     was on before performing an account authentication action.
@@ -18,15 +15,22 @@ class StorePreviousURLMiddleware(MiddlewareMixin):
     so they click on sign up, upon signup they will be returned back
     to the event, and not to the login page.
     """
-    def process_request(self, request):
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        # Save the previous URL in session unless it's an account-related page or favicon request
         if not (
             request.path.startswith('/accounts/') or
             request.path.startswith('/favicon.ico/')
         ):
             request.session['previous_url'] = request.get_full_path()
 
-    def process_response(self, request, response):
-        # Check if the response status is 404 to remove the previous URL
-        if response.status_code == 404 and 'previous_url' in request.session:
-                del request.session['previous_url']
+        response = self.get_response(request)
+
+        # Check if the response is 404 to remove the previous URL
+        if response.status_code == 404:
+            request.session.pop('previous_url', None)
+        
         return response
