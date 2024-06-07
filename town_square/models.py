@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class RaceEvent(models.Model):
+    """
+    Stores a single race event entry.
+    """
     start_date = models.DateField()
     location = models.CharField(max_length=32)
     event_name = models.CharField(max_length=100, unique=True)

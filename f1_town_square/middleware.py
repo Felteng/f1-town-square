@@ -20,7 +20,6 @@ class StorePreviousURLMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Save the previous URL in session unless it's an account-related page or favicon request
         if not (
             request.path.startswith('/accounts/') or
             request.path.startswith('/favicon.ico/')
@@ -32,5 +31,5 @@ class StorePreviousURLMiddleware:
         # Check if the response is 404 to remove the previous URL
         if response.status_code == 404:
             request.session.pop('previous_url', None)
-        
+
         return response

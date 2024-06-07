@@ -18,11 +18,10 @@ from town_square import routing
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "f1_town_square.settings")
 
 
-
 application = ProtocolTypeRouter(
     {
-        "http" : get_asgi_application(),
-        "websocket" : AuthMiddlewareStack(
+        "http": get_asgi_application(),
+        "websocket": AuthMiddlewareStack(
             URLRouter(
                 routing.websocket_urlpatterns
             )

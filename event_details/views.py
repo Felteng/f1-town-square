@@ -8,6 +8,29 @@ from .forms import RaceCommentForm
 
 # Create your views here.
 def event_details(request, event_id):
+    """
+    Display the indiviual :model:`event_details.RaceEventDetail`
+    related to the id of :model:`town_square.RaceEvent` selected from
+    the calendar page.
+
+    **Context**
+
+    ``event``
+        The instance of :model:`event_details.RaceEventDetail` with
+        the one-to-one relation to the :model:`town_square.RaceEvent`
+        identified by the event_id arg.
+    ``race_distance``
+        Product of queried event.circuit_length and event.number_of_laps.
+    ``comments``
+        All comments related to the datailed event.
+    ``comment_count``
+        The amount of related comments with an approved status of True.
+    ``race_comment_form``
+        An instance of :form:`event_details.RaceCommentForm`.
+
+    **Template:**
+    :template:`event_details/event_details.html`
+    """
     queryset = RaceEventDetail.objects.filter(race=event_id)
     event = get_object_or_404(queryset)
     race_distance = round(event.circuit_length * event.number_of_laps, 2)
@@ -44,10 +67,10 @@ def event_details(request, event_id):
         'event_details/event_details.html',
         {
             'event': event,
-            'comments': comments,
             'race_distance': race_distance,
-            'comment_form': race_comment_form,
+            'comments': comments,
             'comment_count': comment_count,
+            'comment_form': race_comment_form,
         }
     )
 

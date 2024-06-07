@@ -6,6 +6,10 @@ from town_square.models import RaceEvent
 
 # Create your models here.
 class RaceEventDetail(models.Model):
+    """
+    Sets an entry of race event details to one to one related
+    :model:`town_square.RaceEvent`.
+    """
     race = models.OneToOneField(
         RaceEvent, on_delete=models.CASCADE, related_name='event_details'
     )
@@ -24,7 +28,12 @@ class RaceEventDetail(models.Model):
         return self.race.location + ": " + self.race.event_name
 
 
+# Model approach from: https://github.com/Code-Institute-Solutions/Django3blog/blob/75bd87f4439d678bee07c149383cf2d778c38a6f/12_final_deployment/blog/models.py#L34-L47
 class RaceEventComment(models.Model):
+    """
+    Stores a single comment entry related to
+    :model:`event_details.RaceEventDetail` and :model:`auth.User`.
+    """
     event = models.ForeignKey(
         RaceEventDetail, on_delete=models.CASCADE, related_name='comments'
     )
