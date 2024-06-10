@@ -19,7 +19,7 @@ def event_details(request, event_id):
     The instance of :model:`event_details.RaceEventDetail` with
     the one-to-one relation to the :model:`town_square.RaceEvent`
     identified by the event_id arg.
-    
+
     ``race_distance``
     Product of queried event.circuit_length and event.number_of_laps.
 
@@ -35,8 +35,10 @@ def event_details(request, event_id):
     **Template:**
     :template:`event_details/event_details.html`
     """
-    queryset = RaceEventDetail.objects.filter(race=event_id)
-    event = get_object_or_404(queryset)
+    try:
+        event = get_object_or_404(RaceEventDetail, race=event_id)
+    except Http404:
+        raise Http404("There is nothing at this event")
     race_distance = round(event.circuit_length * event.number_of_laps, 2)
     comments = event.comments.all()
     comment_count = comments.filter(approved=True).count()
