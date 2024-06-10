@@ -95,11 +95,30 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 
 ### Visual Design Ideology
 
-**Colour Scheme:**
+**Color Scheme:**
+- The base scheme of the site is built with "dark theme" in mind as it's a theme becoming increasingly popular and tends to be a lot easier on the eyes for the user. There is not sacrifice in contrast or user experience to achieve the darker aestetic. The goal is to provide a friendly looking interface that won't appal the user from using the site for any extended period of time.
 
+- To achieve the darker theme every page features shade of woodsmoke as the background. \
+![Background color](readme-assets/background-hex.png)
+
+- Furthermore the site incorporates some staple racing colors, such as the very vibrant, scarlet red navigation bar, combined with the white text. \
+![Navbar colors](readme-assets/navbar-hex.png)
+
+- Most element borders feature 1 of 2 different shades an olive haze color which aims to provide an organic looking seperation of content. \
+![Border colors](readme-assets/border-hex.png)
+
+- The last contrasting color is that of a very dark shade of blue featured at the page footer as well as the hero seperator on an events details page. It blends quite nicely with the dargker background while still providing contrast for content seperation without causing a large shift of focus. \
+![Footer color](readme-assets/footer-hex.png)
 
 **Fonts:**
+- Racing Sans One
+    - The Racing Sans One font has been used in the navbar elements as well as the season calendar heading. Its dynamic and sporty design helps convey a sense of speed, which is the essence of motorsport, and it helps draw attention to the key elements of the site even though they are smaller in size than the ladning page headings. It has very eye catching characteristics yet it remains a very readable font.
 
+- Exo 2
+    - Exo 2 has been exerted for all headings on the page bar the calendar heading. It helps convey yet another sense of a modern, sporty feeling albeit while being a lot less robust than the Racing Sans One font. This is perfect because it avoids an overwhelming sense of repetetion in the case that Racing Sans One would be used for all the heading as well as the nav elements, it would very easily split the focus of the user. The sporty modern nature of the font helps the various content headings stand out while not drawing as much attention as Racing Sans One.
+
+- Roboto
+    - Roboto features a modern and geometric design with clean lines and a neutral, yet friendly appearance, providing great readability. This makes it the perfect font for the various pieces of content the site aims to convey.
 
 **Images:**
 
@@ -175,6 +194,8 @@ An authenticated user can delete any of their contributions made to the site.
 
 
 ### Validator Testing
+
+- Some pep8 warning for line too long in regards to code accreditation links.
 
 #### HTML [W3C validator](https://validator.w3.org/)
 
@@ -298,6 +319,7 @@ An authenticated user can delete any of their contributions made to the site.
 
 ### Technical
 - [caffsushi](https://stackoverflow.com/a/57682143) - For forcing https protocol over http when loading images from cloudinary by accessing an objects .url tag.
+- [dgel](https://stackoverflow.com/a/12003808) - Decorator for checking if a user has superuser status in views.
 
 ### Media
 #### Circuit SVGs
@@ -332,8 +354,16 @@ An authenticated user can delete any of their contributions made to the site.
 #### Hero images
 - CaterhamF1, https://www.flickr.com/photos/caterhamf1/13678967474
 - Automotive Rhythms, https://www.flickr.com/photos/artvlive/51696022965
+- By Chris Phutully - https://www.flickr.com/photos/72562013@N06/13186495033/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=31802460
+- By Norimasa Hayashida - https://www.flickr.com/photos/nhayashida/10347531595/in/set-72157636691519286, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=29868692
+- By Derrick Noh from NYC - 2009 Formula 1 Grand Prix of China - Shanghai Circuit, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=60429722
+- By Bassfish22 - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=136303048
+- By Wastrick - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=121017386
+- By pedrik - First corner, GP of Canada 2017, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=128994359
+- By Anyul Rivas - https://www.flickr.com/photos/anyulled/42253655511/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=107128061
 
-By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
+
+- By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
 
 - By chensiyuan - chensiyuan, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=21856333
 
