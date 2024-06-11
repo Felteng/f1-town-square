@@ -17,7 +17,7 @@ class RaceEventDetail(models.Model):
         'Hero image', default='image/upload/v1716558951/checkered-flags.svg'
         )
     event_info = models.TextField()
-    circuit_name = models.CharField()
+    circuit_name = models.CharField(max_length=70)
     circuit_length = models.FloatField(default=0)
     number_of_laps = models.PositiveIntegerField(default=0)
     lap_record = models.CharField(
