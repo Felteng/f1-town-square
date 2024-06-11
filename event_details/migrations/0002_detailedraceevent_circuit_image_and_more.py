@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='detailedraceevent',
             name='circuit_name',
-            field=models.CharField(default='placeholder'),
+            field=models.CharField(default='placeholder', max_length=70),
             preserve_default=False,
         ),
     ]
