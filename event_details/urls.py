@@ -21,6 +21,6 @@ urlpatterns = [
     path(
         "<int:event_id>/edit_comment/<int:target_comment>",
         views.edit_comment,
-        name="comment_delete"
+        name="comment_edit"
     ),
 ]
