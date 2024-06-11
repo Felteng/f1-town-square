@@ -10,28 +10,14 @@
     <p>If you have not created an account yet, then please <a class="text-decoration-none"
         href="{% url 'account_signup' %}">sign up</a> first.</p>
     <form class="login" method="post" action="{% url 'account_login' %}">
+      {{ form.as_p }}
       {% csrf_token %}
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <p>
-        <label for="id_login">Username:</label>
-        <input class="username-field" type="text" name="login" placeholder="Username" maxlength="20" required
-          id="id_login">
-      </p>
-      <p>
-        <label for="id_password">Password:</label>
-        <input type="password" name="password" placeholder="Password" autocomplete="current-password" required
-          id="id_password">
-      </p>
-      <p class="d-flex align-items-center">
-        <label for="id_remember">Remember Me:</label>
-        <input type="checkbox" name="remember" id="id_remember" class="ms-1">
-      </p>
       <button class="btn btn-primary right" type="submit">Sign In!</button>
     </form>
   </div>
 </div>
-
 
 {% endblock content %}

@@ -11,6 +11,10 @@
 }
 
 /* Calendar styling */
+.calendar-heading {
+  font-size: calc(1.825rem + 1.5vw);
+}
+
 .country-flag {
   max-height: 4rem;
   max-width: 100%;
