@@ -121,9 +121,17 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
     - Roboto features a modern and geometric design with clean lines and a neutral, yet friendly appearance, providing great readability. This makes it the perfect font for the various pieces of content the site aims to convey.
 
 **Images:**
+- A wide range of imagery has been used throughout the project to convey a multitude of different meanings.
+    - Country flags have been used to represent each event's country. The flags are .svg vectors which is of massive help for scalability and visual consistency across each country's representation. Huge thanks to [lilpis](https://github.com/lipis/flag-icons) for the library used.
+    - More .svg vectors have been used for each event to show the layout of the event's track layout. Yet again this provides great scalability and consistency. The creators can be found at [Circuit SVGs](#circuit-svgs).
+    - Whenever an event is visited each page features a hero image related to the event in question to help paint a more comprehensive picture of the event as a whole.
+    - Lastly another vector is used as the default image if no track layout vector is provided. It is also used for the 3 most recent events visible on the home page to represent the event's finished state.
 
 
 **Icons:**
+- The use of icons have been kept on the lower end and they have simply been used to help convey an elements purpose and action. 2 examples of this is the left caret for the go back button when user lands on a 404 page, and the paper plane icon in the live chat to signify send message. \
+    ![Left caret icon](readme-assets/left-caret-ico.png)
+    ![Paperplane icon](readme-assets/paperplane-ico.png)
 
 
 ## Features
@@ -140,7 +148,7 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 ### Database Model
 The entiry relationship diagram for the initial database model was made using [Cacoo's](https://cacoo.com) diagram tool.
 
-![Entity relationship diagram](readme-assets/initial-erd.png)
+![Entity relationship diagram](readme-assets/f1-town-square-erd.png)
 
 ### Custom Model
 
@@ -157,32 +165,38 @@ A user can browse and read about the current season's race events and any commen
 
 **Update:**
 An authenticated user can edit and update their individual contributions to the site.
+- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimmick the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
 
 **Delete:**
 An authenticated user can delete any of their contributions made to the site.
+- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimmick the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
 
 ## Technologies Used
 
 ### Environments
 
 - [Balsamiq](https://www.balsamiq.com/) (Wireframes)
-- [Cacoo](https://cacoo.com/) (ERD diagrams)
+- [Cacoo](https://cacoo.com/) (ERD creation)
 - [GitHub](https://github.com/) (Version control)
 - [GitPod](https://gitpod.io/) (IDE)
 - [Heroku](https://heroku.com/) (Site hosting)
 
 ### Python Libraries and Packages
 
+- [Whitenoise](https://whitenoise.readthedocs.io/en/stable/index.html) (Middleware for efficiently serving static files)
+- [psycopg2](https://pypi.org/project/psycopg2/) (Adapter for PostgreSQL databases)
 
 ### Django Packages
 
 - [django-allauth](https://django-allauth.readthedocs.io/en/latest/) (User authentication)
-- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) (Control rendering behaviour of Django forms)
 - [Channels](https://pypi.org/project/channels/) (Augments django with async, and event-driven capabilities- used for the live chat on the home page)
-- [Daphne](https://pypi.org/project/daphne/) (Django ASGI (HTTP/WebSocket) server)
+- [Daphne](https://pypi.org/project/daphne/) (Django ASGI (HTTP/WebSocket) server to power Django Channels)
+- [django-summernote](https://github.com/summernote/django-summernote) (Embeds Summernote's simple WYSIWYG editor seamlessly into Django- Used for some functional extensions in the admin panel)
+
 
 ### External Libraries and Packages
 
+- [Cloudinary](https://cloudinary.com/) (Hosting and efficient serving of static media files)
 
 ### Database
 
@@ -195,7 +209,6 @@ An authenticated user can delete any of their contributions made to the site.
 
 ### Validator Testing
 
-- Some pep8 warning for line too long in regards to code accreditation links.
 
 #### HTML [W3C validator](https://validator.w3.org/)
 
@@ -224,7 +237,7 @@ An authenticated user can delete any of their contributions made to the site.
 
 
 ### Addressed Bugs
-- Clicking twice in quick succession when confirming the deletion of a comment leads to a 404 error.
+- Clicking twice in quick succession when confirming the deletion of a comment leads to a 404 error. \
 ![Delete confirmation](readme-assets/double-click-delete.png)
 ![Delete confirmation 404 bug](readme-assets/double-delete-404.png)
 
@@ -242,7 +255,7 @@ An authenticated user can delete any of their contributions made to the site.
             });
             ```
 
-- Getting alert of Comment ID not found when confirming deletion,
+- Getting alert of Comment ID not found when confirming deletion. \
 ![Comment ID not found](readme-assets/comment-id-not-found.png)
     - This occurs because the class that is used to style all the delete buttons was also used on the confirmation button, which is also the class that javascript targets when applying event listeners to all delete buttons.
 
@@ -269,7 +282,7 @@ An authenticated user can delete any of their contributions made to the site.
             }
             ```
 
-- Cannot read properties of null live chat input.
+- Cannot read properties of null live chat input. \
 ![Console error](readme-assets/cannot-read-prop.png)
     - This console error is logged whenever an unauthenticated user visits the homepage, when the live chat message input is attempted to be put into focus.
 
