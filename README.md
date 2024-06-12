@@ -46,15 +46,29 @@
 
 ## UI/UX
 
+- UI
+    - The overall look and design of the site aims to create a resemeblance to racing as that's the Formula 1 racing is at the soul of the site.
 
+    - Layout, responsiveness, and navigation are all kept to an approach familiar across most web pages as to avoid plaguing the user with trying to figure out how to even engage with the navigation.
+
+- UX
+    - The interactivity focuses on user to user interaction with the live town chat at the home page, as well as the user written comments found on any individual event.
+
+    - User experience has been a major focus for the implementation of various features; Whenever the user performs an account authentication action (sign in, sign up, sign out) they will be returned to the page they were previously on, if appropriate. The redirection ensures a smoother experience in for example the event that a user wants to comment but has to log in, so instead of being returned back all the way to the home page they will be returned to the origin of why they wanted to log in in the first place.
+
+    - Another example of an ensured more fluid experience is that of any comment action performed under an event page. Instead of returning to a page and landing at the top after the action is completed, the scroll level of the window will be automatically restored for the user to return to the same view they had when engaging with the action.
 
 ### Agile
 
+The entirety of this project has been built utilising the agile development approach. The agile approach, combined with GitHub projects, has served as a tool that has helped visualise, plan, and execute different phases of the project development. The [GitHub project](https://github.com/users/Felteng/projects/3) created for this project features a kanban board where the various issues and their status can be seen.
 
+To view the user stories set out for this project please refer to the project link in the above paragraph. By clicking on any user story on the board a detailed view containing the user story and it's acceptance criteria will be made visible. All the issues on the kanban board have received different labels to convey things like relevancy and importance.
 
 ### Wireframes
 
 The initial Balsamiq wireframes are very simplified mockups of site layout to help steer development.
+
+*Since these initial wireframes part of the scope of the project was altered early on to not feature any articles and instead build upon the indivual events on the calendar.*
 
 
 <details>
@@ -69,7 +83,9 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 
 ### Site Goals
 
+The goal of this site is to provide anyone with an interest, mild or large, with a town square like experience where you can stay up to date on the dates of the current seasons calendar, engage in discussion, or even engage in the live town chat. Event comments are restricted by admin approval to avoid malicous bloat or anything of the sort. The live town chat on the other hand is a bit different as its data is not stored to be displayed to any visitng user, this is delibrate as the intention here is for it act like a real life interaction of people happening to share a similar interest. Anyone who partook in the live discussion will now what is was about and all the little details, but once the page is left or refreshed so is the data. Depending on the future scope and plans for scalabilty the chat could be converted to store and display data too, no such plans have been made but of course there are possibilities for lots of different [future features](#future-features).
 
+In short it's a sort of hub for anyone familiar, or wanting to get familiar with the world of F1.
 
 ### 5 Planes of UX
 
