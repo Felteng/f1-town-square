@@ -55,8 +55,9 @@ INSTALLED_APPS = [
     'channels',
     'django_summernote',
     'cloudinary',
-    'event_details',
     'town_square',
+    'event_details',
+    
 ]
 
 MIDDLEWARE = [
@@ -132,6 +133,9 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DB_URL"))
 }
+
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.codeinstitute-ide.net',
