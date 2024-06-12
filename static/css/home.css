@@ -115,6 +115,8 @@ legend {
 
 .chat-message {
   margin-bottom: 0px;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .message-date {
