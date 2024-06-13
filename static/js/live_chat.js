@@ -63,6 +63,7 @@ if (document.querySelector("#id_message_send_input")) {
         message: messageInput,
         username: username
       }));
+      document.querySelector("#id_message_send_input").value = "";
     }
   };
 }
@@ -85,6 +86,5 @@ chatSocket.onmessage = function (e) {
   <p class="chat-message">${data.message}</p>
   <hr class="message-break">`;
   $(div).addClass("text-start");
-  document.querySelector("#id_message_send_input").value = "";
   liveChatContainer.insertBefore(div, chatAnchor);
 };
