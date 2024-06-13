@@ -450,7 +450,21 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
             <p><img src="readme-assets/unauth-approve-request.png" alt="response for unauthorized approval request"></p>
             </details>
 ### Future Features
+- A necessary future feature if the scale of this project aims to be increased to a larger user base would be to change the channel layers for the live chat to be stored on something like a Redis server as opposed to the current earlier small scale implementation that uses InMemoryChannelLayer.
 
+    - With too many users overloading the memory would lead to the server going down, so an external server like Redis would provide a way larger scope of scalability.
+
+- If the live chats purpose would change adding a database model for the content could be another feature to add.
+
+    - This would be to allow users to view the history of what's been said and the data not being lost.
+
+    - With an implementation like that I would also suggest adding the rest of CRUD to the chat as well seeing as the data won't be lost opon a refresh anymore.
+
+- The calendar could see a new parent model added that would represent the season.
+
+    - So when adding any new events they would have a many-to-one relationship with the with a season.
+
+    - This would allow users to go back in the calendar years to see how the calendar has evolved, discussions and thought that were shared on old events, and how the events might have aged.
 
 ## Database Design
 
