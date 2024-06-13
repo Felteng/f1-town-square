@@ -59,7 +59,7 @@
             {% if user.is_authenticated %}
             <li class="nav-item hvr-grow">
               <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                href="{% url 'account_logout' %}">Logout</a>
+                href="{% url 'account_logout' %}">Sign out</a>
             </li>
             {% else %}
             <li class="nav-item hvr-grow">
