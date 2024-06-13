@@ -68,7 +68,7 @@ To view the user stories set out for this project please refer to the project li
 
 The initial Balsamiq wireframes are very simplified mockups of site layout to help steer development.
 
-*Since these initial wireframes part of the scope of the project was altered early on to not feature any articles and instead build upon the indivual events on the calendar.*
+*Since these initial wireframes, part of the scope of the project was altered early on to not feature any articles and instead build upon the indivual events on the calendar.*
 
 
 <details>
@@ -146,7 +146,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 **Icons:**
 - The use of icons have been kept on the lower end and they have simply been used to help convey an elements purpose and action. 2 examples of this is the left caret for the go back button when user lands on a 404 page, and the paper plane icon in the live chat to signify send message. \
-    ![Left caret icon](readme-assets/left-caret-ico.png)
+    ![Left caret icon](readme-assets/left-caret-ico.png) \
     ![Paperplane icon](readme-assets/paperplane-ico.png)
 
 
@@ -154,8 +154,301 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 
 ### Current Features
+- **Navigation**
+    - Navbar with navigation links to the various pages on the site as well as the logo.
 
+    - Slightly different naviational links depending on whether the user is authenticated or not.
 
+    - Current page is highlighted with a similar border layout found across many elements on the site.
+
+    - On mobile devices the navbar turns into a collapsable menu through the intuitive and familiar burger menu.
+
+    - Features a very mute text letting the user know if they're logged in and who they are logged in as.
+        <details>
+        <summary>
+            Navigation images
+        </summary>
+        <p><img src="readme-assets/navbar-logged-in.png" alt="logged in navbar"></p>
+        <p><img src="readme-assets/navbar-logged-out.png" alt="logged out navbar"></p>
+        <p><img src="readme-assets/mobile-navbar.png" alt="mobile-navbar"></p>
+        </details>
+
+- **Home page**
+    - Features no introductory text as I believe it can often create a bit of a turmoil for a new visitng user, at least that's how I often times experience it.
+
+    - The purpose and introduction attempts to be conveyed through the landing page content and intuitive accessible design.
+
+    - Features the live town chat where a user may engage in any live discussion with another user.
+
+    - Features a list of 4 cards that shows the closest upcoming grand prix as well as the previous 3 grand prix.
+        <details>
+        <summary>
+            Home page images
+        </summary>
+        <p><img src="readme-assets/home-page.png" alt="home page"></p>
+        <p><img src="readme-assets/home-page-mobile.png" alt="home page on mobile device"></p>
+        </details>
+
+- **Live town chat**
+    - Featured on the home page where any user may engage in live discussion. Most notably this would be used during the events of a grand prix weekend when discussion is at its peak.
+
+    - Notifies the user when they've been connected as well as if the websocket connection gets closed.
+
+    - The chat input box will not be visible to a user that is not signed in, and will instead display a message letting the user know they should sign in.
+        - The user can still read anything being sent in the chat even though they're logged out.
+
+    - On purpose features no database model or storage to simulate that of a real world interaction where the discussion held is remembered by those involved and can't be relived by an external visitor after it has taken place.
+
+        - So whenever the page is refreshed the data will be lost.
+
+    - The chat input box will not be visible to a user that is not signed in, and will instead display a message letting the user know they should sign in.
+
+        - The user can still read anything being sent in the chat even though they're logged out.
+        <details>
+        <summary>
+            Live town chat images
+        </summary>
+        <p><img src="readme-assets/town-chat.png" alt="live town chat"></p>
+        <p><img src="readme-assets/town-chat-connection-closed.png" alt="live town chat connection closed"></p>
+        <p><img src="readme-assets/town-chat-refreshed.png" alt="town chat after being refreshed"></p>
+        <p><img src="readme-assets/town-chat-logged-out.png" alt="town chat when logged out"></p>
+        </details>
+
+- **Registration page**
+    - Features an ordinary registration form with email address being optional and appropiate feedback if fields are left empty.
+
+    - Upon registration the user is automatically signed in to the registered account and taken back to the page they were on before initating registration.
+
+        - The page being returned to will not be another account authentication page, for example if the user clicked on a sign in prompt under an event and then realised that they need to sign up first, they will not be returned to the login page and instead back to the page they were on.
+
+        - If the previous page is a 404 page the user is redirected to the home page instead.
+        <details>
+        <summary>
+            Registration images
+        </summary>
+        <p><img src="readme-assets/sign-up-page.png" alt="registration page"></p>
+        <p><img src="readme-assets/sign-up-page-mobile.png" alt="registration page mobile"></p>
+        </details>
+
+- **Sign in page**
+    - Features a simple sign in form with appropiate feedback if fields are left empty.
+
+    - If the wrong password is provided the username entered will stay in the field for the password to be attempted again without having to type the username again.
+
+    - On successful sign in the user will be redirected to the previous page they were on before initating the sign in action.
+
+        - If the previous page is a 404 page the user is redirected to the home page instead.
+        <details>
+        <summary>
+            Sign in images
+        </summary>
+        <p><img src="readme-assets/sign-in-page.png" alt="sign in page"></p>
+        <p><img src="readme-assets/sign-in-page-mobile.png" alt="sign in page mobile"></p>
+        </details>
+
+- **Sign out page**
+    - Features 2 simple buttons to sign out or to cancel the action. 
+
+    - Clicking cancel will return the user to the previous page.
+
+    - On successful sign out the user will be redirected to the previous page they were on before initating the sign out action.
+
+        - If the previous page is a 404 page the user is redirected to the home page instead.
+        <details>
+        <summary>
+            Sign out images
+        </summary>
+        <p><img src="readme-assets/sign-out-page.png" alt="sign out page"></p>
+        <p><img src="readme-assets/sign-out-page-mobile.png" alt="sign out page mobile"></p>
+        </details>
+
+- **Calendar page**
+    - Features a list of event cards for each event planned for the current season.
+
+    - The familiar boders wrap the cards and the cards feature the relevant dates, event name, location, and an image of the circuit layout.
+        - The end date of events is calculated and not set by the site admin as some regulations set within the sport ensure that the event will end 2 days after it starts. If that ever changes a manual end date will be added.
+
+    - Each card when clicked leads to a logical URL which displays a page with extended details for that event.
+
+    - When a card is hovered it will grow sligtly and the border will turn red to indicate which event is being viewed.
+
+    - If an event that does not exist is attempted to be viewed a detailed 404 page will let the user know there is no event at that url. For example /event/25/ in this 24 event season calendar.
+        <details>
+        <summary>
+            Calendar images
+        </summary>
+        <p><img src="readme-assets/calendar-page.png" alt="calendar page with a card hovered"></p>
+        <p><img src="readme-assets/page-when-event-clicked.png" alt="page after clicking the selected event"></p>
+        <p><img src="readme-assets/event-404-page.png" alt="404 page for invalid event"></p>
+        </details>
+
+- **Detailed event page**
+    - Any event that has details added to it will be able to be viewed on a seperate page.
+
+    - The page features a hero image related to event as well as the event name.
+
+    - There is a section with some key information about the event as well as it's history and what challenges it may provide.
+
+    - A larger view of the circuit layout, the circuit name, as well as some interesting stats for the circuit is also present.
+
+    - At the bottom of the page the user will find a comment form if they're logged in as well as a container for the comments.
+
+        - If a user is not logged in the form will not be generated and instead a prompt will be in its place asking the user to sign in to comment.
+
+        - If there are no approved comments under a post the container will let the user know that no one has shared their thoughts yet.
+
+        - The comments container is scrollable with a minimalistic scrollbar that blends in with the border.
+        <details>
+        <summary>
+            Event page images
+        </summary>
+        <p><img src="readme-assets/event-page-landing.png" alt="event page hero landing"></p>
+        <p><img src="readme-assets/event-page-content.png" alt="event content and circuit card"></p>
+        <p><img src="readme-assets/event-page-comments.png" alt="event page comments"></p>
+        <p><img src="readme-assets/event-page-no-comments-signed-out.png" alt="event page with no comments and logged out user"></p>
+        </details>
+
+- **CRUD buttons**
+    - Comments left under any event feature full CRUD functionality.
+
+        - If a user is logged in they may create a comment through the comment form.
+
+            - A comment has to approved by a site admin before it will be visible to other users.
+
+        - If a user is logged in and is the author of a comment they may edit the comment.
+
+        - If a user is logged in and is the author of a comment they may delete the comment.
+
+        - A site admin may also approve a comment through from the event page.
+
+    - Whenever any CRUD button is pressed and the request is sent the button gets disabled to avoid excessive requests being made and bugs occuring.
+
+    - Whenever a CRUD button is pressed the users y-scroll position is captured so that went the operation is done they will be returned to the same scroll and view as when the action was made.
+        <details>
+        <summary>
+            CRUD button images
+        </summary>
+        <p><img src="readme-assets/comment-crud-buttons.png" alt="crud buttons highlighted"></p>
+        </details>
+
+- **Creating a comment**
+    - Any logged in user may use the comment form to create and post a comment.
+
+    - Upon submitting a comment the submit button will turn grey and will not be clickable again while the request is being processed.
+
+        - When the submit button is clicked the scroll position is saved and restored after the request and redirect is finished.
+
+    - Once the comment is posted it will be unapproved and visible only to the author and a user with superuser status.
+
+    - If the form is empty the button will not be disabled and instead a prompt asking the user to fill out the text field will be shown.
+        <details>
+        <summary>
+            Create comment images
+        </summary>
+        <p><img src="readme-assets/submitted-comment.png" alt="form when submit is clicked"></p>
+        <p><img src="readme-assets/new-comment.png" alt="new submitted comment"></p>
+        <p><img src="readme-assets/comment-empty.png" alt="form when submit is clicked with no content"></p>
+        </details>
+
+- **Editing a comment**
+    - A logged in user who is also the author of a comment may edit the comment as they wish.
+
+    - When the edit button is clicked the comment area will turn into an editable text area an a save button will appear.
+
+        - If the edit button is clicked the scroll position gets saved so it can restore the user to same view after the request is done.
+
+        - The save button will also be disabled after initiating the request.
+
+    - When the edit button is clicked it gets converted into a cancel button instead.
+
+        - The user can then toggle between these 2 states if necessary.
+
+        - Whenever the cancel button is clicked the stored scroll position gets cleared.
+
+    - Once an edit action is saved the comment will be returned to an unapproved status.
+        <details>
+        <summary>
+            Edit comment images
+        </summary>
+        <p><img src="readme-assets/comment-before-edit.png" alt="comment before edit is clicked"></p>
+        <p><img src="readme-assets/comment-when-edit-clicked.png" alt="comment after edit is clicked"></p>
+        <p><img src="readme-assets/comment-after-save-clicked.png" alt="comment after save is clicked"></p>
+        <p><img src="readme-assets/comment-when-edit-saved.png" alt="comment after the edit has been made"></p>
+        </details>
+
+- **Approving a comment**
+    - An authenticated superuser will see any comments comments posted whether they are approved or not.
+
+    - An unapproved comment will have a green approve button visible which can be clicked at any time to approve the comment so any other user may also see that comment.
+
+    - When the approve button is clicked the request to approve gets initiated and the button gets disabled to avoid multiple requests.
+
+        - The scroll position of the superuse will also be saved so that they are returned to the same position and can carry on approving comments or what have you.
+        <details>
+        <summary>
+            Approve comment images
+        </summary>
+        <p><img src="readme-assets/comment-before-approve-click.png" alt="comment before approve is clicked"></p>
+        <p><img src="readme-assets/comment-after-approve-click.png" alt="comment after approve is clicked"></p>
+        <p><img src="readme-assets/comment-approved.png" alt="approved comment"></p>
+        </details>
+
+- **Deleting a comment**
+    - A logged in user who is also the author of a comment may delete the comment if they so wish.
+
+    - When the delete button is clicked a confirmation modal appears on the users screen to confirm whether they want to delete the comment or not.
+
+    - If the delete button on the modal is clicked the request to delete the comment gets processed.
+
+        - The button will be disabled after clicking to prevent bugs and 404 errors.
+
+        - The users scroll position will also be stored so that they are returned to the same position as when the delete request was initiated.
+
+    - The user can also close the modal by clicking on the close button or the X in the top right corner of the modal. 
+        <details>
+        <summary>
+            Delete comment images
+        </summary>
+        <p><img src="readme-assets/comment-before-delete-click.png" alt="comment before delete is clicked"></p>
+        <p><img src="readme-assets/modal-after-delete-click.png" alt="modal after delete is clicked"></p>
+        <p><img src="readme-assets/modal-after-delete-confirmed.png" alt="modal when delete button is clicked again"></p>
+        <p><img src="readme-assets/comments-after-delete.png" alt="comments after the comment has been deleted"></p>
+        </details>
+
+- **Action response messages**
+    - Whenever an action gets completed a message appears on the users screen.
+
+    - The messages can be closed manually and will also dissapear automatically after 4 seconds.
+
+    - Messages appear after things like: Successful sign in, sign out, and or sign up. Any successful comment CRUD action.
+        <details>
+        <summary>
+            Message images
+        </summary>
+        <p><img src="readme-assets/approve-success-message.png" alt="message on successful comment approval"></p>
+        <p><img src="readme-assets/sign-out-message.png" alt="message after signing out"></p>
+        </details>
+
+- **Unauthorized request handling**
+    - If a user that is unauthorized for an action tries to perform one feedback is provided in various ways.
+
+        - Performing such a request would be done through editing the url manually.
+
+        - If a user is signed out and tries to perform any CRUD request they will be redirected to the sign in page.
+            <details>
+            <summary>
+                Trying to delete a comment from another author when signed in
+            </summary>
+            <p><img src="readme-assets/manual-delete-url.png" alt="manual url to request deletion"></p>
+            <p><img src="readme-assets/unauth-delete-request.png" alt="response for unauthorized delete request"></p>
+            </details>
+            <details>
+            <summary>
+                Trying to approve a comment as a normal user
+            </summary>
+            <p><img src="readme-assets/manual-approve-url.png" alt="manual url to request approval"></p>
+            <p><img src="readme-assets/unauth-approve-request.png" alt="response for unauthorized approval request"></p>
+            </details>
 ### Future Features
 
 
@@ -349,6 +642,7 @@ An authenticated user can delete any of their contributions made to the site.
 ### Technical
 - [caffsushi](https://stackoverflow.com/a/57682143) - For forcing https protocol over http when loading images from cloudinary by accessing an objects .url tag.
 - [dgel](https://stackoverflow.com/a/12003808) - Decorator for checking if a user has superuser status in views.
+- [omkashyap007](https://www.geeksforgeeks.org/realtime-chat-app-using-django/) - Guide on how to set up a websocket live chat.
 
 ### Media
 #### Circuit SVGs
