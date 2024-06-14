@@ -38,9 +38,13 @@
               <hr class="card-line">
               <div class="event-card-body">
                 <h3 class="fw-bold event-location">{{ upcoming_event.location }}</h3>
-                <img class="event-image" src="{% if 'placeholder' in upcoming_event.event_circuit.url %}
-                  https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
-                  {% else %}{{ upcoming_event.event_circuit.url }}{% endif %}" alt="Event image">
+                {% if "placeholder" in upcoming_event.event_circuit.url %}
+                <img class="event-image"
+                  src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
+                  alt="Checkered flags">
+                {% else %}
+                <img class="event-image" src="{{ upcoming_event.event_circuit.url }}" alt="Event circuit">
+                {% endif %}
               </div>
             </div>
           </a>
@@ -86,7 +90,9 @@
     <div class="col-md-5 col-lg-7">
       <!-- Live chat -->
       <fieldset class="live-chat-container mt-4 mt-md-1">
-        <legend><h2 class="chat-heading">Live town chat</h2></legend>
+        <legend>
+          <h2 class="chat-heading">Live town chat</h2>
+        </legend>
         <div class="live-messages-container lite-scrollbar">
           <div class="messages" id="id-chat-item-container">
             <div id="chat-anchor"></div>

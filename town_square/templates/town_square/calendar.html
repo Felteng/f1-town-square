@@ -36,10 +36,13 @@
           <div class="event-card-body">
             <h3 class="fw-bold event-location">{{ event.location }}</h3>
             <p class="event-name">{{ event.event_name }}</p>
-            <img class="event-image" src="{% if 'placeholder' in event.event_circuit.url %}
-              https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg
-              {% else %}
-              {{ event.event_circuit.url }}{% endif %}" alt="Event image">
+            {% if "placeholder" in upcoming_event.event_circuit.url %}
+            <img class="event-image"
+              src="https://res.cloudinary.com/djmipr2p0/image/upload/v1716558951/checkered-flags.svg"
+              alt="Checkered flags">
+            {% else %}
+            <img class="event-image" src="{{ event.event_circuit.url }}" alt="{{ event.location }} circuit">
+            {% endif %}
           </div>
         </div>
       </a>
