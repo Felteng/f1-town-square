@@ -193,3 +193,22 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
   }
 }
+
+/* Scrollbar styling and fallback */
+/* Legacy browsers with `::-webkit-scrollbar-*` support */
+.lite-scrollbar::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0);
+    width: 2px;
+  }
+  
+  .lite-scrollbar::-webkit-scrollbar-thumb {
+    background: #8d856d;
+  }
+  
+  /* Modern browsers with `scrollbar-*` support */
+  @supports (scrollbar-width: auto) {
+    .lite-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #8d856d rgba(0, 0, 0, 0);
+    }
+  }

@@ -77,12 +77,12 @@
   border-color: #000214;
   margin-bottom: 2rem;
   margin-top: 0;
-  opacity: 100;
+  opacity: 1;
 }
 
 .event-details-container {
   margin-bottom: 2rem;
-}  
+}
 
 .circuit-name {
   font-weight: 700;
@@ -131,15 +131,6 @@
   margin-bottom: 1rem;
 }
 
-.comments::-webkit-scrollbar {
-  background: rgba(0, 0, 0, 0);
-  width: 1px;
-}
-
-.comments::-webkit-scrollbar-thumb {
-  background: #8d856d;
-}
-
 .comments-heading {
   margin-bottom: 2rem;
   font-size: calc(1.325rem + 1vw);
@@ -173,7 +164,8 @@
   padding: 0 1rem 1rem 0;
 }
 
-.delete-btn, .confirm-delete-btn {
+.delete-btn,
+.confirm-delete-btn {
   background-color: #df2525;
   --bs-btn-hover-bg: #8d1414;
 }
@@ -208,6 +200,7 @@
   .hero-container {
     max-height: 240px;
   }
+
   .hero-text {
     font-size: revert;
   }
@@ -228,11 +221,11 @@
   .circuit-container {
     order: 2;
   }
-  
+
   .event-container {
     order: 1;
   }
-  
+
 }
 
 @media (min-width: 1200px) {
