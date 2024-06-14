@@ -8,8 +8,8 @@
 {% block content %}
 <!-- Page hero header -->
 <div class="hero-container">
-  <img class="hero-image" src="{{ event.event_hero_image.url }}" alt="Hero image">
-  <h1 class="text-center hero-text">{{ event.race.event_name}}</h1>
+  <img class="hero-image" src="{{ event.event_hero_image.url }}" alt="{{event.race.location}} Grand Prix">
+  <h1 class="text-center hero-text">{{ event.race.event_name }}</h1>
 </div>
 <hr class="separator">
 <!-- Event content -->
@@ -29,26 +29,26 @@
         <div class="row">
           <div class="col-md-6">
             <div class="stat-container">
-              <p class="stat-heading">Circuit Length</p>
-              <p class="stat">{{ event.circuit_length }}<span class="small">km</span></p>
+              <h3 class="stat-heading">Circuit Length</h3>
+              <span class="stat">{{ event.circuit_length }}<span class="small">km</span></span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <p class="stat-heading">Grand Prix Laps</p>
-              <p class="stat">{{ event.number_of_laps }}</p>
+              <h3 class="stat-heading">Grand Prix Laps</h3>
+              <span class="stat">{{ event.number_of_laps }}</span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <p class="stat-heading">Grand Prix Distance</p>
-              <p class="stat">{{ race_distance }}<span class="small">km</span></p>
+              <h3 class="stat-heading">Grand Prix Distance</h3>
+              <span class="stat">{{ race_distance }}<span class="small">km</span></span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="stat-container">
-              <p class="stat-heading">Lap Record</p>
-              <p class="stat">{{ event.lap_record }}</p>
+              <h3 class="stat-heading">Lap Record</h3>
+              <span class="stat">{{ event.lap_record }}</span>
             </div>
           </div>
         </div>
