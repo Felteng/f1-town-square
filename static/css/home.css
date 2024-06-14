@@ -28,7 +28,8 @@ legend {
   display: flex;
 }
 
-.event-card-header, .event-card-body {
+.event-card-header,
+.event-card-body {
   padding: 8px;
   border: none;
 }
@@ -97,6 +98,10 @@ legend {
   display: flex;
   flex-direction: column-reverse;
   overflow-y: scroll;
+}
+
+.connected-message {
+  color: #24C67B;
 }
 
 .messages {

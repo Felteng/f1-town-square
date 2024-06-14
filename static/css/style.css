@@ -16,8 +16,17 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Exo 2", sans-serif;
+}
+
+a {
+  color: #4DA9FF;
 }
 
 /* Bootstrap overriding */
@@ -118,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-color {
-  background-color: rgb(255 44 0);
+  background-color: #A81C00;
 }
 
 .nav-item {
@@ -197,18 +206,18 @@ h1, h2, h3, h4, h5, h6 {
 /* Scrollbar styling and fallback */
 /* Legacy browsers with `::-webkit-scrollbar-*` support */
 .lite-scrollbar::-webkit-scrollbar {
-    background: rgba(0, 0, 0, 0);
-    width: 2px;
+  background: rgba(0, 0, 0, 0);
+  width: 2px;
+}
+
+.lite-scrollbar::-webkit-scrollbar-thumb {
+  background: #8d856d;
+}
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+  .lite-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #8d856d rgba(0, 0, 0, 0);
   }
-  
-  .lite-scrollbar::-webkit-scrollbar-thumb {
-    background: #8d856d;
-  }
-  
-  /* Modern browsers with `scrollbar-*` support */
-  @supports (scrollbar-width: auto) {
-    .lite-scrollbar {
-      scrollbar-width: thin;
-      scrollbar-color: #8d856d rgba(0, 0, 0, 0);
-    }
-  }
+}
