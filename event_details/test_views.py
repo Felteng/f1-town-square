@@ -61,7 +61,9 @@ class TestDetailViews(TestCase):
         """
         response = self.client.get(reverse("comment_delete", args=[1, 1]))
         self.assertEqual(response.status_code, 302)
-        self.assertIn("/accounts/login/?next=/event/1/delete_comment/1", response.url)
+        self.assertIn(
+            "/accounts/login/?next=/event/1/delete_comment/1", response.url
+            )
 
     def test_edit_comment_unathorized_user(self):
         """
@@ -70,7 +72,9 @@ class TestDetailViews(TestCase):
         """
         response = self.client.get(reverse("comment_edit", args=[1, 1]))
         self.assertEqual(response.status_code, 302)
-        self.assertIn("/accounts/login/?next=/event/1/edit_comment/1", response.url)
+        self.assertIn(
+            "/accounts/login/?next=/event/1/edit_comment/1", response.url
+            )
 
     def test_approve_comment_unathorized_user(self):
         """
@@ -78,7 +82,8 @@ class TestDetailViews(TestCase):
         if they try to approve a comment through url input.
         """
         self.client.login(
-        username="myUsername", password="myPassword")
+            username="myUsername", password="myPassword"
+        )
         response = self.client.get(reverse("comment_approve", args=[1, 1]))
         self.assertEqual(response.status_code, 302)
         self.assertIn("/not_an_admin", response.url)
