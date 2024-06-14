@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'town_square',
     'event_details',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -94,7 +94,10 @@ TEMPLATES = [
 
 SUMMERNOTE_CONFIG = {
     'summernote': {
-        'fontSizes': ['8', '9', '10', '11', '12', '14', '16', '18', '22','24', '36', '48' , '64', '82', '150'],
+        'fontSizes': [
+            '8', '9', '10', '11', '12', '14', '16', '18',
+            '22', '24', '36', '48', '64', '82', '150'
+            ],
     },
 }
 
