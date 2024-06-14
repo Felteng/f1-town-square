@@ -28,7 +28,8 @@ legend {
   display: flex;
 }
 
-.event-card-header, .event-card-body {
+.event-card-header,
+.event-card-body {
   padding: 8px;
   border: none;
 }
@@ -99,13 +100,8 @@ legend {
   overflow-y: scroll;
 }
 
-.live-messages-container::-webkit-scrollbar {
-  background: rgba(0, 0, 0, 0);
-  width: 1px;
-}
-
-.live-messages-container::-webkit-scrollbar-thumb {
-  background: #8d856d;
+.connected-message {
+  color: #24C67B;
 }
 
 .messages {
@@ -160,6 +156,7 @@ legend {
   margin: 0 0.4rem;
 }
 
+/* Media queries */
 @media (min-width: 992px) {
   .chat-heading {
     font-size: 1.5rem;
