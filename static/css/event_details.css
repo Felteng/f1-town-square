@@ -137,7 +137,7 @@
 }
 
 .comment-date {
-  color: rgba(255, 255, 255, 0.288);
+  color: rgb(255 255 255 / 55%);
   font-weight: 300;
 }
 
