@@ -117,7 +117,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - To achieve the darker theme every page features shade of woodsmoke as the background. \
 ![Background color](readme-assets/background-hex.png)
 
-- Furthermore the site incorporates some staple racing colors, such as the very vibrant, scarlet red navigation bar, combined with the white text. \
+- Furthermore the site incorporates some staple racing colors, such as the very vibrant, milano red navigation bar, combined with the white text. \
 ![Navbar colors](readme-assets/navbar-hex.png)
 
 - Most element borders feature 1 of 2 different shades an olive haze color which aims to provide an organic looking seperation of content. \
@@ -163,7 +163,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
     - On mobile devices the navbar turns into a collapsable menu through the intuitive and familiar burger menu.
 
-    - Features a very mute text letting the user know if they're logged in and who they are logged in as.
+    - Features a slightly mute text letting the user know if they're logged in and who they are logged in as.
         <details>
         <summary>
             Navigation images
@@ -449,6 +449,12 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
             <p><img src="readme-assets/manual-approve-url.png" alt="manual url to request approval"></p>
             <p><img src="readme-assets/unauth-approve-request.png" alt="response for unauthorized approval request"></p>
             </details>
+
+- **Footer**
+    - Featured at the bottom of the page is a footer with the goal of completing the full "frame" of the page.
+
+    - The footer features a short string of info about the creator of the site as well as a GitHub icon serving as a link to the creators GitHub profile.
+
 ### Future Features
 - A necessary future feature if the scale of this project aims to be increased to a larger user base would be to change the channel layers for the live chat to be stored on something like a Redis server as opposed to the current earlier small scale implementation that uses InMemoryChannelLayer.
 
@@ -535,18 +541,214 @@ An authenticated user can delete any of their contributions made to the site.
 
 #### HTML [W3C validator](https://validator.w3.org/)
 
+- **Home page**
+
+    - No errors or warnings returned upon validation.
+
+- **Calendar page**
+
+    - No errors or warnings returned upon validation.
+
+- **Event details page**
+
+    - One error type is shown, it regards the obsolote HTML font element. The font element is just what summernote uses when producing the formatted text from the summernote editor in the admin panel. This element is applied to each heading and paragraph. See [this reply](https://github.com/summernote/summernote/issues/2005#issuecomment-542490245) for reference. [This issue](https://github.com/summernote/summernote/projects/2#card-50662209) was added to the summernote project board back in 2020 and is still present in the to-do column.
+        <details>
+        <summary>
+            Validator error description.
+        </summary>
+        <p><img src="readme-assets/oboslete-font-element.png" alt="validator output"></p>
+        </details>
+
+- **Event details page with editing toggled**
+    
+    - Other than the same font element errors as mentioned above no errors or warning are returned upon validation.
+
+- **Sign out page**
+
+    - No errors or warnings returned upon validation.
+
+- **Sign in page**
+
+    - No errors or warnings returned upon validation.
+
+- **Sign up page**
+
+    - 
+
 
 #### CSS [Jigsaw](https://jigsaw.w3.org/css-validator/)
+
+- **calendar.css**
+
+    - No errors or warnings returned upon validation.
+
+- **event_details.css**
+
+    - No errors or warnings returned upon validation.
+
+
+- **home.css**
+
+    - No errors or warnings returned upon validation.
+
+- **style.css**
+
+    - No errors returned upon validation.
+
+    - 4 warnings are shown. 2 in regards to the use of the vendor extended pseudo-elements:
+        ```css
+        ::-webkit-scrollbar ::-webkit-scrollbar-thumb
+        ```
+
+        - These are used to allow browsers utilising the legacy scrollbar styling to also work.
+
+    - 1 in regards to a vendor extension:
+        ```css
+        -moz-osx-font-smoothing
+        ```
+        - Part of the hover.css usage.
+    
+    - 1 in regards to imports not being validated.
+
+        - Google fonts.
+        <details>
+        <summary>
+            Validator warning description.
+        </summary>
+        <p><img src="readme-assets/webkit-warnings.png" alt="validator output"></p>
+        </details>
 
 
 #### JavaScript [JSHint](https://jshint.com/) 
 
+- **event_details.js**
+
+    - No errors returned upon validation.
+
+    - 1 warning of an undefined variable:
+        ```javascript
+        csrftoken
+        ```
+        - This variable is defined in the template using DTL to get the csrf token. So a false positive warning.
+
+- **live_chat.js**
+
+    - No errors returned upon validation.
+
+    - 1 warning of an undefined variable:
+        ```javascript
+        username
+        ```
+        - This variable is defined in the template using DTL to get the the users username. So a false positive warning.
+    
 
 #### Python [CI Python Linter](https://pep8ci.herokuapp.com/)
+Any .py file where custom code has been written or added has been checked Code Institutes pep8 linter.
 
+This is a result from a file with no errors, any file marked with "No errors found." will have had the same result: \
+![No errors found from CI linter](readme-assets/ci-linter-no-errors.png)
+
+- **event_details/admin.py**
+
+    - No errors found.
+
+- **event_details/forms.py**
+
+    - No errors found.
+
+- **event_details/models.py**
+
+    - No errors found.
+
+- **event_details/test_forms.py**
+
+    - No errors found.
+
+- **event_details/test_views.py**
+
+    - No errors found.
+
+- **event_details/urls.py**
+
+    - No errors found.
+
+- **event_details/views.py**
+
+    - No errors found.
+
+- **f1_town_square/users/adapter.py**
+
+    - No errors found.
+    
+- **f1_town_square/asgi.py**
+
+    - No errors found.
+    
+- **f1_town_square/middleware.py**
+
+    - No errors found.
+    
+- **f1_town_square/settings.py**
+
+    - No errors found.
+    
+- **f1_town_square/urls.py**
+
+    - No errors found.
+    
+- **town_square/admin.py**
+
+    - No errors found.
+        
+- **town_square/consumers.py**
+
+    - No errors found.
+        
+- **town_square/models.py**
+
+    - No errors found.
+        
+- **town_square/routing.py**
+
+    - No errors found.
+        
+- **town_square/urls.py**
+
+    - No errors found.
+        
+- **town_square/views.py**
+
+    - No errors found.
 
 #### Accessibility [axe DevTools Chrome Extension](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd)
 
+- Contrast errors navbar (5).
+
+    - Fix: Adjust the navbar background color (#fe2d00) to a darker shade of red (#A81C00).
+
+- Contrast error for edit buttons.
+
+    - Fix: Adjust the orange background color of the edit-btn class from (#c78100) to (#a15600).
+
+- Event details circuit stats seen as possible headings (4).
+
+    - Fix: Swap the stats to spans from paragraphs, and give stat heading h3 tags.
+
+- Contrast error on default blue hyperlinks.
+
+    - Fix: Change the hyperlink text color to (#4DA9FF).
+
+- Contrast error on connected to live chat message.
+
+    - Fix: Replace bs-text-success to a class with a slightly brighter green (#24C67B).
+
+- Alert for unintuitive alt on calendar images.
+
+    - Fix: Utilise DTL to create unique alts for every circuit image.
+
+- I've left one type of alert unattended. The alert if for redundant links, or multiple links leading to the same destination within the same page.
+
+    - This alert is triggered simply because the navbar is present on every page. So for pages that feature a log in prompt to access a feature such as leaving a comment the sign in url can be found in the prompt as well as the navbar.
 
 #### Performance, Accessibility, SEO, Best Practices (Lighthouse Chrome DevTools)
 
