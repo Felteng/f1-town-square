@@ -6,8 +6,11 @@ const liveChatContainer = document.querySelector("#id-chat-item-container");
 
 chatSocket.onopen = function () {
   let div = document.createElement("div");
-  div.innerHTML = "Connected to chat!";
-  $(div).addClass("text-start text-success");
+  div.innerHTML = (`Connected to chat!
+    <br>Anyone can see what you write but nothing 
+    written will be saved in that chat after page refresh`
+  );
+  $(div).addClass("text-start connected-message");
   liveChatContainer.insertBefore(div, chatAnchor);
 };
 
@@ -15,7 +18,7 @@ chatSocket.onopen = function () {
 chatSocket.onclose = function () {
   let div = document.createElement("div");
   div.innerHTML = (`Connection to chat has closed!
-    <br/>Refresh page to try to reconnect`);
+    <br>Refresh page to try to reconnect`);
   $(div).addClass("text-start text-danger");
   liveChatContainer.insertBefore(div, chatAnchor);
 };
