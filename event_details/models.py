@@ -28,7 +28,7 @@ class RaceEventDetail(models.Model):
         return self.race.location + ": " + self.race.event_name
 
 
-# Model approach from: https://github.com/Code-Institute-Solutions/Django3blog/blob/75bd87f4439d678bee07c149383cf2d778c38a6f/12_final_deployment/blog/models.py#L34-L47
+# Model approach from: https://github.com/Code-Institute-Solutions/Django3blog/blob/75bd87f4439d678bee07c149383cf2d778c38a6f/12_final_deployment/blog/models.py#L34-L47  # noqa
 class RaceEventComment(models.Model):
     """
     Stores a single comment entry related to
