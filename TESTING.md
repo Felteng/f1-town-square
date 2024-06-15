@@ -1,5 +1,20 @@
-Please refer to [test_forms](event_details/test_forms.py) and [test_views](event_details/test_views.py) for the automatic tests that have been written.
+# Automatic and manual testing
 
+Back to [README.md](README.md)
+
+## Automatic testing
+Please refer to [test_forms](event_details/test_forms.py) and [test_views](event_details/test_views.py) for the automatic test's code.
+
+All automatic tests passed.
+    <details>
+    <summary>
+        Test coverage report.
+    </summary>
+    <p><img src="readme-assets/automatic-tests.png" alt="written automatic tests result"></p>
+    <p><img src="readme-assets/coverage-report.png" alt="test coverage report"></p>
+    </details>
+
+## Manual testing
 Below is a breakdown of the various manual tests that have been carried out to ensure a uniform functionality and response across the site.
 
 | **Feature**                | **Action**                                                                                  | **Expected Output**                                                                                                                                                                      | **Actual Output**                                                                                                                    |
@@ -63,3 +78,5 @@ Below is a breakdown of the various manual tests that have been carried out to e
 | Previous URL redirection   | Start an account authentication action (Sign in, sign up, sign out) from a 404 page         | User is redirected to the home page as there is not reason to go back to a 404 page                                                                                                      | User is redirected to the home page                                                                                                  |
 | Successful action messages | Perform sign up, sign in, sign out, comment submission, approval, edit, and deletion        | Each successful action, when redirected, produces a self closing success message which can be closed manually too                                                                        | Each successful action, when redirected, produces a self closing success message which can be closed manually too                    |
 | External links             | Open external link from page footer                                                         | Link opens in a new page                                                                                                                                                                 | Link opens in a new page                                                                                                             |
+
+Back to [README.md](README.md)
