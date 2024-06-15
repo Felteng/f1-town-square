@@ -89,24 +89,98 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 ### 5 Planes of UX
 
-#### Strategy
+### 1. Strategy
+**Objectives**
+- Primary Goal: Create a community hub for F1 enthusiasts where users can chat live, view race schedules, and engage with race details through comments.
 
+- Secondary Goal: Provide up-to-date information about the F1 season, including race details, and foster user engagement and interaction.
 
+**User Needs**
+- Live Chat: Users need a platform to discuss F1-related topics in real-time.
 
-#### Scope
+- Race Calendar: Users need a convenient way to view the current season's race schedule.
 
+- Race Details and Comments: Users need detailed information about each Grand Prix and a space to share their thoughts and comments.
 
+### 2. Scope
+**Functional Requirements**
+- **Town Chat**: Real-time chat functionality on the home page.
 
-#### Structure
+- **Calendar Page**: Interactive calendar displaying the current season's grand prix.
 
+- **Race Details Page**: Detailed information about each race with a comment section.
 
+- **User Authentication**: Registration and login functionality to enable commenting and chat participation.
 
-#### Skeleton
+**Content Requirements**
+- **Home Page**: Visual introduction to what the site offers, the upcoming and latest races, and the town chat.
 
+- **Calendar Page**: List of races with dates, locations, and links to detailed race pages.
 
+- **Race Details Page**: Information about each race (e.g., circuit, date, notable info and history of the grand prix) and user comments.
 
-#### Surface
+### 3. Structure
+**Interaction Design**
+- **Home Page**: Users are presented with the 4 most releveat races and greeted with a welcome message in the town chat, more or less prominently displayed depending on screen size.
 
+- **Calendar Page**: Users can navigate through the season's race schedule and click on each race for more details.
+
+- **Race Details Page**: Users can read detailed information about the race and leave comments at the bottom of the page.
+
+- **User Authentication**: Smooth and straightforward registration and login process.
+
+**Information Architecture**
+- **Navigation**: Clear and intuitive navigation bar with links to Home, Calendar, and User Profile.
+
+- **Content Hierarchy**:
+
+    - **Home Page**: Welcome message, town chat, latest news.
+
+    - **Calendar Page**: Race schedule with links to detailed race pages.
+
+    - **Race Details Page**: Race information followed by a comment section.
+
+### 4. Skeleton
+**Layout**
+- **Home Page**: Header with navigation, main content area for relevant races and the town chat, footer completes framing.
+
+- **Calendar** Page: Header with navigation, main content area for the calendar, footer completes framing.
+
+- **Race Details** Page: Header with navigation, main content area for race details followed by the comment section at the bottom, footer completes framing.
+
+**Interface Elements**
+- **Buttons**: Clear call-to-action buttons for navigation, chat participation, submitting comments, and performing CRUD on comments.
+
+- **Forms**: Simple and intuitive forms for user authentication and comment submission.
+
+- **Links**: Clearly labeled links to race details from the calendar and other pages.
+
+**Navigation**
+- **Top Navigation Bar**: Persistent across all pages with links to Home, Calendar, and account authentication (e.g., sign out, sign in, register).
+
+- **Authentication prompts**: Clear link to sign in page in place of any text input that requires authentication. Link for sign up featured on the sign in page if user needs to create an account.
+
+- **Breadcrumbs**: Intuitive redirection to the previously visited page (e.g., send user back to the event details page they wanted to comment on after signing in) after performing and account authentication action (e.g., sign out, sign in, register).
+
+### 5. Surface
+**Visual Design**
+- Color Scheme: Use a modern, sporty color palette reflecting F1’s brand (e.g., black, red, white).
+
+- Typography: Bold, readable fonts (With a sense of speed) for headers and clear, legible fonts for body text.
+
+- Imagery: High-quality images of F1 cars, circuits, and events to enhance the visual appeal.
+
+**Branding**
+- Logo: Prominently display the F1 Town Square logo in the header.
+
+- Consistency: Maintain a consistent look and feel across all pages with uniform colors, fonts, and button styles.
+
+**User Feedback**
+- Chat and Comments: Real-time updates in the town chat and immediate display of new messages to provide an interactive experience.
+
+- Notifications: Alert users to whether performing an action was successful or not (e.g., signing out, deleting a comment, creating a comment, etc).
+
+- Authentication status: Clear portrayal of whether or not the user is logged in visible on the page header navbar.
 
 
 ### Visual Design Ideology
@@ -573,7 +647,20 @@ An authenticated user can delete any of their contributions made to the site.
 
 - **Sign up page**
 
-    - 
+    - 4 errors are found, none due to any code written for the project - Does not hamper any functionality.
+        
+        - The errors are produced when rendering the sign up form through django templating language.
+        - When inspecting the elements through devtools the faulty structure is not present, but when page source is viewed to be passed into the validator the error lines look like: 
+            ```html
+            <span class="helptext" id="id_password1_helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
+            ```
+        - The errors stem from the ul getting placed inside the span, and the span is placed inside a p element. The ul will work as pseudo closing tag for the paragraph which gives the validator errors.
+        <details>
+        <summary>
+            Validator error description.
+        </summary>
+        <p><img src="readme-assets/sign-up-errors.png" alt="validator output"></p>
+        </details>
 
 
 #### CSS [Jigsaw](https://jigsaw.w3.org/css-validator/)
@@ -750,8 +837,39 @@ This is a result from a file with no errors, any file marked with "No errors fou
 
     - This alert is triggered simply because the navbar is present on every page. So for pages that feature a log in prompt to access a feature such as leaving a comment the sign in url can be found in the prompt as well as the navbar.
 
-#### Performance, Accessibility, SEO, Best Practices (Lighthouse Chrome DevTools)
+#### Performance, Accessibility, Best Practices, SEO (Lighthouse Chrome DevTools)
+- Lighthouse was used alongside WAVE to validate accessibility among the 3 other topics it covers.
 
+- It was performed on all pages but I'll spare the need to look at results for the plain pages such as 404 and the authentication pages.
+    - These tests were performed on an incognite page as to avoid extensions and cookies.
+        - Since the project uses cloudinary to serve static media files 2 3rd part cookies are introduced as a result. Historically this would not be of any importance but Chrome has set hot to phase out and remove the use of 3rd party cookies in a future version of chrome. In turn that results in best practices getting lowered significantly to 78 due to those 2 cookies.
+        - There is nothing to do as a cloudinary user as of now and they are holding internal discussions at cloudinary, as to how they will tackle these plans from Google. [Some information](https://community.cloudinary.com/discussion/596/third-party-cookies-will-be-blocked-how-to-solve-it) from a cloudinary staff member regarding the issue can be found under this thread. 
+    - Below are the results for the 3 main pages of the site:
+    <details>
+    <summary>
+        Lighthouse desktop.
+    </summary>
+    <p><img src="readme-assets/home-page-lighthouse.png" alt="home page lighthouse report"></p>
+    <p><img src="readme-assets/calendar-lighthouse.png" alt="calendar page lighthouse report"></p>
+    <p><img src="readme-assets/event-details-lighthouse.png" alt="event details page lighthouse report"></p>
+    </details>
+
+    <details>
+    <summary>
+        Lighthouse mobile.
+    </summary>
+    <p><img src="readme-assets/home-page-mobile-lighthouse.png" alt="home page mobile lighthouse report"></p>
+    <p><img src="readme-assets/calendar-mobile-lighthouse.png" alt="calendar page mobile lighthouse report"></p>
+    <p><img src="readme-assets/event-details-mobile-lighthouse.png" alt="event details page mobile lighthouse report"></p>
+    </details>
+
+    <details>
+    <summary>
+        Lighthouse cloudinary cookies.
+    </summary>
+    <p><img src="readme-assets/lighthouse-with-cookies.png" alt="lighthouse report with cloudinary cookies"></p>
+    <p><img src="readme-assets/best-practices-explanation.png" alt="lighthouse explanation of the best practices score and cookies usage"></p>
+    </details>
 
 ### Browser Testing
 
@@ -811,7 +929,7 @@ This is a result from a file with no errors, any file marked with "No errors fou
 ![Console error](readme-assets/cannot-read-prop.png)
     - This console error is logged whenever an unauthenticated user visits the homepage, when the live chat message input is attempted to be put into focus.
 
-        - The solution to this issue was to check whether or not the input field is visible (Which it only is to a logged in user) and then add the call focus():
+        - The solution to this issue was to check whether or not the input field is visible (Which it only is to a logged in user) and then call focus():
         ```javascript
         document.querySelector("#id_message_send_input").focus();
         ```
@@ -843,14 +961,33 @@ This is a result from a file with no errors, any file marked with "No errors fou
 
 
 ### Unaddressed Bugs
-
+- None aware of as of writing this (2024-06-14)
 
 ## Deployment
 
 ### Local Deployment
+- Deploying locally is quick and easy as the packages will run and function without any additional effort.
 
+    1. Assuming a django project present; Open a terminal in the workspace.
+
+    2. To start the local server for development enter the following in the terminal:
+
+        - python3 manage.py runserver
+
+    3. Now the site can be opened through the pop up that appears in the bottom right hand corner.
 
 ### Live Deployment
+Prerequisites
+Ensure you have the following installed:
+- Install Daphne (server used to run Django on Heroku with ASGI capabilities):  ```pip install daphne```
+
+- Install Django channels (used to handle websockets and chat protocols): ```pip install channels```
+
+- Install pyscopg2 (connects to PostgreSQL): ```pip install dj_database_url pyscopg2```
+
+- Install Cloudinary (serving and hosting static files and images): ```pip install cloudinary dj3-cloudinary-storage```
+
+- Install Whitenoise (prevent issues with Heroku not rendering custom stylesheet): ```pip install whitenoise```
 
 
 ## Credits
