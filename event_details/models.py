@@ -27,6 +27,9 @@ class RaceEventDetail(models.Model):
     def __str__(self):
         return self.race.location + ": " + self.race.event_name
 
+    class Meta:
+        ordering = ['race']
+
 
 # Model approach from: https://github.com/Code-Institute-Solutions/Django3blog/blob/75bd87f4439d678bee07c149383cf2d778c38a6f/12_final_deployment/blog/models.py#L34-L47  # noqa
 class RaceEventComment(models.Model):
