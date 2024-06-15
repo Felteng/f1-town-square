@@ -117,7 +117,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 - **Calendar Page**: List of races with dates, locations, and links to detailed race pages.
 
-- **Race Details Page**: Information about each race (e.g., circuit, date, notable info and history of the grand prix) and user comments.
+- **Race Details Page**: Information about each race (e.g., circuit, notable info, and history of the grand prix) and user comments.
 
 ### 3. Structure
 **Interaction Design**
@@ -608,7 +608,7 @@ An authenticated user can delete any of their contributions made to the site.
 ## Testing
 
 ### Test Guide
-
+Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have been carried out.
 
 ### Validator Testing
 
@@ -874,9 +874,27 @@ This is a result from a file with no errors, any file marked with "No errors fou
 ### Browser Testing
 
 **Layout:**
+- Layout tests have been performed with use of Chrome DevTools across all different breakpoints and various resolotiuns between each breakpoint.
 
+    - Every page has been reviewed across the different layout to ensure no overflow occurs and that the site feels intutive to use.
+
+    - Each race event card has been expected due to the varying lengths in event names and media query breakpoints were adjusted accordingly.
 
 **Functionality:** 
+- Testing complete functionality of the site. This includes:
+
+    - Navigation
+    - Sign Up
+    - Sign in
+    - Sign out
+    - Opening external links
+    - Reading all available site content
+    - Browse race events
+    - Creating comments and messages
+    - Delete and edit comments
+    - Site admin user functions
+
+- Functionality and layout has been tested accross the 4 main browsers, Chrome, Firefox, MS Edge, and Safari with no alarming issues spotted.
 
 
 ### Addressed Bugs
@@ -1047,3 +1065,8 @@ Ensure you have the following installed:
 - Site favicon from [Favicon.io](https://favicon.io)
 
 ### Honorable Mentions
+- My mentor Rohit Sharma for his usual invaluable input and suggestions.
+
+- Code Institutes Slack community for their various experience.
+
+- Code Insitute for the introduction to working with Django and all other web development aspects.
