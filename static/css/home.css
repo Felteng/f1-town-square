@@ -126,7 +126,7 @@ legend {
 }
 
 .chat-input-container {
-  margin: 2px 0;
+  margin: 6px 0;
   align-self: flex-start;
   display: flex;
   flex-direction: row;
