@@ -10,4 +10,4 @@ assignees: Felteng
 Utilize WAVE Evaluation Tool and  Chrome DevTools to check **UI/UX related topic**
 
 **Acceptance criteria**
--
+1.
