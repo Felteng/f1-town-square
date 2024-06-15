@@ -1,6 +1,8 @@
 # F1 Town Square
+Welcome to F1 Town Square, a vibrant community hub for Formula 1 enthusiasts. Our website is designed to bring fans together, offering a platform for live chat, race calendars, detailed race information, and user-generated comments. Whether you want to discuss the latest race, check out upcoming events, or delve into the details of your favorite Grand Prix, F1 Town Square has you covered. Join our community, share your passion, and stay connected with fellow F1 fans from around the world. \
+![Home page overview](readme-assets/site-overview.png)
 
-[Link to live site]() 
+[Link to live site](https://f1-town-square-84679fd1da34.herokuapp.com/) 
 
 ## Table of Contents
 
@@ -9,7 +11,7 @@
     - [Wireframes](#wireframes)
     - [Site Goals](#site-goals)
     - [5 Planes of UX](#5-planes-of-ux)
-    - [Visual Design Choices](#visual-design-choices)
+    - [Visual Design Ideology](#visual-design-ideology)
     
 - [Features](#features)
     - [Current Features](#current-features)
@@ -21,7 +23,7 @@
     - [CRUD](#crud)
 
 - [Technologies Used](#technologies-used)
-    - [Environemnts](#environments)
+    - [Environments](#environments)
     - [Python Libraries and Packages](#python-libraries-and-packages)
     - [Django Packages](#django-packages)
     - [External Libraries and Packages](#external-libraries-and-packages)
@@ -38,7 +40,7 @@
     - [Local Deployment](#local-deployment)
     - [Live Deployment](#live-deployment)
 
-- [Source Credits](#source-credits)
+- [Credits](#credits)
     - [Technical](#technical)
     - [Media](#media)
     - [Honorable Mentions](#honorable-mentions)
@@ -47,28 +49,28 @@
 ## UI/UX
 
 - UI
-    - The overall look and design of the site aims to create a resemeblance to racing as that's the Formula 1 racing is at the soul of the site.
+    - The overall look and design of the site aims to create a resemblance to racing as that's the Formula 1 racing is at the soul of the site.
 
     - Layout, responsiveness, and navigation are all kept to an approach familiar across most web pages as to avoid plaguing the user with trying to figure out how to even engage with the navigation.
 
 - UX
     - The interactivity focuses on user to user interaction with the live town chat at the home page, as well as the user written comments found on any individual event.
 
-    - User experience has been a major focus for the implementation of various features; Whenever the user performs an account authentication action (sign in, sign up, sign out) they will be returned to the page they were previously on, if appropriate. The redirection ensures a smoother experience in for example the event that a user wants to comment but has to log in, so instead of being returned back all the way to the home page they will be returned to the origin of why they wanted to log in in the first place.
+    - User experience has been a major focus for the implementation of various features; Whenever the user performs an account authentication action (sign in, sign up, sign out) they will be returned to the page they were previously on, if appropriate. The redirection ensures a smoother experience in for example the event that a user wants to comment but has to sign in, so instead of being returned all the way to the home page they will be returned to the origin of why they wanted to sign in the first place.
 
     - Another example of an ensured more fluid experience is that of any comment action performed under an event page. Instead of returning to a page and landing at the top after the action is completed, the scroll level of the window will be automatically restored for the user to return to the same view they had when engaging with the action.
 
 ### Agile
 
-The entirety of this project has been built utilising the agile development approach. The agile approach, combined with GitHub projects, has served as a tool that has helped visualise, plan, and execute different phases of the project development. The [GitHub project](https://github.com/users/Felteng/projects/3) created for this project features a kanban board where the various issues and their status can be seen.
+The entirety of this project has been built utilizing the agile development approach. The agile approach, combined with GitHub projects, has served as a tool that has helped visualize, plan, and execute different phases of the project development. The [GitHub project](https://github.com/users/Felteng/projects/3) created for this project features a kanban board where the various issues and their status can be seen.
 
-To view the user stories set out for this project please refer to the project link in the above paragraph. By clicking on any user story on the board a detailed view containing the user story and it's acceptance criteria will be made visible. All the issues on the kanban board have received different labels to convey things like relevancy and importance.
+To view the user stories set out for this project please refer to the project link in the above paragraph. By clicking on any user story on the board a detailed view containing the user story and its acceptance criteria will be made visible. All the issues on the kanban board have received different labels to convey things like relevancy and importance.
 
 ### Wireframes
 
 The initial Balsamiq wireframes are very simplified mockups of site layout to help steer development.
 
-*Since these initial wireframes, part of the scope of the project was altered early on to not feature any articles and instead build upon the indivual events on the calendar.*
+*Since these initial wireframes, part of the scope of the project was altered early on to not feature any articles and instead build upon the individual events on the calendar.*
 
 
 <details>
@@ -83,9 +85,9 @@ The initial Balsamiq wireframes are very simplified mockups of site layout to he
 
 ### Site Goals
 
-The goal of this site is to provide anyone with an interest, mild or large, with a town square like experience where you can stay up to date on the dates of the current seasons calendar, engage in discussion, or even engage in the live town chat. Event comments are restricted by admin approval to avoid malicous bloat or anything of the sort. The live town chat on the other hand is a bit different as its data is not stored to be displayed to any visitng user, this is delibrate as the intention here is for it act like a real life interaction of people happening to share a similar interest. Anyone who partook in the live discussion will now what is was about and all the little details, but once the page is left or refreshed so is the data. Depending on the future scope and plans for scalabilty the chat could be converted to store and display data too, no such plans have been made but of course there are possibilities for lots of different [future features](#future-features).
+The goal of this site is to provide anyone with an interest, mild or large, with a town square like experience where you can stay up to date on the dates of the current seasons calendar, engage in discussion, or even engage in the live town chat. Event comments are restricted by admin approval to avoid malicious bloat or anything of the sort. The live town chat on the other hand is a bit different as its data is not stored to be displayed to any visiting user, this is deliberate as the intention here is for it act like a real life interaction of people happening to share a similar interest. Anyone who partook in the live discussion will now what is was about and all the little details, but once the page is left or refreshed so is the data. Depending on the future scope and plans for scalability the chat could be converted to store and display data too, no such plans have been made but of course there are possibilities for lots of different [future features](#future-features).
 
-In short it's a sort of hub for anyone familiar, or wanting to get familiar with the world of F1.
+In short, it's a sort of hub for anyone familiar, or wanting to get familiar with the world of F1.
 
 ### 5 Planes of UX
 
@@ -106,7 +108,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 **Functional Requirements**
 - **Town Chat**: Real-time chat functionality on the home page.
 
-- **Calendar Page**: Interactive calendar displaying the current season's grand prix.
+- **Calendar Page**: Interactive calendar displaying the current season's Grand Prix.
 
 - **Race Details Page**: Detailed information about each race with a comment section.
 
@@ -117,7 +119,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 - **Calendar Page**: List of races with dates, locations, and links to detailed race pages.
 
-- **Race Details Page**: Information about each race (e.g., circuit, notable info, and history of the grand prix) and user comments.
+- **Race Details Page**: Information about each race (e.g., circuit, notable info, and history of the Grand Prix) and user comments.
 
 ### 3. Structure
 **Interaction Design**
@@ -158,7 +160,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 **Navigation**
 - **Top Navigation Bar**: Persistent across all pages with links to Home, Calendar, and account authentication (e.g., sign out, sign in, register).
 
-- **Authentication prompts**: Clear link to sign in page in place of any text input that requires authentication. Link for sign up featured on the sign in page if user needs to create an account.
+- **Authentication prompts**: Clear link to sign in page instead of any text input that requires authentication. Link for sign up featured on the sign in page if user needs to create an account.
 
 - **Breadcrumbs**: Intuitive redirection to the previously visited page (e.g., send user back to the event details page they wanted to comment on after signing in) after performing and account authentication action (e.g., sign out, sign in, register).
 
@@ -186,7 +188,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 ### Visual Design Ideology
 
 **Color Scheme:**
-- The base scheme of the site is built with "dark theme" in mind as it's a theme becoming increasingly popular and tends to be a lot easier on the eyes for the user. There is not sacrifice in contrast or user experience to achieve the darker aestetic. The goal is to provide a friendly looking interface that won't appal the user from using the site for any extended period of time.
+- The base scheme of the site is built with "dark theme" in mind as it's a theme becoming increasingly popular and tends to be a lot easier on the eyes for the user. There is not sacrifice in contrast or user experience to achieve the darker aestetic. The goal is to provide a friendly looking interface that won't appall the user from using the site for any extended period of time.
 
 - To achieve the darker theme every page features shade of woodsmoke as the background. \
 ![Background color](readme-assets/background-hex.png)
@@ -194,18 +196,18 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - Furthermore the site incorporates some staple racing colors, such as the very vibrant, milano red navigation bar, combined with the white text. \
 ![Navbar colors](readme-assets/navbar-hex.png)
 
-- Most element borders feature 1 of 2 different shades an olive haze color which aims to provide an organic looking seperation of content. \
+- Most element borders feature 1 of 2 different shades an olive haze color which aims to provide an organic looking separation of content. \
 ![Border colors](readme-assets/border-hex.png)
 
-- The last contrasting color is that of a very dark shade of blue featured at the page footer as well as the hero seperator on an events details page. It blends quite nicely with the dargker background while still providing contrast for content seperation without causing a large shift of focus. \
+- The last contrasting color is that of a very dark shade of blue featured at the page footer as well as the hero separator on an events details page. It blends quite nicely with the darker background while still providing contrast for content separation without causing a large shift of focus. \
 ![Footer color](readme-assets/footer-hex.png)
 
 **Fonts:**
 - Racing Sans One
-    - The Racing Sans One font has been used in the navbar elements as well as the season calendar heading. Its dynamic and sporty design helps convey a sense of speed, which is the essence of motorsport, and it helps draw attention to the key elements of the site even though they are smaller in size than the ladning page headings. It has very eye catching characteristics yet it remains a very readable font.
+    - The Racing Sans One font has been used in the navbar elements as well as the season calendar heading. Its dynamic and sporty design helps convey a sense of speed, which is the essence of motorsport, and it helps draw attention to the key elements of the site even though they are smaller than the landing page headings. It has very eye-catching characteristics yet it remains a very readable font.
 
 - Exo 2
-    - Exo 2 has been exerted for all headings on the page bar the calendar heading. It helps convey yet another sense of a modern, sporty feeling albeit while being a lot less robust than the Racing Sans One font. This is perfect because it avoids an overwhelming sense of repetetion in the case that Racing Sans One would be used for all the heading as well as the nav elements, it would very easily split the focus of the user. The sporty modern nature of the font helps the various content headings stand out while not drawing as much attention as Racing Sans One.
+    - Exo 2 has been exerted for all headings on the page bar the calendar heading. It helps convey yet another sense of a modern, sporty feeling albeit while being a lot less robust than the Racing Sans One font. This is perfect because it avoids an overwhelming sense of repetition in the case that Racing Sans One would be used for all the heading as well as the nav elements, it would very easily split the focus of the user. The sporty modern nature of the font helps the various content headings stand out while not drawing as much attention as Racing Sans One.
 
 - Roboto
     - Roboto features a modern and geometric design with clean lines and a neutral, yet friendly appearance, providing great readability. This makes it the perfect font for the various pieces of content the site aims to convey.
@@ -219,7 +221,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
 
 **Icons:**
-- The use of icons have been kept on the lower end and they have simply been used to help convey an elements purpose and action. 2 examples of this is the left caret for the go back button when user lands on a 404 page, and the paper plane icon in the live chat to signify send message. \
+- The use of icons have been kept on the lower end, and they have simply been used to help convey an elements purpose and action. 2 examples of this is the left caret for the go back button when user lands on a 404 page, and the paper plane icon in the live chat to signify send message. \
     ![Left caret icon](readme-assets/left-caret-ico.png) \
     ![Paperplane icon](readme-assets/paperplane-ico.png)
 
@@ -231,11 +233,11 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - **Navigation**
     - Navbar with navigation links to the various pages on the site as well as the logo.
 
-    - Slightly different naviational links depending on whether the user is authenticated or not.
+    - Slightly different navigational links depending on whether the user is authenticated or not.
 
     - Current page is highlighted with a similar border layout found across many elements on the site.
 
-    - On mobile devices the navbar turns into a collapsable menu through the intuitive and familiar burger menu.
+    - On mobile devices the navbar turns into a collapsible menu through the intuitive and familiar burger menu.
 
     - Features a slightly mute text letting the user know if they're logged in and who they are logged in as.
         <details>
@@ -248,13 +250,13 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Home page**
-    - Features no introductory text as I believe it can often create a bit of a turmoil for a new visitng user, at least that's how I often times experience it.
+    - Features no introductory text as I believe it can often create a bit of a turmoil for a new visiting user, at least that's how I often times experience it.
 
     - The purpose and introduction attempts to be conveyed through the landing page content and intuitive accessible design.
 
     - Features the live town chat where a user may engage in any live discussion with another user.
 
-    - Features a list of 4 cards that shows the closest upcoming grand prix as well as the previous 3 grand prix.
+    - Features a list of 4 cards that shows the closest upcoming Grand Prix as well as the previous 3 Grand Prix.
         <details>
         <summary>
             Home page images
@@ -264,7 +266,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Live town chat**
-    - Featured on the home page where any user may engage in live discussion. Most notably this would be used during the events of a grand prix weekend when discussion is at its peak.
+    - Featured on the home page where any user may engage in live discussion. Most notably this would be used during the events of a Grand Prix weekend when discussion is at its peak.
 
     - Notifies the user when they've been connected as well as if the websocket connection gets closed.
 
@@ -273,7 +275,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
     - On purpose features no database model or storage to simulate that of a real world interaction where the discussion held is remembered by those involved and can't be relived by an external visitor after it has taken place.
 
-        - So whenever the page is refreshed the data will be lost.
+        - So, whenever the page is refreshed the data will be lost.
 
     - The chat input box will not be visible to a user that is not signed in, and will instead display a message letting the user know they should sign in.
 
@@ -289,9 +291,9 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Registration page**
-    - Features an ordinary registration form with email address being optional and appropiate feedback if fields are left empty.
+    - Features an ordinary registration form with email address being optional and appropriate feedback if fields are left empty.
 
-    - Upon registration the user is automatically signed in to the registered account and taken back to the page they were on before initating registration.
+    - Upon registration the user is automatically signed in to the registered account and taken back to the page they were on before initiating registration.
 
         - The page being returned to will not be another account authentication page, for example if the user clicked on a sign in prompt under an event and then realised that they need to sign up first, they will not be returned to the login page and instead back to the page they were on.
 
@@ -305,11 +307,11 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Sign in page**
-    - Features a simple sign in form with appropiate feedback if fields are left empty.
+    - Features a simple sign in form with appropriate feedback if fields are left empty.
 
     - If the wrong password is provided the username entered will stay in the field for the password to be attempted again without having to type the username again.
 
-    - On successful sign in the user will be redirected to the previous page they were on before initating the sign in action.
+    - On successful sign in the user will be redirected to the previous page they were on before initiating the sign in action.
 
         - If the previous page is a 404 page the user is redirected to the home page instead.
         <details>
@@ -325,7 +327,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
     - Clicking cancel will return the user to the previous page.
 
-    - On successful sign out the user will be redirected to the previous page they were on before initating the sign out action.
+    - On successful sign out the user will be redirected to the previous page they were on before initiating the sign out action.
 
         - If the previous page is a 404 page the user is redirected to the home page instead.
         <details>
@@ -339,12 +341,12 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - **Calendar page**
     - Features a list of event cards for each event planned for the current season.
 
-    - The familiar boders wrap the cards and the cards feature the relevant dates, event name, location, and an image of the circuit layout.
+    - The familiar borders wrap the cards and the cards feature the relevant dates, event name, location, and an image of the circuit layout.
         - The end date of events is calculated and not set by the site admin as some regulations set within the sport ensure that the event will end 2 days after it starts. If that ever changes a manual end date will be added.
 
     - Each card when clicked leads to a logical URL which displays a page with extended details for that event.
 
-    - When a card is hovered it will grow sligtly and the border will turn red to indicate which event is being viewed.
+    - When a card is hovered it will grow slightly and the border will turn red to indicate which event is being viewed.
 
     - If an event that does not exist is attempted to be viewed a detailed 404 page will let the user know there is no event at that url. For example /event/25/ in this 24 event season calendar.
         <details>
@@ -357,7 +359,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Detailed event page**
-    - Any event that has details added to it will be able to be viewed on a seperate page.
+    - Any event that has details added to it will be able to be viewed on a separate page.
 
     - The page features a hero image related to event as well as the event name.
 
@@ -395,7 +397,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
         - A site admin may also approve a comment through from the event page.
 
-    - Whenever any CRUD button is pressed and the request is sent the button gets disabled to avoid excessive requests being made and bugs occuring.
+    - Whenever any CRUD button is pressed and the request is sent the button gets disabled to avoid excessive requests being made and bugs occurring.
 
     - Whenever a CRUD button is pressed the users y-scroll position is captured so that went the operation is done they will be returned to the same scroll and view as when the action was made.
         <details>
@@ -427,7 +429,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - **Editing a comment**
     - A logged in user who is also the author of a comment may edit the comment as they wish.
 
-    - When the edit button is clicked the comment area will turn into an editable text area an a save button will appear.
+    - When the edit button is clicked the comment area will turn into an editable text area and a save button will appear.
 
         - If the edit button is clicked the scroll position gets saved so it can restore the user to same view after the request is done.
 
@@ -451,13 +453,13 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
         </details>
 
 - **Approving a comment**
-    - An authenticated superuser will see any comments comments posted whether they are approved or not.
+    - An authenticated superuser will see any comments posted whether they are approved or not.
 
     - An unapproved comment will have a green approve button visible which can be clicked at any time to approve the comment so any other user may also see that comment.
 
     - When the approve button is clicked the request to approve gets initiated and the button gets disabled to avoid multiple requests.
 
-        - The scroll position of the superuse will also be saved so that they are returned to the same position and can carry on approving comments or what have you.
+        - The scroll position of the superuser will also be saved so that they are returned to the same position and can carry on approving comments or what have you.
         <details>
         <summary>
             Approve comment images
@@ -492,7 +494,7 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 - **Action response messages**
     - Whenever an action gets completed a message appears on the users screen.
 
-    - The messages can be closed manually and will also dissapear automatically after 4 seconds.
+    - The messages can be closed manually and will also disappear automatically after 4 seconds.
 
     - Messages appear after things like: Successful sign in, sign out, and or sign up. Any successful comment CRUD action.
         <details>
@@ -546,10 +548,12 @@ In short it's a sort of hub for anyone familiar, or wanting to get familiar with
 
     - This would allow users to go back in the calendar years to see how the calendar has evolved, discussions and thought that were shared on old events, and how the events might have aged.
 
+- An improvement for the site admin would be to make any race event that is linked to and event detail model not show up in the race list when creating an event detail object.
+
 ## Database Design
 
 ### Database Model
-The entiry relationship diagram for the initial database model was made using [Cacoo's](https://cacoo.com) diagram tool.
+The entity relationship diagram for the initial database model was made using [Cacoo's](https://cacoo.com) diagram tool.
 
 ![Entity relationship diagram](readme-assets/f1-town-square-erd.png)
 
@@ -568,11 +572,11 @@ A user can browse and read about the current season's race events and any commen
 
 **Update:**
 An authenticated user can edit and update their individual contributions to the site.
-- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimmick the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
+- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimic the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
 
 **Delete:**
 An authenticated user can delete any of their contributions made to the site.
-- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimmick the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
+- The live chat features no database model and the messages are therefore lost whenever the page is refreshed. This is to mimic the experience of meeting and conversing with a group of individuals with the shared interest of F1 and racing in the real world.
 
 ## Technologies Used
 
@@ -600,6 +604,8 @@ An authenticated user can delete any of their contributions made to the site.
 ### External Libraries and Packages
 
 - [Cloudinary](https://cloudinary.com/) (Hosting and efficient serving of static media files)
+- [jQuery](https://jquery.com/) (JavaScript library for "write less do more")
+- [Bootstrap](https://getbootstrap.com/) (CSS Framework for responsive mobile-first websites)
 
 ### Database
 
@@ -625,7 +631,7 @@ Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have b
 
 - **Event details page**
 
-    - One error type is shown, it regards the obsolote HTML font element. The font element is just what summernote uses when producing the formatted text from the summernote editor in the admin panel. This element is applied to each heading and paragraph. See [this reply](https://github.com/summernote/summernote/issues/2005#issuecomment-542490245) for reference. [This issue](https://github.com/summernote/summernote/projects/2#card-50662209) was added to the summernote project board back in 2020 and is still present in the to-do column.
+    - One error type is shown, it regards the obsolete HTML font element. The font element is just what summernote uses when producing the formatted text from the summernote editor in the admin panel. This element is applied to each heading and paragraph. See [this reply](https://github.com/summernote/summernote/issues/2005#issuecomment-542490245) for reference. [This issue](https://github.com/summernote/summernote/projects/2#card-50662209) was added to the summernote project board back in 2020 and is still present in the to-do column.
         <details>
         <summary>
             Validator error description.
@@ -649,7 +655,7 @@ Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have b
 
     - 4 errors are found, none due to any code written for the project - Does not hamper any functionality.
         
-        - The errors are produced when rendering the sign up form through django templating language.
+        - The errors are produced when rendering the sign up form through Django templating language.
         - When inspecting the elements through devtools the faulty structure is not present, but when page source is viewed to be passed into the validator the error lines look like: 
             ```html
             <span class="helptext" id="id_password1_helptext"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
@@ -682,20 +688,20 @@ Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have b
 
     - No errors returned upon validation.
 
-    - 4 warnings are shown. 2 in regards to the use of the vendor extended pseudo-elements:
+    - 4 warnings are shown. 2 in regard to the use of the vendor extended pseudo-elements:
         ```css
         ::-webkit-scrollbar ::-webkit-scrollbar-thumb
         ```
 
-        - These are used to allow browsers utilising the legacy scrollbar styling to also work.
+        - These are used to allow browsers utilizing the legacy scrollbar styling to also work.
 
-    - 1 in regards to a vendor extension:
+    - 1 in regard to a vendor extension:
         ```css
         -moz-osx-font-smoothing
         ```
         - Part of the hover.css usage.
     
-    - 1 in regards to imports not being validated.
+    - 1 in regard to imports not being validated.
 
         - Google fonts.
         <details>
@@ -726,7 +732,7 @@ Refer to [TESTING.md](TESTING.md) for the manual and automatic tests that have b
         ```javascript
         username
         ```
-        - This variable is defined in the template using DTL to get the the users username. So a false positive warning.
+        - This variable is defined in the template using DTL to get the the user's username. So a false positive warning.
     
 
 #### Python [CI Python Linter](https://pep8ci.herokuapp.com/)
@@ -831,19 +837,23 @@ This is a result from a file with no errors, any file marked with "No errors fou
 
 - Alert for unintuitive alt on calendar images.
 
-    - Fix: Utilise DTL to create unique alts for every circuit image.
+    - Fix: Utilize DTL to create unique alts for every circuit image.
 
 - I've left one type of alert unattended. The alert if for redundant links, or multiple links leading to the same destination within the same page.
 
-    - This alert is triggered simply because the navbar is present on every page. So for pages that feature a log in prompt to access a feature such as leaving a comment the sign in url can be found in the prompt as well as the navbar.
+    - This alert is triggered simply because the navbar is present on every page. So for pages that feature a sign in prompt to access a feature such as leaving a comment the sign in url can be found in the prompt as well as the navbar.
 
 #### Performance, Accessibility, Best Practices, SEO (Lighthouse Chrome DevTools)
 - Lighthouse was used alongside WAVE to validate accessibility among the 3 other topics it covers.
 
 - It was performed on all pages but I'll spare the need to look at results for the plain pages such as 404 and the authentication pages.
-    - These tests were performed on an incognite page as to avoid extensions and cookies.
+
+    - These tests were performed on an incognito page as to avoid extensions and cookies.
+
         - Since the project uses cloudinary to serve static media files 2 3rd part cookies are introduced as a result. Historically this would not be of any importance but Chrome has set hot to phase out and remove the use of 3rd party cookies in a future version of chrome. In turn that results in best practices getting lowered significantly to 78 due to those 2 cookies.
-        - There is nothing to do as a cloudinary user as of now and they are holding internal discussions at cloudinary, as to how they will tackle these plans from Google. [Some information](https://community.cloudinary.com/discussion/596/third-party-cookies-will-be-blocked-how-to-solve-it) from a cloudinary staff member regarding the issue can be found under this thread. 
+
+        - There is nothing to do as a cloudinary user as of now, and they are holding internal discussions at cloudinary, as to how they will tackle these plans from Google. [Some information](https://community.cloudinary.com/discussion/596/third-party-cookies-will-be-blocked-how-to-solve-it) from a cloudinary staff member regarding the issue can be found under this thread. 
+
     - Below are the results for the 3 main pages of the site:
     <details>
     <summary>
@@ -874,9 +884,9 @@ This is a result from a file with no errors, any file marked with "No errors fou
 ### Browser Testing
 
 **Layout:**
-- Layout tests have been performed with use of Chrome DevTools across all different breakpoints and various resolotiuns between each breakpoint.
+- Layout tests have been performed with use of Chrome DevTools across all different breakpoints and various resolutions between each breakpoint.
 
-    - Every page has been reviewed across the different layout to ensure no overflow occurs and that the site feels intutive to use.
+    - Every page has been reviewed across the different layout to ensure no overflow occurs and that the site feels intuitive to use.
 
     - Each race event card has been expected due to the varying lengths in event names and media query breakpoints were adjusted accordingly.
 
@@ -884,17 +894,26 @@ This is a result from a file with no errors, any file marked with "No errors fou
 - Testing complete functionality of the site. This includes:
 
     - Navigation
-    - Sign Up
+
+    - Sign up
+
     - Sign in
+
     - Sign out
+
     - Opening external links
+
     - Reading all available site content
+
     - Browse race events
+
     - Creating comments and messages
+
     - Delete and edit comments
+
     - Site admin user functions
 
-- Functionality and layout has been tested accross the 4 main browsers, Chrome, Firefox, MS Edge, and Safari with no alarming issues spotted.
+- Functionality and layout has been tested across the 4 main browsers, Chrome, Firefox, MS Edge, and Safari with no alarming issues spotted.
 
 
 ### Addressed Bugs
@@ -920,7 +939,7 @@ This is a result from a file with no errors, any file marked with "No errors fou
 ![Comment ID not found](readme-assets/comment-id-not-found.png)
     - This occurs because the class that is used to style all the delete buttons was also used on the confirmation button, which is also the class that javascript targets when applying event listeners to all delete buttons.
 
-        - The solution to the problem was to make a seperate class for the confirmation button to keep the same style but not interfere with the javascript:
+        - The solution to the problem was to make a separate class for the confirmation button to keep the same style but not interfere with the javascript:
             ```html
             <button type="button" class="btn delete-btn" id="confirm-delete">Delete</button>
             ```
@@ -962,7 +981,7 @@ This is a result from a file with no errors, any file marked with "No errors fou
 
     - Whenever a logged in user visits from a device with a width smaller than 768px, essentially using the 1 column layout, they are scrolled down to the bottom of the page where the live chat input field is located. The reason this occurs is because the input field is put into focus when loaded.
 
-        - To solve this this code was modified:
+        - To solve this, this code was modified:
         ```javascript
         if (document.querySelector("#id_message_send_input")) {
             document.querySelector("#id_message_send_input").focus();
@@ -986,16 +1005,16 @@ This is a result from a file with no errors, any file marked with "No errors fou
 ### Local Deployment
 - Deploying locally is quick and easy as the packages will run and function without any additional effort.
 
-    1. Assuming a django project present; Open a terminal in the workspace.
+    1. Assuming a Django project present; Open a terminal in the workspace.
 
     2. To start the local server for development enter the following in the terminal:
 
         - python3 manage.py runserver
 
-    3. Now the site can be opened through the pop up that appears in the bottom right hand corner.
+    3. Now the site can be opened through the pop up that appears in the bottom right-hand corner.
 
 ### Live Deployment
-Prerequisites
+#### Prerequisites
 Ensure you have the following installed:
 - Install Daphne (server used to run Django on Heroku with ASGI capabilities):  ```pip install daphne```
 
@@ -1007,6 +1026,102 @@ Ensure you have the following installed:
 
 - Install Whitenoise (prevent issues with Heroku not rendering custom stylesheet): ```pip install whitenoise```
 
+    - Once installed, collect the references of each package in a requirements.txt file: ```pip freeze > requirements.txt``` 
+        
+        - This is very important for Heroku to know what dependencies are required for the project to function the same way it does in the development environment.
+
+- A PostgreSQL database. The database used for this project was created with Code Institutes database maker, but any database maker will suffice.
+    
+    - Follow the relevant instructions to create the database. But this should already be done during early development of your Django project.
+
+Refer to each package' documentation to ensure proper implementation in the project.
+
+#### Instructions
+Sign in or create an account at [Heroku](https://heroku.com) and once that's done proceed with the following steps:
+1. At the start page/dashboard click 'New' in the top right part of the page to open a small dropdown.
+
+2. In the dropdown select 'Create new app'.
+
+3. Give the application a unique name and choose a region for deployment. I went with Europe since that's the closest for this applications purposes.
+
+4. Click 'Create app'.
+
+5. Back on the dashboard, select the newly created app.
+
+6. On the app page click 'Settings'.
+
+7. We want to set some Config Vars by clicking Reveal Config Vars. These are equivalent to that of the vulnerable variables we have stored in env.py which is ignored by git. Since they are ignored we need to supply them securely to Heroku directly. Make sure the keys match the variables in env.py.
+
+    - Add a key called SECRET_KEY.
+
+        - Set its value to a new secure secret key string or set it to the same one already used in your env.py.
+
+    - Add a key called DB_URL.
+
+        - Set its value to your postgres database URL.
+
+    - Add a key called CLOUDINARY_URL.
+
+        - Set its value to your own cloudinary URL.
+
+    - Lastly we can add a key called COLLECTSTATIC.
+
+        - Setting its value to 1 will allow Heroku to perform COLLECTSTATIC when project is deployed.
+
+8. Below Config Vars we need to add the heroku/python buildpack.
+
+Now to prepare the project itself for deployment on Heroku we need to make sure Heroku knows what dependencies to install to run the project.
+
+9. Make sure there's a file called 'requirements.txt' in the root directory.
+
+10. If you haven't already, type ```pip freeze > requirements.txt``` in the terminal and you should see package references added to the requirements.txt file.
+
+Make sure to push these changes to your repository before deploying.
+
+11. Back on the app page on Heroku select 'Deploy', choose GitHub as deployment method and connect your account.
+
+12. Search up the name of the repository for the app to select it.
+
+13. Deploy manually by choosing a branch to deploy from and click 'Deploy Branch'.
+
+    - I enabled automatic deploys for whenever a push is made to 'main' branch. This is however optional.
+
+## Development
+The following options are available to work with this code or run in a local environment.
+
+### Clone.
+Changes made to a cloned repository will affect the original repository too.
+- On to the main page of the repository.
+
+- Click on Code to toggle a dropdown menu above the list of files.
+
+- Choose your desired method to copy the URL for the repository.
+
+- In your work environment, open Git Bash and change current directory to target location for cloned repository.
+
+- Type git clone followed by the copied URL and press enter.
+
+
+### Fork
+Any changes made to a forked repository will not affect the original repository.
+- On the main repository page locate the fork button found in top right corner of the repository.
+
+- Click the Fork button.
+
+- Select a different owner if needed.
+
+- Click Create Fork.
+
+- The forked repository can now be found in the chosen owner account.
+
+### Download as ZIP.
+- On to the main page of the repository.
+
+- Click on Code to toggle a dropdown menu above the list of files.
+
+- Click on Download ZIP to start the download.
+
+- Once downloaded, extract ZIP and use it in your local development environment.
 
 ## Credits
 
@@ -1014,6 +1129,8 @@ Ensure you have the following installed:
 - [caffsushi](https://stackoverflow.com/a/57682143) - For forcing https protocol over http when loading images from cloudinary by accessing an objects .url tag.
 - [dgel](https://stackoverflow.com/a/12003808) - Decorator for checking if a user has superuser status in views.
 - [omkashyap007](https://www.geeksforgeeks.org/realtime-chat-app-using-django/) - Guide on how to set up a websocket live chat.
+- [I Think Therefore I Blog](https://github.com/Code-Institute-Solutions/Django3blog) - Code Institute's walkthrough project as an introduction to developing with Django.
+- [Django Documentation](https://docs.djangoproject.com/en/5.0/) - Django's own documentation for detailed explanations and examples of most concepts within the framework.
 
 ### Media
 #### Circuit SVGs
@@ -1046,6 +1163,7 @@ Ensure you have the following installed:
 
 
 #### Hero images
+The links are in order of the calendar dates.
 - CaterhamF1, https://www.flickr.com/photos/caterhamf1/13678967474
 - Automotive Rhythms, https://www.flickr.com/photos/artvlive/51696022965
 - By Chris Phutully - https://www.flickr.com/photos/72562013@N06/13186495033/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=31802460
@@ -1053,13 +1171,33 @@ Ensure you have the following installed:
 - By Derrick Noh from NYC - 2009 Formula 1 Grand Prix of China - Shanghai Circuit, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=60429722
 - By Bassfish22 - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=136303048
 - By Wastrick - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=121017386
+- By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
 - By pedrik - First corner, GP of Canada 2017, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=128994359
 - By Anyul Rivas - https://www.flickr.com/photos/anyulled/42253655511/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=107128061
-
-
-- By Santiago Puig Vilado…, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52434602
-
+- By Harald Deischinger from Schlatt, Austria - DSC09272.jpg, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=109398585
+- By fuji.tim - Ferrari's Charles Leclerc battles for the podium with Mercedes' Lewis Hamilton at the 2022 British Grand Prix at Silverstone., CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=120717950
+- By Michał Obrochta - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=81130648
+- By Malte89N - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=27900585
+- By Erik Jacobs from Middelburg, Nederland - _DSC4279, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=94688317
+- By Eustace Bagge - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=91944464
+- By President.az, CC BY 4.0, https://commons.wikimedia.org/w/index.php?curid=78357826
 - By chensiyuan - chensiyuan, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=21856333
+- By rsyphotography - https://www.flickr.com/photos/122777637@N06/51640226240/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=112590598
+- By Gobierno CDMX - Flickr, CC0, https://commons.wikimedia.org/w/index.php?curid=75457310
+- By Leandro Neumann Ciuffo - Norris e Leclerc, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=125594086
+- By 5chw4r7z - F1, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=141101538
+- By Trinidade - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=25913854
+- By JiteshJagadish - https://www.flickr.com/photos/jiteshjagadish/5178451382/, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=12075238
+
+
+#### Icons
+- Icons featured are from [Font Awesome](https://fontawesome.com)
+
+#### Flags
+- Huge thanks to [lilpis](https://github.com/lipis/flag-icons) for the library of vectors.
+
+#### Fonts
+- All fonts from [Google Fonts](https://fonts.google.com)
 
 #### Favicon
 - Site favicon from [Favicon.io](https://favicon.io)
@@ -1069,4 +1207,4 @@ Ensure you have the following installed:
 
 - Code Institutes Slack community for their various experience.
 
-- Code Insitute for the introduction to working with Django and all other web development aspects.
+- Code Institute for the introduction to working with Django and all other web development aspects.
