@@ -6,7 +6,7 @@ const liveChatContainer = document.querySelector("#id-chat-item-container");
 
 chatSocket.onopen = function () {
   let div = document.createElement("div");
-  div.innerHTML = (`Connected to chat!
+  div.innerHTML = (`Welcome to the F1 Town Square chat!
     <br>Anyone can see what you write but nothing 
     written will be saved in that chat after page refresh`
   );
