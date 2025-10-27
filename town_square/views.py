@@ -29,6 +29,7 @@ def home_page(request):
     """
     events = RaceEvent.objects.all()
     previous = []
+    upcoming_event = 0
 
     for event in events:
         # https://stackoverflow.com/a/57682143: forcing https for image.
