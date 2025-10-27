@@ -51,7 +51,7 @@ def home_page(request):
         "town_square/index.html",
         {
             "previous_events": previous_events,
-                "upcoming_event": upcoming_event,
+            "upcoming_event": upcoming_event,
         }
     )
 
