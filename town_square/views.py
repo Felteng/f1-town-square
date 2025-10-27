@@ -29,7 +29,6 @@ def home_page(request):
     """
     events = RaceEvent.objects.all()
     previous = []
-    upcoming_event = None
 
     for event in events:
         # https://stackoverflow.com/a/57682143: forcing https for image.
@@ -52,10 +51,7 @@ def home_page(request):
         "town_square/index.html",
         {
             "previous_events": previous_events,
-            if upcoming_event:
                 "upcoming_event": upcoming_event,
-            else:
-                "upcoming_event": previous[4]
         }
     )
 
